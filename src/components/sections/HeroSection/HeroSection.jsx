@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { useGSAP } from "@gsap/react";
 export default function HeroSection() {
     return (
         <section
