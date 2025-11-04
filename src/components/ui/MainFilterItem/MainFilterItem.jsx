@@ -21,7 +21,7 @@ export default function MainFilterItem({ value, defaultValue, setValue }) {
                 animate={{y: 0, opacity: 1, width: "100%" }}
                 exit={{y: -100, opacity: 0, width: 0}}
                 transition={{duration: 0.2}}
-                className="absolute top-12 left-0 z-4 bg-white p-2 w-full rounded-xl">
+                className="absolute top-12 left-0 z-5 bg-white p-2 w-full rounded-xl">
                     <div>
                         {["Test", "Test", "Test"].map((item) => (
                             <div className="hover:border-b hover:border-gray-400" onClick={() => {setValue(item); setClick(false)}}>{item}</div>

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 import { motion, AnimatePresence } from 'motion/react'
 import './Header.css'
 import { useEffect, useState } from "react"
+import { Link } from 'react-scroll';
 
 export default function Header() {
     const [burger, setBurger] = useState(false)
@@ -27,10 +28,10 @@ export default function Header() {
             <div className="relative">
                 <div className="container mx-auto p-4">
                     <div className="flex justify-between items-center">
-                        <div className="relative z-10">
-                            <NavLink to='#home'>
+                        <div className="relative z-10 cursor-pointer">
+                            <Link to="home" spy={true} smooth={true} offset={-70} duration={100}>
                                 <img src={logo} alt="logo" />
-                            </NavLink>
+                            </Link>
                         </div>
                         <div>
                             <nav className="hidden md:block">

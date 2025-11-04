@@ -30,7 +30,7 @@ export default function MainFilterSection() {
     })
 
     return (
-        <section className="container mx-auto py-5" ref={blockRef}>
+        <section className="container mx-auto py-5 relative z-2" ref={blockRef}>
             <div className="flex flex-wrap justify-center gap-1.5 text-[0.8rem] md:text-[1rem]">
                 <MainFilterItem value={version} defaultValue={"Версия игры"} setValue={setVersion}/>
                 <MainFilterItem value={gameType} defaultValue={"Режимы"} setValue={setGameType}/>

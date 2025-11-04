@@ -33,7 +33,7 @@ export default function ServerSection() {
     }, [])
 
     return (
-        <section className="container mx-auto px-4">
+        <section className="container mx-auto px-4 relative z-1">
             <div className="flex flex-col items-center gap-10">
                 {/* <div className="rounded-2xl max-w-[610px] shadow-md">
                     <div className="w-full h-[60px] relative">
