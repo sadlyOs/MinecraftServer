@@ -1,7 +1,9 @@
+import HeroSection from "@/components/sections/HeroSection/HeroSection"
+
 export default function Home() {
     return (
         <main>
-            <p>Home</p>
+            <HeroSection />
         </main>
     )
 }
