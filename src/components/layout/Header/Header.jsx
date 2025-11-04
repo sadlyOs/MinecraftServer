@@ -14,7 +14,7 @@ export default function Header() {
                 <div className="container mx-auto p-4">
                     <div className="flex justify-between items-center">
                         <div className="relative z-10">
-                            <NavLink to='/'>
+                            <NavLink to='#home'>
                                 <img src={logo} alt="logo" />
                             </NavLink>
                         </div>
