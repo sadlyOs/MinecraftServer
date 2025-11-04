@@ -1,7 +1,9 @@
 export default function ServerSection() {
     return (
-        <section>
-            <p>ServerSection</p>
+        <section className="container mx-auto px-4">
+            <div className="flex justify-center">
+                <p>ServerSection</p>
+            </div>
         </section>
     )
 }
