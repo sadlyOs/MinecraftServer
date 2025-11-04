@@ -3,7 +3,7 @@ import MainFilterSection from "@/components/sections/MainFilterSection/MainFilte
 
 export default function Home() {
     return (
-        <main>
+        <main className="bg-gray-100">
             <HeroSection />
             <MainFilterSection />
         </main>
