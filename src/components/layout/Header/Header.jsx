@@ -3,13 +3,27 @@ import logo from "@assets/header/logo.png"
 import { NavLink } from "react-router-dom"
 import { motion, AnimatePresence } from 'motion/react'
 import './Header.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Header() {
     const [burger, setBurger] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+            setIsScrolled(scrollTop > 150)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
     return (
-        <header className="text-white sticky top-0 z-10">
+        <header className={`text-white sticky top-0 z-10 ` + (isScrolled ? "backdrop-blur-2xl bg-black-transparent" : "")}>
             <div className="relative">
                 <div className="container mx-auto p-4">
                     <div className="flex justify-between items-center">

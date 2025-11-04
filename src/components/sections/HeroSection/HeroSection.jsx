@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 export default function HeroSection() {
     return (
         <section id="#home" className="relative top-[-64px] containerw-full h-screen bg-[url('@assets/hero/hero.png')] bg-cover">
