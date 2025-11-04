@@ -9,7 +9,7 @@ export default function MainFilterSection() {
     const [plugins, setPlugins] = useState(null)
     return (
         <section className="container mx-auto py-5">
-            <div className="flex flex-wrap justify-center gap-1.5 text-[0.8rem]">
+            <div className="flex flex-wrap justify-center gap-1.5 text-[0.8rem] md:text-[1rem]">
                 <MainFilterItem value={version} defaultValue={"Версия игры"} setValue={setVersion}/>
                 <MainFilterItem value={gameType} defaultValue={"Режимы"} setValue={setGameType}/>
                 <MainFilterItem value={miniGame} defaultValue={"Мини игры"} setValue={setMiniGame}/>
