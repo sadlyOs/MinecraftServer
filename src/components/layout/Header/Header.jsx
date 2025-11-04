@@ -1,8 +1,7 @@
 import icon from "@assets/header/icon.png"
 import logo from "@assets/header/logo.png"
-import Links from "@/components/ui/Links/Links"
 import { NavLink } from "react-router-dom"
-import { motion, AnimatePresence } from 'motion/react'
+import { AnimatePresence } from 'motion/react'
 import './Header.css'
 import { useState } from "react"
 
