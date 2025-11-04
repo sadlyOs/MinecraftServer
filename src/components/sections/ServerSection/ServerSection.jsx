@@ -1,6 +1,37 @@
 import ServerBlock from "@/components/ui/ServerBlock/ServerBlock"
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/src/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP)
+gsap.registerPlugin(ScrollTrigger)
 
 export default function ServerSection() {
+    const listItems = useRef([])
+    const addRef = (el) => {
+        if (el && !listItems.current.includes(el)) {
+            listItems.current.push(el);
+        }
+    }
+
+    useGSAP(() => {
+        listItems.current.forEach(item => {
+            gsap.from(item, {
+                scrollTrigger: {
+                trigger: item,
+                start: "top 80%", // Начинаем анимацию, когда верх элемента находится на 80% высоты экрана
+                end: "top 50%", // Заканчиваем анимацию, когда верх элемента находится на 50% высоты экрана
+                toggleActions: "play none none none", // Запускаем анимацию только при прокрутке вниз
+                duration: 1, // Продолжительность анимации
+                },
+                y: 50, // Движение вверх
+                opacity: 0,
+                ease: "power2.out",
+            });
+        });
+    }, [])
+
     return (
         <section className="container mx-auto px-4">
             <div className="flex flex-col items-center gap-10">
@@ -59,10 +90,12 @@ export default function ServerSection() {
                         </div>
                     </div>
                 </div> */}
-                <ServerBlock />
-                <ServerBlock />
-                <ServerBlock />
-                <ServerBlock />
+                {[1, 2, 3, 4, 5, 6].map((item, index) => (
+                        <div key={index} ref={addRef}>
+                            <ServerBlock />
+                        </div>
+                    ))
+                }
             </div>
         </section>
     )
