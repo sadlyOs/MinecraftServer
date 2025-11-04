@@ -9,7 +9,7 @@ export default function Header() {
     const [burger, setBurger] = useState(false)
 
     return (
-        <header className="text-white bg-black">
+        <header className="text-white bg-black relative">
             <div className="container mx-auto p-4">
                 <div className="flex justify-between items-center">
                     <div>
@@ -39,7 +39,7 @@ export default function Header() {
                 </div>
             </div>
             {burger && (
-                <div>
+                <div className="inset-0 w-full min-h-screen bg-[]">
 
                 </div>
             )}
