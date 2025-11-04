@@ -21,7 +21,7 @@ export default function Header() {
                         <div>
                             <nav className="hidden md:block">
                                 <ul className="flex gap-7 text-sm font-light">
-                                    {[['Скачать Minecraft', '/test1'], ['Создать сервер', '/test2'], ['Хостинг', '/test3'], ['Моды', '/test4']].map((item, index) => (
+                                    {[['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
                                         <NavLink key={index} to={item[1]} className="duration-100 hover:text-gray-400">{item[0]}</NavLink>
                                     ))}
                                 </ul>
