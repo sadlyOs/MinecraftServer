@@ -1,6 +1,5 @@
 import { useState } from "react"
 import MainFilterItem from "@/components/ui/MainFilterItem/MainFilterItem"
-import arrow from "@assets/mainFilter/arrow.svg"
 
 export default function MainFilterSection() {
     const [version, setVersion] = useState(null)
