@@ -1,4 +1,5 @@
 import { useState } from "react"
+import MainFilterItem from "@/components/ui/MainFilterItem/MainFilterItem"
 import arrow from "@assets/mainFilter/arrow.svg"
 
 export default function MainFilterSection() {
@@ -7,18 +8,14 @@ export default function MainFilterSection() {
     const [miniGame, setMiniGame] = useState(null)
     const [mode, setMode] = useState(null)
     const [plugins, setPlugins] = useState(null)
-    const [isPressed, setIsPressed] = useState(false)
     return (
         <section className="container mx-auto py-5">
-            <div className="flex justify-center">
-                <div onMouseDown={() => setIsPressed(true)} onMouseUp={() => setIsPressed(false)} className={`flex gap-3 items-center py-2.5 px-3 bg-white rounded-3xl cursor-pointer duration-150 ` + (isPressed ? "scale-80": "")}>
-                    <div>
-                        <p>{version ? version : "Версия игры"}</p>
-                    </div>
-                    <div>
-                        <img className="pt-1" src={arrow} alt="" />
-                    </div>
-                </div>
+            <div className="flex flex-wrap justify-center gap-1.5 text-[0.8rem]">
+                <MainFilterItem value={version} defaultValue={"Версия игры"} setValue={setVersion}/>
+                <MainFilterItem value={gameType} defaultValue={"Режимы"} setValue={setGameType}/>
+                <MainFilterItem value={miniGame} defaultValue={"Мини игры"} setValue={setMiniGame}/>
+                <MainFilterItem value={mode} defaultValue={"Моды"} setValue={setMode}/>
+                <MainFilterItem value={plugins} defaultValue={"Плагины"} setValue={setPlugins}/>
             </div>
         </section>
     )
