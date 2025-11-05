@@ -1,0 +1,18 @@
+import { useState } from "react"
+
+export default function FilterButton({ tag, selected, onToggle }) {
+    const [isPressed, setIsPressed] = useState(false)
+    console.log(selected);
+
+    return (
+        <button
+            onMouseDown={() => setIsPressed(true)}
+            onMouseUp={() => setIsPressed(false)}
+            key={tag.value}
+            className={`px-4 py-1 rounded-full text-xs transition-all duration-200 cursor-pointer ${selected.includes(tag.value) ? "bg-blue-600 text-white border-blue-600": "bg-white-light text-white border-gray-700"} ${(isPressed ? 'scale-90!': "")} hover:scale-110`}
+            onClick={() => onToggle(tag.value)}
+            >
+                {tag.label}
+        </button>
+    )
+}

@@ -4,14 +4,33 @@ import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 import { useGSAP } from "@gsap/react";
 import "./HeroSection.css";
+import { versionTags, miniGameTags, modeTags, optionTags, pluginTags } from "@/data/filters";
+import FilterBlock from "@/components/FilterBlock/FilterBlock";
+import icon from '@assets/hero/icon.svg'
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(TextPlugin);
 
 export default function HeroSection() {
+    const SECTIONS = [
+        { title: 'Версия игры', tags: versionTags, key: 'versions' },
+        { title: 'Режимы', tags: modeTags, key: 'modes' },
+        { title: 'Мини игры', tags: miniGameTags, key: 'minigames' },
+        { title: 'Моды', tags: optionTags, key: 'options' },
+        { title: 'Плагины', tags: pluginTags, key: 'plugins' },
+    ]
   const headerText = useRef(null);
   const text = useRef(null);
+  const [filters, setFilters] = useState({})
 
+  const toggleFilter = (sectionKey, value) => {
+    setFilters((prev) => ({
+      ...prev,
+      [sectionKey]: prev[sectionKey]?.includes(value)
+        ? prev[sectionKey].filter((v) => v !== value)
+        : [...(prev[sectionKey] || []), value],
+    }));
+  }
   // useGSAP(() => {
   //     gsap.to(headerText.current, {
   //         duration: 2,
@@ -26,26 +45,42 @@ export default function HeroSection() {
   // })
 
   return (
-    <section id="#home" className="relative containerw-full h-screen hero pt-20">
-      <div className="container mx-auto flex flex-wrap">
-        <div className="text-white">
-          <h1 className="text-4xl">Лучшие сервера Minecraft</h1>
-          <p className="text-sm text-white-light font-light">
-            Добро пожаловать на лучший рейтинг и мониторинг серверов Майнкрафт
-            (Minecraft) в России – MinecraftRating.ru. У нас вы можете найти
-            игровой сервер Minecraft на любой вкус. Подавляющее большинство
-            серверов на сайте русские. Самые популярные игровые площадки нашего
-            рейтинга попадают в топ. Пользуйтесь поиском крутых серверов с
-            мини-играми, модами и плагинами. Следите за онлайн статистикой,
-            читайте отзывы игроков и оставляйте свои. Чтобы начать играть на
-            понравившейся площадке, узнайте её IP адрес. Если у вас есть свой
-            сервер Майнкрафта, то добавьте его айпи к нам, а затем заполните
-            дополнительную информацию. Наш мониторинг предоставляет огромные
-            возможности по привлечению новых игроков на сервера!
-          </p>
-        </div>
-        <div>
-
+    <section id="#home" className="relative containerw- pb-6 md:h-screen hero pt-20">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row gap-8">
+            <div className="text-white flex-1 text-center md:text-start">
+                <h1 className="text-2xl md:text-4xl pb-3 font-bold">Лучшие сервера Minecraft</h1>
+                <p className="text-sm md:text-[1rem] text-white-light-text font-normal">
+                    Добро пожаловать на лучший рейтинг и мониторинг серверов Майнкрафт
+                    (Minecraft) в России – MinecraftRating.ru. У нас вы можете найти
+                    игровой сервер Minecraft на любой вкус. Подавляющее большинство
+                    серверов на сайте русские. Самые популярные игровые площадки нашего
+                    рейтинга попадают в топ. Пользуйтесь поиском крутых серверов с
+                    мини-играми, модами и плагинами. Следите за онлайн статистикой,
+                    читайте отзывы игроков и оставляйте свои. Чтобы начать играть на
+                    понравившейся площадке, узнайте её IP адрес. Если у вас есть свой
+                    сервер Майнкрафта, то добавьте его айпи к нам, а затем заполните
+                    дополнительную информацию. Наш мониторинг предоставляет огромные
+                    возможности по привлечению новых игроков на сервера!
+                </p>
+            </div>
+            <div className="hidden md:flex flex-col flex-1 gap-4">
+                {SECTIONS.map((section) => (
+                    <FilterBlock
+                        key={section.key}
+                        title={section.title}
+                        tags={section.tags}
+                        selected={filters[section.key] || []}
+                        onToggle={(value) => toggleFilter(section.key, value)}
+                    />
+                ))}
+            </div>
+            <div className="md:hidden">
+                <button className="w-full text-white text-sm bg-white-light py-2 rounded-xl flex justify-center gap-2">
+                    <img src={icon} alt="icon" />
+                    <p>Фильтр</p>
+                </button>
+            </div>
         </div>
       </div>
     </section>

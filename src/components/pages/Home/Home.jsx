@@ -4,10 +4,10 @@ import ServerSection from "@/components/sections/ServerSection/ServerSection"
 
 export default function Home() {
     return (
-        <main id="home" className="bg-gray-100 min-h-screen">
+        <main id="home" className="bg-gray-100 md:min-h-screen">
             <HeroSection />
-            <MainFilterSection />
-            <ServerSection />
+            {/* <MainFilterSection />
+            <ServerSection /> */}
         </main>
     )
 }
