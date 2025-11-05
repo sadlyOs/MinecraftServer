@@ -12,5 +12,8 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@components": path.resolve(__dirname, "./src/components")
     }
+  },
+  server: {
+    allowedHosts: ["uncravatted-semiepically-charolette.ngrok-free.dev"]
   }
 })

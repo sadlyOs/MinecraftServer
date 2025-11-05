@@ -22,6 +22,7 @@ export default function HeroSection() {
   const headerText = useRef(null);
   const text = useRef(null);
   const [filters, setFilters] = useState({})
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleFilter = (sectionKey, value) => {
     setFilters((prev) => ({
@@ -45,8 +46,8 @@ export default function HeroSection() {
   // })
 
   return (
-    <section id="#home" className="relative containerw- pb-6 md:h-screen hero pt-20">
-      <div className="container mx-auto px-4">
+    <section id="#home" className="relative w-full h-screen hero pt-20">
+      <div className="container mx-auto px-4 h-full flex flex-col justify-center md:block">
         <div className="flex flex-col md:flex-row gap-8">
             <div className="text-white flex-1 text-center md:text-start">
                 <h1 className="text-2xl md:text-4xl pb-3 font-bold">Лучшие сервера Minecraft</h1>
