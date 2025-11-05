@@ -24,7 +24,7 @@ export default function Header() {
     }, [])
 
     return (
-        <header className={`text-white sticky top-0 z-10 ` + (isScrolled ? "backdrop-blur-2xl bg-black-transparent" : "")}>
+        <header className={`text-white fixed top-0 left-0 w-full h-[60px] z-10 ` + (isScrolled ? "backdrop-blur-2xl bg-black-transparent" : "")}>
             <div className="relative">
                 <div className="container mx-auto p-4">
                     <div className="flex justify-between items-center">

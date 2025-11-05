@@ -1,0 +1,7 @@
+.hero {
+    background: linear-gradient(to bottom,
+            rgba(31, 33, 32, 0.7) 0%,
+            rgba(31, 33, 32, 0.9) 70%,
+            #1F2120D1 100%),
+        url("@assets/hero/hero.png") center/cover no-repeat
+}
