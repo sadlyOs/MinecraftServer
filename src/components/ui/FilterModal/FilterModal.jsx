@@ -15,9 +15,9 @@ export default function FilterModal({ isOpen, onClose, filters, selectedFilters,
             transition={{duration: 0.4}}
             className="fixed inset-0 bg-black-transparent z-50 flex items-end justify-center px-2">
                 <motion.div
-                initial={{x: -100, y: -100, width: 0, height: 0}}
-                animate={{x: 0, y: 0, width: '100%', height: "100%"}}
-                exit={{x: 100, y: -100, width: 0, height: 0}}
+                initial={{x: -100, y: -100, width: 0, maxHeight: 0}}
+                animate={{x: 0, y: 0, width: '100%', maxHeight: "100vh"}}
+                exit={{x: 100, y: -100, width: 0, maxHeight: 0}}
                 transition={{duration: 0.2}}
                 className="backdrop-blur-2xl w-full max-w-lg rounded-t-2xl max-h-screen">
                     <div className="bg-modal flex justify-between rounded-t-2xl items-center px-3.5 py-3">

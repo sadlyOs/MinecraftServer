@@ -55,7 +55,12 @@ export default function HeroSection() {
     <section id="#home" className="relative w-full h-screen hero pt-20">
       <div className="container mx-auto px-4 h-full flex flex-col justify-center md:block">
         <div className="flex flex-col md:flex-row gap-8">
-            <div className="text-white flex-1 text-center md:text-start">
+            <motion.div
+            initial={{x:-200, opacity: 0}}
+            animate={{x:0, opacity: 1}}
+            exit={{x:-200, opacity: 0}}
+            transition={{duration: 1.5}}
+            className="text-white flex-1 text-center md:text-start">
                 <h1 className="text-2xl md:text-4xl pb-3 font-bold">Лучшие сервера Minecraft</h1>
                 <p className="text-sm md:text-[1rem] text-white-light-text font-normal">
                     Добро пожаловать на лучший рейтинг и мониторинг серверов Майнкрафт
@@ -70,8 +75,13 @@ export default function HeroSection() {
                     дополнительную информацию. Наш мониторинг предоставляет огромные
                     возможности по привлечению новых игроков на сервера!
                 </p>
-            </div>
-            <div className="hidden md:flex flex-col flex-1 gap-4">
+            </motion.div>
+            <motion.div
+            initial={{x:200, opacity: 0}}
+            animate={{x:0, opacity: 1}}
+            exit={{x:200, opacity: 0}}
+            transition={{duration: 1.5}}
+            className="hidden md:flex flex-col flex-1 gap-4">
                 {SECTIONS.map((section) => (
                     <FilterBlock
                         key={section.key}
@@ -81,13 +91,18 @@ export default function HeroSection() {
                         onToggle={(value) => toggleFilter(section.key, value)}
                     />
                 ))}
-            </div>
-            <div className="md:hidden">
+            </motion.div>
+            <motion.div
+            initial={{y:100, opacity: 0}}
+            animate={{y:0, opacity: 1}}
+            exit={{y:100, opacity: 0}}
+            transition={{duration: 1.5}}
+            className="md:hidden">
                 <button onClick={() => setIsModalOpen(true)} className="w-full text-white text-sm bg-white-light py-2 rounded-xl flex justify-center gap-2">
                     <img src={icon} alt="icon" />
                     <p>Фильтр</p>
                 </button>
-            </div>
+            </motion.div>
         </div>
       </div>
 

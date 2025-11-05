@@ -43,6 +43,18 @@
     transition: all .4s;
 }
 
+.link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 1px;
+    background: var(--color-white-light);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
 /* .burger.active>span:last-child {
     top: 0
 } */

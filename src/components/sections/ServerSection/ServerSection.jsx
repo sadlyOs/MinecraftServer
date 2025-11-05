@@ -23,7 +23,7 @@ export default function ServerSection() {
                 start: "top 80%", // Начинаем анимацию, когда верх элемента находится на 80% высоты экрана
                 end: "top 50%", // Заканчиваем анимацию, когда верх элемента находится на 50% высоты экрана
                 toggleActions: "play none none none", // Запускаем анимацию только при прокрутке вниз
-                duration: 1, // Продолжительность анимации
+                duration: 2, // Продолжительность анимации
                 },
                 y: 50, // Движение вверх
                 opacity: 0,
@@ -33,7 +33,8 @@ export default function ServerSection() {
     }, [])
 
     return (
-        <section className="container mx-auto px-4 relative z-1">
+        <section className="container mx-auto px-4 pb-8 relative z-1 text-white">
+            <div><h3 className="text-xl font-bold">Сервера</h3></div>
             <div className="flex flex-col items-center gap-10">
                 {/* <div className="rounded-2xl max-w-[610px] shadow-md">
                     <div className="w-full h-[60px] relative">
@@ -91,7 +92,7 @@ export default function ServerSection() {
                     </div>
                 </div> */}
                 {[1, 2, 3, 4, 5, 6].map((item, index) => (
-                        <div key={index} ref={addRef}>
+                        <div className="w-full" key={index} ref={addRef}>
                             <ServerBlock />
                         </div>
                     ))

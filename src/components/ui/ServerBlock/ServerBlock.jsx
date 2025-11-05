@@ -1,67 +1,56 @@
-import serverImg from "@assets/serverBlock/serverImg1.png"
-import star from "@assets/serverBlock/star.svg"
-import icon1 from "@assets/serverBlock/icon1.svg"
-import icon2 from "@assets/serverBlock/icon2.svg"
-import icon3 from "@assets/serverBlock/icon3.svg"
-import icon4 from "@assets/serverBlock/icon4.svg"
-import clipboard from "@assets/serverBlock/clipboard.svg"
+import serverImg from "@assets/serverBlock/serverImg1.png";
+import star from "@assets/serverBlock/star.svg";
+import icon1 from "@assets/serverBlock/icon1.svg";
+import icon2 from "@assets/serverBlock/icon2.svg";
+import icon3 from "@assets/serverBlock/icon3.svg";
+import icon4 from "@assets/serverBlock/icon4.svg";
+import clipboard from "@assets/serverBlock/clipboard.svg";
+import './ServerBlock.css'
 
 export default function ServerBlock() {
-    return (
-        <div className="rounded-2xl max-w-[610px] shadow-md">
-            <div className="w-full h-[60px] relative">
-                <img src={serverImg} alt="serverImg" className="absolute rounded-t-2xl w-full h-full object-fit" />
-            </div>
-            <div className="py-3 px-3.5 flex flex-col gap-3">
-                <div>
-                    <div className="flex justify-between items-center">
-                        <h3>🔥MINELANDY🔥</h3>
-                        <div className="flex gap-2">
-                            <img src={star} alt="stars" />
-                            <span>4.3</span>
-                        </div>
-                    </div>
-                    <div className="text-sm text-gray-500">
-                        <p>Выживай в чистом ванильном мире, где каждый блок добыт собственными руками! Здесь тебя ждут дружелюбное комьюнити, честная экономика и настоящие приключения. Построй свою базу, исследуй огромный мир и стань легендой среди выживших!</p>
-                    </div>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
-                    <div className="py-3 pl-4 bg-[#8A38F50D] rounded-2xl pr-10">
-                        <p className="text-sm text-gray-500 pb-1">Онлайн</p>
-                        <div className="flex gap-2">
-                            <img src={icon1} alt="profile" />
-                            <span>15 323</span>
-                        </div>
-                    </div>
-                    <div className="py-3 pl-4 bg-[#00C22A0D] rounded-2xl pr-10">
-                        <p className="text-sm text-gray-500 pb-1">Версия</p>
-                        <div className="flex gap-2">
-                            <img src={icon2} alt="profile" />
-                            <span>1.16.5</span>
-                        </div>
-                    </div>
-                    <div className="py-3 pl-4 bg-[#0059FF0D] rounded-2xl pr-10">
-                        <p className="text-sm text-gray-500 pb-1">Голосов</p>
-                        <div className="flex gap-2">
-                            <img src={icon3} alt="profile" />
-                            <span>5 323</span>
-                        </div>
-                    </div>
-                    <div className="py-3 pl-4 bg-[#FF80000D] rounded-2xl pr-10">
-                        <p className="text-sm text-gray-500 pb-1">Баллов</p>
-                        <div className="flex gap-2">
-                            <img src={icon4} alt="profile" />
-                            <span>15 323</span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div className="flex gap-2.5 justify-center py-2 bg-[#00000008] rounded-3xl border border-gray-400 cursor-pointer">
-                        <img src={clipboard} alt="clipboard" />
-                        <p>play.MLegacy.net</p>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="server-card">
+      <div className="server-header">
+        <div className="server-badge">
+          <span className="new-badge">NEW</span>
+          <span className="server-ip">{'test'}</span>
         </div>
-    )
+        <h3 className="server-title">{'test'}</h3>
+      </div>
+
+      <div className="server-content">
+        <p className="server-description">{'test'}</p>
+
+        <div className="server-features">
+          <div>{'test'}</div>
+          <div>{'test'}</div>
+          <div>{'test'}</div>
+          <div>{'test'}</div>
+        </div>
+
+        <div className="server-info-grid">
+          <div className="info-item">
+            <span className="info-label">Версия</span>
+            <span className="info-value">{'test'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">Общий онлайн</span>
+            <span className="info-value">{'test'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">Голосов</span>
+            <span className="info-value">{'test'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">Баллов</span>
+            <span className="info-value">{'test'}</span>
+          </div>
+        </div>
+      </div>
+
+      <button className="connect-button">
+        Подключиться
+      </button>
+    </div>
+  );
 }

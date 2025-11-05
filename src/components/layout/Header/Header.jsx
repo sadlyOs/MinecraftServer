@@ -5,6 +5,10 @@ import { motion, AnimatePresence } from 'motion/react'
 import './Header.css'
 import { useEffect, useState } from "react"
 import { Link } from 'react-scroll';
+import facebook from "@assets/header/facebook.svg"
+import telegram from "@assets/header/telegram.svg"
+import vk from "@assets/header/vk.svg"
+import youtube from "@assets/header/youtube.svg"
 
 export default function Header() {
     const [burger, setBurger] = useState(false)
@@ -59,18 +63,29 @@ export default function Header() {
             <AnimatePresence>
                 {burger && (
                     <motion.div
-                    initial={{x: -100, opacity: 0}}
-                    animate={{x: -0, opacity: 1}}
-                    exit={{x: -100, opacity: 0}}
+                    initial={{x: 100, opacity: 0}}
+                    animate={{x: 0, opacity: 1}}
+                    exit={{x: 100, opacity: 0}}
                     transition={{duration: 0.4}}
-                    className="md:hidden absolute inset-0 w-full min-h-screen bg-[#333333] px-4">
-                        <nav className="py-20">
-                            <ul className="flex flex-col gap-3 text-sm font-semibold">
-                                {[['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
-                                    <NavLink key={index} to={item[1]} className="bg-[#404040] p-2 rounded-2xl duration-100 hover:text-gray-400">{item[0]}</NavLink>
-                                ))}
-                            </ul>
-                        </nav>
+                    className="md:hidden absolute top-0 right-0 backdrop-blur-2xl min-h-screen">
+                        <div className="flex flex-col h-screen pb-10">
+                            <div className="pl-4 py-6.5">
+                                <img src={icon} alt="icon" />
+                            </div>
+                            <nav className="flex-1 py-5 w-full relative">
+                                <ul className="flex flex-col gap-3 text-sm font-semibold">
+                                    {[['Акаунт', '#'], ['Добавить сервер', '#'], ['Мои сервера', '#'], ['Пополнить баланс', '#'], ['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
+                                        <NavLink key={index} to={item[1]} className="link relative px-4 py-2 duration-100 hover:text-gray-400">{item[0]}</NavLink>
+                                    ))}
+                                </ul>
+                            </nav>
+                            <div className="flex justify-center items-center gap-3">
+                                <a href="https://google.com"><img src={facebook} alt="facebook" /></a>
+                                <a href="https://google.com"><img src={vk} alt="vk" /></a>
+                                <a href="https://google.com"><img src={youtube} alt="youtube" /></a>
+                                <a href="https://google.com"><img src={telegram} alt="telegram" /></a>
+                            </div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

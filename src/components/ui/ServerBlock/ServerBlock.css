@@ -1,0 +1,149 @@
+/* ServerCard.css */
+
+.servers-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.servers-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.server-card {
+    background: #2d3748;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Десктоп версия */
+@media (min-width: 768px) {
+    .servers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    .server-header {
+        display: flex;
+        justify-content: between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .server-info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin: 20px 0;
+    }
+}
+
+/* Мобильная версия */
+@media (max-width: 767px) {
+    .servers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .server-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .server-header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .server-badge {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .server-title {
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
+    .server-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 15px;
+    }
+
+    .server-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .feature-tag {
+        background: #4a5568;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+    }
+
+    .server-info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 15px 0;
+    }
+
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 8px;
+        background: #4a5568;
+        border-radius: 6px;
+    }
+
+    .info-label {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        margin-bottom: 4px;
+    }
+
+    .info-value {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .connect-button {
+        width: 100%;
+        padding: 12px;
+        background: #e53e3e;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+}
+
+/* Общие стили */
+.new-badge {
+    background: #e53e3e;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.server-ip {
+    color: #90cdf4;
+    font-family: monospace;
+}
+
+.server-description {
+    color: #cbd5e0;
+    margin-bottom: 15px;
+}
