@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import "./HeroSection.css";
 import { versionTags, miniGameTags, modeTags, optionTags, pluginTags } from "@/data/filters";
 import FilterBlock from "@/components/FilterBlock/FilterBlock";
+import FilterModal from "@/components/ui/FilterModal/FilterModal";
 import icon from '@assets/hero/icon.svg'
 
 gsap.registerPlugin(useGSAP);
@@ -31,6 +32,11 @@ export default function HeroSection() {
         ? prev[sectionKey].filter((v) => v !== value)
         : [...(prev[sectionKey] || []), value],
     }));
+  }
+
+  const applyFilters = () => {
+    console.log('Фильтры применены: ', filters);
+    setIsModalOpen(false)
   }
   // useGSAP(() => {
   //     gsap.to(headerText.current, {
@@ -77,13 +83,15 @@ export default function HeroSection() {
                 ))}
             </div>
             <div className="md:hidden">
-                <button className="w-full text-white text-sm bg-white-light py-2 rounded-xl flex justify-center gap-2">
+                <button onClick={() => setIsModalOpen(true)} className="w-full text-white text-sm bg-white-light py-2 rounded-xl flex justify-center gap-2">
                     <img src={icon} alt="icon" />
                     <p>Фильтр</p>
                 </button>
             </div>
         </div>
       </div>
+
+      <FilterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} filters={SECTIONS} selectedFilters={filters} onToggle={toggleFilter} onApply={applyFilters}/>
     </section>
   );
 }
