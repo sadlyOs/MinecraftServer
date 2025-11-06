@@ -13,13 +13,13 @@ export default function FilterModal({ isOpen, onClose, filters, selectedFilters,
             animate={{opacity: 1}}
             exit={{opacity: 0}}
             transition={{duration: 0.4}}
-            className="fixed inset-0 bg-black-transparent z-50 flex items-end justify-center px-2">
+            className="fixed inset-0 bg-black-transparent z-50 flex items-center justify-center px-2">
                 <motion.div
-                initial={{x: -100, y: -100, width: 0, maxHeight: 0}}
-                animate={{x: 0, y: 0, width: '100%', maxHeight: "100vh"}}
-                exit={{x: 100, y: -100, width: 0, maxHeight: 0}}
+                initial={{x: -100}}
+                animate={{x: 0}}
+                exit={{x: 100}}
                 transition={{duration: 0.2}}
-                className="backdrop-blur-2xl w-full max-w-lg rounded-t-2xl max-h-screen">
+                className="backdrop-blur-2xl w-full max-w-lg rounded-t-2xl max-h-[60vh]">
                     <div className="bg-modal flex justify-between rounded-t-2xl items-center px-3.5 py-3">
                         <div className="w-2"></div>
                         <h2 className="text-xl text-white">Фильтр</h2>
@@ -27,7 +27,7 @@ export default function FilterModal({ isOpen, onClose, filters, selectedFilters,
                             <img src={close} alt="close" />
                         </button>
                     </div>
-                    <div className="px-3.5 py-3 max-h-[80vh] overflow-y-scroll">
+                    <div className="px-3.5 py-3 max-h-[40vh] overflow-y-scroll">
                         {filters.map((section) => (
                             <FilterBlock
                                 key={section.title}
