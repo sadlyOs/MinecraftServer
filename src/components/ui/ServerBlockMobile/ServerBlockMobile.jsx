@@ -1,9 +1,9 @@
 import serverImg from "@assets/serverBlock/serverImg1.png";
 import icon1 from "@assets/serverBlock/icon1.svg";
 import icon2 from "@assets/serverBlock/icon2.svg";
-import icon3 from "@assets/serverBlock/icon3.svg";
-import icon4 from "@assets/serverBlock/icon4.svg";
-import clipboard from "@assets/serverBlock/clipboard.svg";
+import icon3 from "@assets/serverBlock/likeBlue.svg";
+import icon4 from "@assets/serverBlock/score.svg";
+import clipboard from "@assets/serverBlock/clipboardBlue.svg";
 
 export default function ServerBlockMobile() {
     return (
