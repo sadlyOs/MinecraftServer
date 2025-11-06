@@ -4,7 +4,7 @@ import icon1 from "@assets/serverBlock/icon1.svg";
 import icon2 from "@assets/serverBlock/icon2.svg";
 import icon3 from "@assets/serverBlock/likeBlue.svg";
 import icon4 from "@assets/serverBlock/score.svg";
-import clipboard from "@assets/serverBlock/clipboard.svg";
+import clipboard from "@assets/serverBlock/clipboardBlue.svg";
 import './ServerBlock.css'
 
 export default function ServerBlock() {
