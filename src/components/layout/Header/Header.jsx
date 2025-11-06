@@ -28,7 +28,7 @@ export default function Header() {
     }, [])
 
     return (
-        <header className={`text-white fixed top-0 left-0 w-full h-[60px] z-10 ` + (isScrolled ? "backdrop-blur-2xl bg-black-transparent" : "")}>
+        <header className={`text-white fixed top-0 left-0 w-full h-[60px] z-10 ` + (isScrolled ? "bg-black-transparent" : "")}>
             <div className="relative">
                 <div className="container mx-auto p-4">
                     <div className="flex justify-between items-center">
@@ -67,7 +67,7 @@ export default function Header() {
                     animate={{x: 0, opacity: 1}}
                     exit={{x: 100, opacity: 0}}
                     transition={{duration: 0.4}}
-                    className="md:hidden absolute top-0 right-0 backdrop-blur-2xl min-h-screen">
+                    className="md:hidden fixed top-0 right-0 backdrop-blur-3xl min-h-screen">
                         <div className="flex flex-col h-screen pb-10">
                             <div className="pl-4 py-6.5">
                                 <img src={icon} alt="icon" />

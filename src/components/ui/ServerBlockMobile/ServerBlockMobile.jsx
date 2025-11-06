@@ -1,5 +1,4 @@
 import serverImg from "@assets/serverBlock/serverImg1.png";
-import star from "@assets/serverBlock/star.svg";
 import icon1 from "@assets/serverBlock/icon1.svg";
 import icon2 from "@assets/serverBlock/icon2.svg";
 import icon3 from "@assets/serverBlock/icon3.svg";
@@ -9,8 +8,8 @@ import clipboard from "@assets/serverBlock/clipboard.svg";
 export default function ServerBlockMobile() {
     return (
         <div className="p-3.5 flex flex-col gap-4 rounded-2xl bg-[#2B2D2C]">
-            <div>
-                <img className="rounded-2xl" srс={serverImg} alt="serverImg" />
+            <div className="w-full">
+                <img srс="../../../assets/serverBlock/serverImg1.png" alt="serverImg" />
             </div>
             <div>
                 <h1 className="text-center text-xl font-bold">MINELANDY</h1>
