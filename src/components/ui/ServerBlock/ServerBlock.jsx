@@ -9,48 +9,62 @@ import './ServerBlock.css'
 
 export default function ServerBlock() {
   return (
-    <div className="server-card">
-      <div className="server-header">
-        <div className="server-badge">
-          <span className="new-badge">NEW</span>
-          <span className="server-ip">{'test'}</span>
+    <div className="py-3 px-3.5 bg-[#2A2C2B] rounded-2xl flex flex-col gap-3.5">
+      <div className="flex justify-between items-center">
+        <div>
+          <h3 className="text-xl font-bold">MINELANDY</h3>
+          <p className="text-gray-600">К созданию боссов мы подошли особенно тщательно, на нашем сервере их целых 14 штук, каждый и... </p>
         </div>
-        <h3 className="server-title">{'test'}</h3>
-      </div>
-
-      <div className="server-content">
-        <p className="server-description">{'test'}</p>
-
-        <div className="server-features">
-          <div>{'test'}</div>
-          <div>{'test'}</div>
-          <div>{'test'}</div>
-          <div>{'test'}</div>
-        </div>
-
-        <div className="server-info-grid">
-          <div className="info-item">
-            <span className="info-label">Версия</span>
-            <span className="info-value">{'test'}</span>
-          </div>
-          <div className="info-item">
-            <span className="info-label">Общий онлайн</span>
-            <span className="info-value">{'test'}</span>
-          </div>
-          <div className="info-item">
-            <span className="info-label">Голосов</span>
-            <span className="info-value">{'test'}</span>
-          </div>
-          <div className="info-item">
-            <span className="info-label">Баллов</span>
-            <span className="info-value">{'test'}</span>
+        <div>
+          <div className="flex gap-2 justify-center bg-[#3E4040] px-10 py-3 rounded-2xl">
+            <img src={clipboard} alt="clipboard" />
+            <p>82.100.12.1.1</p>
           </div>
         </div>
       </div>
-
-      <button className="connect-button">
-        Подключиться
-      </button>
+      <div className="flex items-center w-full gap-7">
+        <div>
+          <img className="rounded-2xl" src={serverImg} alt="serverImg" />
+        </div>
+        <div className="flex-1 flex gap-2.5">
+          <div className="flex-1 text-center py-2 border-2 border-white-light rounded-3xl">
+            <div className="text-white-light">
+              <p>Версия</p>
+            </div>
+            <div className="flex gap-3 justify-center">
+              <img src={icon1} alt="" />
+              <p>1.15.5</p>
+            </div>
+          </div>
+          <div className="flex-1 text-center py-2 border-2 border-white-light rounded-3xl">
+            <div className="text-white-light">
+              <p>Общий онлайн</p>
+            </div>
+            <div className="flex gap-3 justify-center">
+              <img src={icon2} alt="" />
+              <p>15 323</p>
+            </div>
+          </div>
+          <div className="flex-1 text-center py-2 border-2 border-white-light rounded-3xl">
+            <div className="text-white-light">
+              <p>Голосов</p>
+            </div>
+            <div className="flex gap-3 justify-center">
+              <img src={icon3} alt="" />
+              <p>5 000</p>
+            </div>
+          </div>
+          <div className="flex-1 text-center py-2 border-2 border-white-light rounded-3xl">
+            <div className="text-white-light">
+              <p>Баллов</p>
+            </div>
+            <div className="flex gap-3 justify-center">
+              <img src={icon4} alt="" />
+              <p>5 323</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

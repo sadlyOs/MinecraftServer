@@ -1,8 +1,10 @@
 import ServerBlock from "@/components/ui/ServerBlock/ServerBlock"
+import ServerBlockMobile from "@/components/ui/ServerBlockMobile/ServerBlockMobile";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
+
 
 gsap.registerPlugin(useGSAP)
 gsap.registerPlugin(ScrollTrigger)
@@ -34,7 +36,7 @@ export default function ServerSection() {
 
     return (
         <section className="container mx-auto px-4 pb-8 relative z-1 text-white">
-            <div><h3 className="text-xl font-bold">Сервера</h3></div>
+            <div><h3 className="text-xl font-bold py-4">Сервера</h3></div>
             <div className="flex flex-col items-center gap-10">
                 {/* <div className="rounded-2xl max-w-[610px] shadow-md">
                     <div className="w-full h-[60px] relative">
@@ -93,7 +95,12 @@ export default function ServerSection() {
                 </div> */}
                 {[1, 2, 3, 4, 5, 6].map((item, index) => (
                         <div className="w-full" key={index} ref={addRef}>
-                            <ServerBlock />
+                            <div className="hidden md:block">
+                                <ServerBlock />
+                            </div>
+                            <div className="md:hidden">
+                                <ServerBlockMobile />
+                            </div>
                         </div>
                     ))
                 }
