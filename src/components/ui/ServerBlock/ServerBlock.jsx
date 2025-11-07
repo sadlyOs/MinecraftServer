@@ -12,7 +12,7 @@ export default function ServerBlock() {
   const [isPressed, setIsPressed] = useState(false)
 
   return (
-    <NavLink onMouseDown={() => setIsPressed(true)} onMouseUp={() => setIsPressed(false)} onMouseLeave={() => setIsPressed(false)}  to={"/server/1#serverMain"} className={`py-3 px-3.5 bg-[#2A2C2B] rounded-2xl flex flex-col gap-3.5 duration-150 ${isPressed ? "scale-90": ""}`}>
+    <NavLink onMouseDown={() => setIsPressed(true)} onMouseUp={() => setIsPressed(false)} onMouseLeave={() => setIsPressed(false)}  to={"/server/1"} className={`py-3 px-3.5 bg-[#2A2C2B] rounded-2xl flex flex-col gap-3.5 duration-150 ${isPressed ? "scale-90": ""}`}>
       <div className="flex justify-between items-center">
         <div>
           <h3 className="text-xl font-bold">MINELANDY</h3>

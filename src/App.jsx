@@ -4,41 +4,39 @@ import ServerPage from './components/pages/ServerPage/ServerPage'
 import Header from '@components/layout/Header/Header'
 import Footer from '@/components/layout/Footer/Footer'
 import Wrapper from '@/components/ui/Wrapper/Wrapper'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { createBrowserRouter, Routes, Route, ScrollRestoration, RouterProvider, Outlet } from 'react-router-dom'
 
-const ScrollToHash = () => {
-  const { hash } = useLocation();
-
-  useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [hash]);
-
-  return null;
-};
-
-function App() {
+// Layout — общий для всех страниц
+function Layout() {
   return (
-    <>
-      <BrowserRouter>
-      <ScrollToHash />
-      <Wrapper>
-        <Header />
-          <Routes>
-            <Route path='/' element={<Home />}/>
-            <Route path='/server/:id' element={<ServerPage />}/>
-          </Routes>
-        <Footer />
-      </Wrapper>
-      </BrowserRouter>
-    </>
-  )
+    <Wrapper>
+      <Header />
+      <Outlet />         {/* Здесь будут дочерние страницы */}
+      <ScrollRestoration />  {/* Теперь работает! */}
+      <Footer />
+    </Wrapper>
+  );
 }
 
-export default App
+// Определяем маршруты
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/server/:id',
+        element: <ServerPage />,
+      },
+    ],
+  },
+]);
+
+// Основной компонент
+export default function App() {
+  return <RouterProvider router={router} />;
+}

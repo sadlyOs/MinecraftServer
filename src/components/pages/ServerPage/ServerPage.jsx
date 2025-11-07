@@ -28,6 +28,7 @@ import img3 from "@assets/serverPage/img3.png"
 import img4 from "@assets/serverPage/img4.png"
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
+import { ScrollRestoration } from 'react-router-dom'
 import "./ServerPage.css";
 
 
@@ -172,74 +173,94 @@ export default function ServerPage() {
   const options = {
     responsive: true,
     plugins: {
-    legend: {
-      display: false,
+      legend: {
+        display: false,
+      },
+
     },
+    animation: {
+      duration: 3000,
+      easing: 'easeOutQuart',
+    },
+  }
+
+  const variants = {
+    left: {
+      offscreen: {
+        x: -300,
+        opacity: 0,
+      },
+
+      onscreen: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          type: "spring",
+          duration: 2,
+        }
+      }
+    },
+
+    right: {
+      offscreen: {
+        x: 300,
+        opacity: 0,
+      },
+
+      onscreen: {
+        x: 0,
+        opacity: 1,
+        transition: {
+          type: "spring",
+          duration: 2,
+        }
+      }
+    },
+
+    bottom: {
+      offscreen: {
+        y: 300,
+        opacity: 0,
+      },
+
+      onscreen: {
+        y: 0,
+        opacity: 1,
+        transition: {
+          type: "spring",
+          duration: 2,
+        }
+      },
+
+    },
+    text: {
+    offscreen: {
+      x: -70,
+      opacity: 0,
+    },
+
+    onscreen: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        duration: 1,
+      }
+    }
   },
   }
 
-  const element1 = useRef(null);
-  const element2 = useRef(null);
-  const element3 = useRef(null);
-
-  useGSAP(() => {
-    gsap.from(element1.current, {
-      scrollTrigger: {
-        trigger: element1.current,
-        start: "top 70%",
-        end: "center 20%",
-      },
-      opacity: 0,
-      y: -100,
-      duration: 1,
-      ease: "power2.out",
-    });
-    gsap.from(element2.current, {
-      scrollTrigger: {
-        trigger: element2.current,
-        start: "top 90%",
-        end: "center 20%",
-        toggleActions: "restart none"
-      },
-      opacity: 0,
-      x: -100,
-      duration: 1.5,
-      ease: "power2.out",
-    });
-    gsap.from(element3.current, {
-      scrollTrigger: {
-        trigger: element3.current,
-        start: "top 90%",
-        end: "center 20%",
-      },
-      opacity: 0,
-      y: 100,
-      duration: 1.8,
-      ease: "power2.out",
-    });
-    ScrollTrigger.batch('.left', {
-      onEnter: (batch) => gsap.to(batch, {
-        opacity: 1,
-        x: 0,
-        duration: 1,
-        stagger: 0.2,
-      }),
-      onLeave: (batch) => gsap.to(batch, { opacity: 0, x: -50 }),
-      onEnterBack: (batch) => gsap.to(batch, { opacity: 1, x: 0 }),
-      onLeaveBack: (batch) => gsap.to(batch, { opacity: 0, x: -50 }),
-
-      start: "top 99%",      // когда верх элемента на 80% экрана
-      end: "bottom 20%",
-      scrub: false,          // true — если нужен scrub
-    })
-  }, []);
-
 
   return (
-    <main className="server__main" id="serverMain">
+    <main className="server__main overflow-hidden">
       <div className="server-hero py-20 container md:px-4 mx-auto text-white">
         <div className="w-full server__wrapper">
-          <div ref={element1} className="server__head h-fit px-4 py-3 md:bg-gray-transparent md:backdrop-blur-2xl rounded-2xl">
+          <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={variants.left}
+          viewport={{once: true}}
+          className="server__head h-fit px-4 py-3 md:bg-gray-transparent md:backdrop-blur-2xl rounded-2xl">
             <div className="relative w-full pb-2">
               <img
                 className=" w-full h-full object-cover object-center rounded-2xl"
@@ -283,8 +304,13 @@ export default function ServerPage() {
                 </p>
               </div>
             </div>
-          </div>
-          <div ref={element3} className="server__side">
+          </motion.div>
+          <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={variants.right}
+          viewport={{once: true}}
+          className="server__side">
             <div className="flex flex-col gap-4">
               <div>
                 <button className="w-full bg-green-transparent md:rounded-full flex justify-center gap-3 py-3 cursor-pointer">
@@ -351,21 +377,37 @@ export default function ServerPage() {
                 </div>
               </div>
             </div>
-          </div>
-          <div ref={element2} className="server__content py-3 bg-gray-transparent backdrop-blur-2xl rounded-2xl h-fit flex flex-col gap-6">
+          </motion.div>
+          <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          variants={variants.bottom}
+          className="server__content py-3 bg-gray-transparent backdrop-blur-2xl rounded-2xl h-fit flex flex-col gap-6">
             <div className="px-4">
-              <h2 className="text-2xl pb-2 left">
+              <motion.h2
+              initial="offscreen"
+              whileInView="onscreen"
+              variants={variants.text}
+              className="text-2xl pb-2 left">
                 FunParty - идеальное РПГ-выживание.
-              </h2>
-              <p className="left">
+              </motion.h2>
+              <motion.p
+              initial="offscreen"
+              whileInView="onscreen"
+              variants={variants.text}
+              className="left">
                 Наш сервер - это настоящая революция в мире майнкрафт-выживания,
                 здесь вы найдете множество интересных механик, проработанную до
                 мелочей экономику, по-настоящему честное PvP, большое и
                 дружелюбное комьюнити и многое другое. 
-              </p>
+              </motion.p>
             </div>
             <div className="flex px-4 gap-6">
-              <div>
+              <motion.div
+              initial="offscreen"
+              whileInView="onscreen"
+              variants={variants.text}
+              >
                 <div className="left flex gap-2 text-gray-main opacity-70">
                   <img src={light} alt="light" />
                   <p>Версия:</p>
@@ -394,8 +436,12 @@ export default function ServerPage() {
                   <img className="h-4" src={discord} alt="discord" />
                   <p>Версия:</p>
                 </div>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+              initial="offscreen"
+              whileInView="onscreen"
+              variants={variants.text}
+              >
                 {[
                   "1.21.4",
                   "connect.fpmc.pro",
@@ -407,7 +453,7 @@ export default function ServerPage() {
                 ].map((item) => (
                   <p className="left">{item}</p>
                 ))}
-              </div>
+              </motion.div>
             </div>
             <div className="px-4 flex flex-col gap-6">
               {Object.entries(testData.other).map(([key, value]) => (
@@ -415,13 +461,22 @@ export default function ServerPage() {
                   {key == "Режимы" || key == "Мини игры" || key == "Моды" ? (
                     <div key={key}>
                       <div>
-                        <h3 className="text-xl mb-2 left">{key}</h3>
+                        <motion.h3
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        variants={variants.text}
+                        className="text-xl mb-2 left">{key}</motion.h3>
                       </div>
                       <div className="flex flex-wrap gap-1">
-                        {value.map((item) => (
-                          <div className="left py-1 px-2 bg-gray-transparent rounded-full">
+                        {value.map((item, index) => (
+                          <motion.div
+                          key={index}
+                          initial="offscreen"
+                          whileInView="onscreen"
+                          variants={variants.text}
+                          className="left py-1 px-2 bg-gray-transparent rounded-full">
                             {item}
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
                     </div>
@@ -434,10 +489,18 @@ export default function ServerPage() {
                   key == "Экономика" ? (
                     <div key={key}>
                       <div>
-                        <h3 className="left text-xl mb-2">{key}</h3>
+                        <motion.h3
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        variants={variants.text}
+                        className="left text-xl mb-2">{key}</motion.h3>
                       </div>
                       <div className="flex flex-wrap gap-1">
-                        <p className="text-gray-main">{value}</p>
+                        <motion.p
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        variants={variants.text}
+                        className="text-gray-main">{value}</motion.p>
                       </div>
                     </div>
                   ) : null}
@@ -445,12 +508,20 @@ export default function ServerPage() {
                   {key == "Другое" && (
                     <div>
                       <div>
-                        <h3 className="left text-xl mb-2">{key}</h3>
+                        <motion.h3
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        variants={variants.text}
+                        className="left text-xl mb-2">{key}</motion.h3>
                       </div>
                       <div>
                         {value.map((item) => (
                           <div className="flex flex-wrap gap-1">
-                            <p className="text-gray-main">{item}</p>
+                            <motion.p
+                            initial="offscreen"
+                            whileInView="onscreen"
+                            variants={variants.text}
+                            className="text-gray-main">{item}</motion.p>
                           </div>
                         ))}
                       </div>
@@ -464,9 +535,14 @@ export default function ServerPage() {
             </div>
             <div className="md:px-4">
               <div className="w-full">
-                <div className="flex md:grid md:grid-cols-4 gap-5 overflow-x-scroll">
-                  {[img1, img2, img3, img4].map((img) => (
-                    <img className="w-full first:ml-5 md:first:ml-0" src={img} alt="img" />
+                <div className="flex md:grid md:grid-cols-4 gap-5 overflow-x-scroll md:overflow-hidden">
+                  {[img1, img2, img3, img4].map((img, index) => (
+                    <motion.img
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    variants={variants.text}
+                    transition={{delay: index * 0.5}}
+                    className="w-full first:ml-5 md:first:ml-0" src={img} alt="img" />
                   ))}
                 </div>
               </div>
@@ -480,9 +556,10 @@ export default function ServerPage() {
                 <Line data={chartData} options={options} className="w-full h-full max-h-60"/>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
+      {/* <ScrollRestoration /> */}
     </main>
   );
 }
