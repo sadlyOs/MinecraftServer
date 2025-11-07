@@ -53,8 +53,8 @@ export default function HeroSection() {
 
   return (
     <section id="#home" className="relative w-full h-screen hero pt-20">
-      <div className="container mx-auto px-4 h-full flex flex-col justify-center md:block">
-        <div className="flex flex-col md:flex-row gap-8">
+      <div className="container mx-auto px-4 h-full flex flex-col justify-center lg:block">
+        <div className="flex flex-col lg:flex-row gap-8">
             <motion.div
             initial={{x:-200, opacity: 0}}
             animate={{x:0, opacity: 1}}
@@ -81,7 +81,7 @@ export default function HeroSection() {
             animate={{x:0, opacity: 1}}
             exit={{x:200, opacity: 0}}
             transition={{duration: 1.5}}
-            className="hidden md:flex flex-col flex-1 gap-4">
+            className="hidden lg:flex flex-col flex-1 gap-4">
                 {SECTIONS.map((section) => (
                     <FilterBlock
                         key={section.key}
@@ -97,7 +97,7 @@ export default function HeroSection() {
             animate={{y:0, opacity: 1}}
             exit={{y:100, opacity: 0}}
             transition={{duration: 1.5}}
-            className="md:hidden">
+            className="lg:hidden">
                 <button onClick={() => setIsModalOpen(true)} className="w-full text-white text-sm bg-white-light py-2 rounded-xl flex justify-center gap-2">
                     <img src={icon} alt="icon" />
                     <p>Фильтр</p>

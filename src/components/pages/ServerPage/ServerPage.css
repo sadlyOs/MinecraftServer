@@ -47,7 +47,7 @@
                 transparent 0%,
                 transparent 0%,
                 /* Image visible until here */
-                rgba(31, 33, 32, 0.98) 10%,
+                rgba(31, 33, 32, 0.96) 0%,
                 /* Gradient transition starts */
                 rgba(31, 33, 32, 1) 100%
                 /* Solid color at bottom */
