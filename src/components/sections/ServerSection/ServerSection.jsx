@@ -95,10 +95,10 @@ export default function ServerSection() {
                 </div> */}
                 {[1, 2, 3, 4, 5, 6].map((item, index) => (
                         <div className="w-full" key={index} ref={addRef}>
-                            <div className="hidden md:block">
+                            <div className="hidden lg:block duration-150 hover:scale-102">
                                 <ServerBlock />
                             </div>
-                            <div className="md:hidden">
+                            <div className="lg:hidden">
                                 <ServerBlockMobile />
                             </div>
                         </div>

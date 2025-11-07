@@ -33,9 +33,9 @@ export default function Header() {
                 <div className="container mx-auto p-4">
                     <div className="flex justify-between items-center">
                         <div className="relative z-10 cursor-pointer">
-                            <Link to="home" spy={true} smooth={true} offset={-70} duration={100}>
+                            <NavLink to="/#home" spy={true} smooth={true} offset={-70} duration={100}>
                                 <img src={logo} alt="logo" />
-                            </Link>
+                            </NavLink>
                         </div>
                         <div>
                             <nav className="hidden md:block">

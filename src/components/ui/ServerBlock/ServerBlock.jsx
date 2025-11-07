@@ -1,15 +1,18 @@
 import serverImg from "@assets/serverBlock/serverImg1.png";
-import star from "@assets/serverBlock/star.svg";
 import icon1 from "@assets/serverBlock/icon1.svg";
 import icon2 from "@assets/serverBlock/icon2.svg";
 import icon3 from "@assets/serverBlock/likeBlue.svg";
 import icon4 from "@assets/serverBlock/score.svg";
 import clipboard from "@assets/serverBlock/clipboardBlue.svg";
+import { NavLink } from "react-router-dom";
 import './ServerBlock.css'
+import { useState } from "react";
 
 export default function ServerBlock() {
+  const [isPressed, setIsPressed] = useState(false)
+
   return (
-    <div className="py-3 px-3.5 bg-[#2A2C2B] rounded-2xl flex flex-col gap-3.5">
+    <NavLink onMouseDown={() => setIsPressed(true)} onMouseUp={() => setIsPressed(false)} onMouseLeave={() => setIsPressed(false)}  to={"/server/1#serverMain"} className={`py-3 px-3.5 bg-[#2A2C2B] rounded-2xl flex flex-col gap-3.5 duration-150 ${isPressed ? "scale-90": ""}`}>
       <div className="flex justify-between items-center">
         <div>
           <h3 className="text-xl font-bold">MINELANDY</h3>
@@ -65,6 +68,6 @@ export default function ServerBlock() {
           </div>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 }

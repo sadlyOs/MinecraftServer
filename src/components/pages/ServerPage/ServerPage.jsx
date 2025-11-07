@@ -21,9 +21,9 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import { motion } from "motion/react";
+import { useRef } from "react";
 
 import "./ServerPage.css";
-import { useRef } from "react";
 
 gsap.registerPlugin(useGSAP);
 
@@ -159,6 +159,7 @@ export default function ServerPage() {
         trigger: element2.current,
         start: "top 90%",
         end: "center 20%",
+        toggleActions: "restart none"
       },
       opacity: 0,
       x: -100,
@@ -176,10 +177,26 @@ export default function ServerPage() {
       duration: 1.8,
       ease: "power2.out",
     });
+    ScrollTrigger.batch('.left', {
+      onEnter: (batch) => gsap.to(batch, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        stagger: 0.2,
+      }),
+      onLeave: (batch) => gsap.to(batch, { opacity: 0, x: -50 }),
+      onEnterBack: (batch) => gsap.to(batch, { opacity: 1, x: 0 }),
+      onLeaveBack: (batch) => gsap.to(batch, { opacity: 0, x: -50 }),
+
+      start: "top 99%",      // когда верх элемента на 80% экрана
+      end: "bottom 20%",
+      scrub: false,          // true — если нужен scrub
+    })
   }, []);
 
+
   return (
-    <main className="server__main">
+    <main className="server__main" id="serverMain">
       <div className="server-hero py-20 container md:px-4 mx-auto text-white">
         <div className="w-full server__wrapper">
           <div ref={element1} className="server__head h-fit px-4 py-3 md:bg-gray-transparent md:backdrop-blur-2xl rounded-2xl">
@@ -297,10 +314,10 @@ export default function ServerPage() {
           </div>
           <div ref={element2} className="server__content px-4 py-3 bg-gray-transparent backdrop-blur-2xl rounded-2xl h-fit flex flex-col gap-6">
             <div>
-              <h2 className="text-2xl pb-2">
+              <h2 className="text-2xl pb-2 left">
                 FunParty - идеальное РПГ-выживание.
               </h2>
-              <p>
+              <p className="left">
                 Наш сервер - это настоящая революция в мире майнкрафт-выживания,
                 здесь вы найдете множество интересных механик, проработанную до
                 мелочей экономику, по-настоящему честное PvP, большое и
@@ -309,31 +326,31 @@ export default function ServerPage() {
             </div>
             <div className="flex gap-6">
               <div>
-                <div className="flex gap-2 text-gray-main opacity-70">
+                <div className="left flex gap-2 text-gray-main opacity-70">
                   <img src={light} alt="light" />
                   <p>Версия:</p>
                 </div>
-                <div className="flex gap-2 text-gray-main opacity-70">
+                <div className="left flex gap-2 text-gray-main opacity-70">
                   <img src={robo} alt="robo" />
                   <p>IP:</p>
                 </div>
-                <div className="flex gap-2 text-gray-main opacity-70">
+                <div className="left flex gap-2 text-gray-main opacity-70">
                   <img src={stat} alt="stat" />
                   <p>Место в топе:</p>
                 </div>
-                <div className="flex gap-2 text-gray-main opacity-70">
+                <div className="left flex gap-2 text-gray-main opacity-70">
                   <img src={star} alt="star" />
                   <p>Рейтинг::</p>
                 </div>
-                <div className="flex gap-2 text-gray-main opacity-70">
+                <div className="left flex gap-2 text-gray-main opacity-70">
                   <img src={globalIc} alt="global" />
                   <p>Сайт:</p>
                 </div>
-                <div className="flex gap-2 items-center text-gray-main opacity-70">
+                <div className="left flex gap-2 items-center text-gray-main opacity-70">
                   <img className="h-4" src={vk} alt="vk" />
                   <p>Группа сервера в ВК:</p>
                 </div>
-                <div className="flex gap-2 items-center text-gray-main opacity-70">
+                <div className="left flex gap-2 items-center text-gray-main opacity-70">
                   <img className="h-4" src={discord} alt="discord" />
                   <p>Версия:</p>
                 </div>
@@ -348,7 +365,7 @@ export default function ServerPage() {
                   "connect.fpmc.pro",
                   "connect.fpmc.pro",
                 ].map((item) => (
-                  <p>{item}</p>
+                  <p className="left">{item}</p>
                 ))}
               </div>
             </div>
@@ -357,11 +374,11 @@ export default function ServerPage() {
                 {key == "Режимы" || key == "Мини игры" || key == "Моды" ? (
                   <div key={key}>
                     <div>
-                      <h3 className="text-xl mb-2">{key}</h3>
+                      <h3 className="text-xl mb-2 left">{key}</h3>
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {value.map((item) => (
-                        <div className="py-1 px-2 bg-gray-transparent rounded-full">
+                        <div className="left py-1 px-2 bg-gray-transparent rounded-full">
                           {item}
                         </div>
                       ))}
@@ -376,10 +393,10 @@ export default function ServerPage() {
                 key == "Экономика" ? (
                   <div key={key}>
                     <div>
-                      <h3 className="text-xl mb-2">{key}</h3>
+                      <h3 className="left text-xl mb-2">{key}</h3>
                     </div>
                     <div className="flex flex-wrap gap-1">
-                      <p>{value}</p>
+                      <p className="left">{value}</p>
                     </div>
                   </div>
                 ) : null}
@@ -387,10 +404,10 @@ export default function ServerPage() {
             ))}
             <div>
               <div>
-                <h3 className="text-xl mb-2">Другое</h3>
+                <h3 className="left text-xl mb-2">Другое</h3>
               </div>
               <div>
-                <p>
+                <p className="left">
                   Кастомные зачарования Кланы Свадьбы Новые крафты Супер-печки
                   Умные воронки Большие сундуки Система усилителей /power На
                   нашем сервере каждый игрок сможет найти себе занятие по душе.
