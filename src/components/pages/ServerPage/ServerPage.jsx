@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { data, useSearchParams } from "react-router-dom";
 import serverImg from "@assets/serverBlock/serverImg1.png";
 import likeGreen from "@assets/serverPage/likeGreen.svg";
 import likeBlue from "@assets/serverBlock/likeBlue.svg";
@@ -22,8 +22,17 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import { motion } from "motion/react";
 import { useRef } from "react";
-
+import img1 from "@assets/serverPage/img1.png"
+import img2 from "@assets/serverPage/img2.png"
+import img3 from "@assets/serverPage/img3.png"
+import img4 from "@assets/serverPage/img4.png"
+import { Line } from "react-chartjs-2";
+import { Chart, registerables } from "chart.js";
 import "./ServerPage.css";
+
+
+Chart.register(...registerables);
+
 
 gsap.registerPlugin(useGSAP);
 
@@ -135,8 +144,39 @@ export default function ServerPage() {
 
       Экономика:
         "Наша экономика проекта основана на меди, за 1 медь мы даем 1 единицу игровой валюты. Игровая валюта на нашем сервере используется в серверном магазине - /shop, а также на аукционе - /ah, для осуществления покупок у других игроков. Также помимо копания меди существуют и другие способы заработка, подробнее можно узнать в /sellitems",
+
+      Другое:
+        [
+          "Кастомные зачарования",
+          "Кланы",
+          "Свадьбы",
+          "Новые крафты",
+          "Супер-печки",
+          "Умные воронки",
+          "Большие сундуки",
+          "Система усилителей /power"
+        ]
     },
   };
+
+ const chartData = {
+  labels: ["04:00", "08:00", "12:00", "16:00", "20:00"],
+  datasets: [{
+    data: [100, 50, 200, 0, 40],
+    fill: false,
+    borderColor: "green",
+    backgroundColor: "rgba(0, 255, 0, 0.2)",
+    tension: 0.5,
+  }]}
+
+  const options = {
+    responsive: true,
+    plugins: {
+    legend: {
+      display: false,
+    },
+  },
+  }
 
   const element1 = useRef(null);
   const element2 = useRef(null);
@@ -312,8 +352,8 @@ export default function ServerPage() {
               </div>
             </div>
           </div>
-          <div ref={element2} className="server__content px-4 py-3 bg-gray-transparent backdrop-blur-2xl rounded-2xl h-fit flex flex-col gap-6">
-            <div>
+          <div ref={element2} className="server__content py-3 bg-gray-transparent backdrop-blur-2xl rounded-2xl h-fit flex flex-col gap-6">
+            <div className="px-4">
               <h2 className="text-2xl pb-2 left">
                 FunParty - идеальное РПГ-выживание.
               </h2>
@@ -324,7 +364,7 @@ export default function ServerPage() {
                 дружелюбное комьюнити и многое другое. 
               </p>
             </div>
-            <div className="flex gap-6">
+            <div className="flex px-4 gap-6">
               <div>
                 <div className="left flex gap-2 text-gray-main opacity-70">
                   <img src={light} alt="light" />
@@ -369,49 +409,75 @@ export default function ServerPage() {
                 ))}
               </div>
             </div>
-            {Object.entries(testData.other).map(([key, value]) => (
-              <>
-                {key == "Режимы" || key == "Мини игры" || key == "Моды" ? (
-                  <div key={key}>
-                    <div>
-                      <h3 className="text-xl mb-2 left">{key}</h3>
+            <div className="px-4 flex flex-col gap-6">
+              {Object.entries(testData.other).map(([key, value]) => (
+                <>
+                  {key == "Режимы" || key == "Мини игры" || key == "Моды" ? (
+                    <div key={key}>
+                      <div>
+                        <h3 className="text-xl mb-2 left">{key}</h3>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {value.map((item) => (
+                          <div className="left py-1 px-2 bg-gray-transparent rounded-full">
+                            {item}
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex flex-wrap gap-1">
-                      {value.map((item) => (
-                        <div className="left py-1 px-2 bg-gray-transparent rounded-full">
-                          {item}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
+                  ) : null}
 
-                {key == "Боссы" ||
-                key == "Постройки" ||
-                key == "Легендарные ивенты" ||
-                key == "Уникальная система достижений" ||
-                key == "Экономика" ? (
-                  <div key={key}>
+                  {key == "Боссы" ||
+                  key == "Постройки" ||
+                  key == "Легендарные ивенты" ||
+                  key == "Уникальная система достижений" ||
+                  key == "Экономика" ? (
+                    <div key={key}>
+                      <div>
+                        <h3 className="left text-xl mb-2">{key}</h3>
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        <p className="text-gray-main">{value}</p>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {key == "Другое" && (
                     <div>
-                      <h3 className="left text-xl mb-2">{key}</h3>
+                      <div>
+                        <h3 className="left text-xl mb-2">{key}</h3>
+                      </div>
+                      <div>
+                        {value.map((item) => (
+                          <div className="flex flex-wrap gap-1">
+                            <p className="text-gray-main">{item}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex flex-wrap gap-1">
-                      <p className="left">{value}</p>
-                    </div>
-                  </div>
-                ) : null}
-              </>
-            ))}
-            <div>
-              <div>
-                <h3 className="left text-xl mb-2">Другое</h3>
+                  )}
+                </>
+              ))}
+            </div>
+            <div className="px-4">
+              <p className="text-gray-main">На нашем сервере каждый игрок сможет найти себе занятие по душе.</p>
+            </div>
+            <div className="md:px-4">
+              <div className="w-full">
+                <div className="flex md:grid md:grid-cols-4 gap-5 overflow-x-scroll">
+                  {[img1, img2, img3, img4].map((img) => (
+                    <img className="w-full first:ml-5 md:first:ml-0" src={img} alt="img" />
+                  ))}
+                </div>
               </div>
-              <div>
-                <p className="left">
-                  Кастомные зачарования Кланы Свадьбы Новые крафты Супер-печки
-                  Умные воронки Большие сундуки Система усилителей /power На
-                  нашем сервере каждый игрок сможет найти себе занятие по душе.
-                </p>
+            </div>
+            <div className="px-4">
+              <div className="pb-3">
+                <h3>Статистика онлайна</h3>
+                <p className="text-gray-main">FunParty - боссы мебель крафты 1.21.4</p>
+              </div>
+              <div className="w-full">
+                <Line data={chartData} options={options} className="w-full h-full max-h-60"/>
               </div>
             </div>
           </div>

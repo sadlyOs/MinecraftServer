@@ -9,7 +9,7 @@
     --color-blue-transparent: rgba(0, 89, 255, 0.25);
     --color-orange-transparent: rgba(255, 128, 0, 0.25);
     --color-gray-transparent: rgba(255, 255, 255, 0.05);
-    --color-gray-main: rgba(255, 255, 255, 1);
+    --color-gray-main: rgba(255, 255, 255, 0.6);
 }
 
 @layer components {

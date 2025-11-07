@@ -39,6 +39,32 @@
         "main main main main main main main sd sd"
 }
 
+.drag-scroll {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE */
+}
+
+.drag-scroll::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Edge */
+}
+
+/* САМАЯ ВАЖНАЯ ЧАСТЬ — делаем перетаскивание как нативное */
+.drag-scroll {
+    -webkit-overflow-scrolling: touch;
+    /* плавность на iOS */
+    overscroll-behavior-x: contain;
+}
+
+/* Делаем курсор "хватай" и плавнее перетаскивание */
+.drag-scroll:active {
+    cursor: grabbing;
+}
+
 @media (max-width: 1024px) {
 
     .server__main {
