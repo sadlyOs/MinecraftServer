@@ -55,6 +55,27 @@
     width: 100%;
 }
 
+.header__login {
+    position: relative;
+    border: none;
+}
+
+.header__login::after {
+    content: '';
+    position: absolute;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: all .4s;
+}
+
+.header__login:hover::after {
+    background: var(--color-gray-main);
+    transition: all .4s;
+}
+
 /* .burger.active>span:last-child {
     top: 0
 } */

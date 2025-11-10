@@ -9,10 +9,14 @@ import facebook from "@assets/header/facebook.svg"
 import telegram from "@assets/header/telegram.svg"
 import vk from "@assets/header/vk.svg"
 import youtube from "@assets/header/youtube.svg"
+import { useDispatch } from "react-redux"
+import { editOpen } from "@/store/openLogin"
+import "./Header.css"
 
 export default function Header() {
     const [burger, setBurger] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false);
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,7 +51,7 @@ export default function Header() {
                             </nav>
                         </div>
                         <div>
-                            <div className="hidden md:block">
+                            <div onClick={() => dispatch(editOpen(true))} className="hidden md:block cursor-pointer header__login">
                                 <img src={icon} alt="log icon" />
                             </div>
                             <div onClick={() => setBurger(!burger)} className={"md:hidden burger " + (burger ? "active": "")}>
@@ -74,8 +78,8 @@ export default function Header() {
                             </div>
                             <nav className="flex-1 py-5 w-full relative">
                                 <ul className="flex flex-col gap-3 text-sm font-semibold">
-                                    {[['Акаунт', '#'], ['Добавить сервер', '#'], ['Мои сервера', '#'], ['Пополнить баланс', '#'], ['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
-                                        <NavLink key={index} to={item[1]} className="link relative px-4 py-2 duration-100 hover:text-gray-400">{item[0]}</NavLink>
+                                    {[['Акаунт', '/account/'], ['Добавить сервер', '#'], ['Мои сервера', '#'], ['Пополнить баланс', '#'], ['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
+                                        <NavLink onClick={() => setBurger(false)} key={index} to={item[1]} className="link relative px-4 py-2 duration-100 hover:text-gray-400">{item[0]}</NavLink>
                                     ))}
                                 </ul>
                             </nav>
