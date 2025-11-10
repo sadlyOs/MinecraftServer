@@ -18,6 +18,9 @@ function Layout() {
   const isOpenReg = useSelector((state) => state.openReg.open)
   console.log(isOpenLog);
 
+  if (!localStorage.getItem('users')) {
+    localStorage.setItem("users", JSON.stringify([]))
+  }
 
   return (
     <Wrapper>

@@ -9,16 +9,28 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 
 export default function FormLogin() {
-    const { userData } = useAuth();
-    console.log(userData);
+    const { login } = useAuth();
 
   const dispatch = useDispatch();
-  const [login, setLogin] = useState("");
+  const [loginName, setLoginName] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    const data = {
+      login: loginName,
+      password: password,
+    }
+
+    if (!login(data)) {
+      setError("Логин или пароль не верны")
+    }
+    else {
+      setError("")
+      dispatch(editOpenLog(false))
+      dispatch(editOpenReg(false))
+    }
   }
 
   return (
@@ -36,7 +48,7 @@ export default function FormLogin() {
       </div>
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-4">
-          <Input value={login} setValue={setLogin} placeholder="Логин" required={true}/>
+          <Input value={loginName} setValue={setLoginName} placeholder="Логин" required={true}/>
           <Input
             type="password"
             value={password}
@@ -48,6 +60,7 @@ export default function FormLogin() {
             Забыли пароль?
           </a>
         </div>
+        {error && <p className="text-red-600">{error}</p>}
         <div className="flex flex-col gap-2">
           <Button
             type="submit"

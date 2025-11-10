@@ -11,24 +11,51 @@ import { useAuth } from "@/context/AuthContext";
 export default function FormReg() {
   const dispatch = useDispatch();
 
-  const { login } = useAuth();
+  const { reg } = useAuth();
 
   const [loginName, setLoginName] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
 
+  const [errorLogin, setErrorLogin] = useState("")
+  const [errorEmail, setErrorEmail] = useState("")
+
   function handleSubmit (e) {
     e.preventDefault();
+
+    const users = JSON.parse(localStorage.getItem("users"))
 
     const data = {
         login: loginName,
         password: password,
-        email: email
+        email: email,
+        balance: 0
     }
 
-    login(data)
-    dispatch(editOpenReg(false))
-    dispatch(editOpenLog(false))
+    const searchUserByLogin = users.find((user) => user.login == data.login)
+    const searchUserByEmail = users.find((user) => user.email == data.email)
+
+    if (searchUserByLogin) {
+      setErrorLogin("Такой уже логин существует")
+    }
+
+    else if (searchUserByEmail) {
+      setErrorEmail("Такая почта уже существует")
+    }
+
+    else {
+      reg(data)
+      dispatch(editOpenReg(false))
+      dispatch(editOpenLog(false))
+    }
+
+    // if (reg(data)) {
+    //   dispatch(editOpenReg(false))
+    //   dispatch(editOpenLog(false))
+    // }
+    // else {
+    //   alert("Такой пользователь существует")
+    // }
   }
 
   return (
@@ -50,8 +77,10 @@ export default function FormReg() {
             labelText="Придумайте логин"
             placeholder="Логин"
             setValue={setLoginName}
+            err={setErrorLogin}
             required={true}
           />
+          {errorLogin && <p className="text-red-600">{errorLogin}</p>}
           <Input
             labelText="Придумайте пароль"
             placeholder="Пароль"
@@ -65,8 +94,10 @@ export default function FormReg() {
             placeholder="example@email.com"
             type="email"
             required={true}
+            err={setErrorEmail}
             setValue={setEmail}
           />
+          {errorEmail && <p className="text-red-600">{errorEmail}</p>}
         </div>
         <div className="flex flex-col gap-2">
           <Button

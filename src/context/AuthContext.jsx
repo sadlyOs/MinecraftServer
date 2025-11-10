@@ -34,11 +34,23 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (userData) => {
-    // localStorage.setItem("token", token);
     console.log(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
-    setUser(userData);
+    const data = JSON.parse(localStorage.getItem("users"))
+    const searchUser = data.find((user) => user.login == userData.login && user.password == userData.password)
+    // localStorage.setItem("token", token);
+    if (searchUser) {
+      localStorage.setItem("user", JSON.stringify(searchUser));
+      setUser(searchUser);
+      return true
+    }
+    return false
   };
+
+  const reg = (userData) => {
+    const data = JSON.parse(localStorage.getItem("users"))
+    data.push(userData)
+    localStorage.setItem("users", JSON.stringify(data))
+  }
 
   const logout = () => {
     // localStorage.removeItem('token');
@@ -52,6 +64,7 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     logout,
+    reg,
     isAuthenticated: !!user,
   };
 
