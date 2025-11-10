@@ -3,10 +3,15 @@ import Button from "@/components/ui/Button/Button";
 import Input from "@/components/ui/Input/Input";
 import cancel from "@assets/modal/cancel.svg";
 import { useDispatch } from "react-redux";
-import { editOpen } from "@/store/openLogin";
+import { editOpenLog } from "@/store/openLogin";
+import { editOpenReg } from "@/store/openReg";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 export default function FormLogin() {
+    const { userData } = useAuth();
+    console.log(userData);
+
   const dispatch = useDispatch();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -24,19 +29,20 @@ export default function FormLogin() {
         </div>
         <div
           className="modal__cancel"
-          onClick={() => dispatch(editOpen(false))}
+          onClick={() => dispatch(editOpenLog(false))}
         >
           <img src={cancel} alt="cancel" />
         </div>
       </div>
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-4">
-          <Input value={login} setValue={setLogin} placeholder="Логин" />
+          <Input value={login} setValue={setLogin} placeholder="Логин" required={true}/>
           <Input
             type="password"
             value={password}
             setValue={setPassword}
             placeholder="Пароль"
+            required={true}
           />
           <a href="" className="pl-1 text-blue-600">
             Забыли пароль?
@@ -55,6 +61,7 @@ export default function FormLogin() {
             style={
               "bg-gray-transparent text-white hover:bg-gray-transparent-dark"
             }
+            handleClick={() => {dispatch(editOpenLog(false)); dispatch(editOpenReg(true))}}
           />
         </div>
       </div>

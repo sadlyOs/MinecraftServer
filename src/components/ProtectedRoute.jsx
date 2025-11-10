@@ -1,7 +1,7 @@
 import { useAuth } from '@/context/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { editOpen } from '@/store/openLogin';
+import { editOpenLog } from '@/store/openLogin';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (!isAuthenticated) {
     // Перенаправляем на страницу логина, сохраняя текущий путь
-        dispatch(editOpen(true))
+        dispatch(editOpenLog(true))
         return <Navigate to="/" />
   }
 

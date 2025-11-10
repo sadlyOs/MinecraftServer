@@ -7,12 +7,12 @@ const openLogin = createSlice({
     },
 
     reducers: {
-        editOpen: (state, action) => {
+        editOpenLog: (state, action) => {
             state.open = action.payload;
         }
     }
 })
 
-export const { editOpen } = openLogin.actions
+export const { editOpenLog } = openLogin.actions
 
 export default openLogin.reducer

@@ -10,7 +10,7 @@ import telegram from "@assets/header/telegram.svg"
 import vk from "@assets/header/vk.svg"
 import youtube from "@assets/header/youtube.svg"
 import { useDispatch } from "react-redux"
-import { editOpen } from "@/store/openLogin"
+import { editOpenLog } from "@/store/openLogin"
 import "./Header.css"
 
 export default function Header() {
@@ -51,7 +51,7 @@ export default function Header() {
                             </nav>
                         </div>
                         <div>
-                            <div onClick={() => dispatch(editOpen(true))} className="hidden md:block cursor-pointer header__login">
+                            <div onClick={() => dispatch(editOpenLog(true))} className="hidden md:block cursor-pointer header__login">
                                 <img src={icon} alt="log icon" />
                             </div>
                             <div onClick={() => setBurger(!burger)} className={"md:hidden burger " + (burger ? "active": "")}>

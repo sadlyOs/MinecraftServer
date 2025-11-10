@@ -1,19 +1,22 @@
 import { motion, AnimatePresence } from "motion/react"
 import { useDispatch } from "react-redux"
-import { editOpen } from "@/store/openLogin"
+import { editOpenLog } from "@/store/openLogin"
+import { editOpenReg } from "@/store/openReg"
 
-export default function Form({ children, isOpened }) {
+export default function Form({ children, isOpenedLog, isOpenedReg }) {
     const dispatch = useDispatch()
     return (
         <AnimatePresence>
-            {isOpened &&
+            {(isOpenedLog || isOpenedReg)  &&
                 <motion.div
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 exit={{opacity: 0}}
                 transition={{duration: 0.4}}
                 className="fixed inset-0 w-full h-full bg-black-transparent flex justify-center items-center text-white z-20"
-                onClick={() => dispatch(editOpen(false))}
+                onClick={() => {
+                    isOpenedLog ? dispatch(editOpenLog(false)) : editOpenReg
+                }}
                 >
                     <motion.div
                     initial={{transform: "scale(0.8)", opacity: 0}}

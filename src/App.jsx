@@ -5,16 +5,19 @@ import Header from '@components/layout/Header/Header'
 import Footer from '@/components/layout/Footer/Footer'
 import Wrapper from '@/components/ui/Wrapper/Wrapper'
 import { createBrowserRouter, Routes, Route, ScrollRestoration, RouterProvider, Outlet } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
+import { AuthProvider } from './context/AuthContext.jsx'
 import ProtectedRoute from './components/ProtectedRoute'
 import { useSelector } from 'react-redux'
 import Form from '@components/ui/Form/Form'
 import FormLogin from '@components/ui/FormLogin/FormLogin'
+import FormReg from '@components/ui/FormReg/FormReg'
 
 // Layout — общий для всех страниц
 function Layout() {
-  const isOpen = useSelector((state) => state.openLogin.open)
-  console.log(isOpen);
+  const isOpenLog = useSelector((state) => state.openLogin.open)
+  const isOpenReg = useSelector((state) => state.openReg.open)
+  console.log(isOpenLog);
+
 
   return (
     <Wrapper>
@@ -22,8 +25,14 @@ function Layout() {
       <Outlet />         {/* Здесь будут дочерние страницы */}
       <ScrollRestoration />  {/* Теперь работает! */}
       <Footer />
-      <Form isOpened={isOpen}>
-        <FormLogin />
+      <Form isOpenedLog={isOpenLog} isOpenedReg={isOpenReg}>
+        {isOpenLog &&
+          <FormLogin />
+        }
+
+        {isOpenReg &&
+          <FormReg />
+        }
       </Form>
     </Wrapper>
   );
