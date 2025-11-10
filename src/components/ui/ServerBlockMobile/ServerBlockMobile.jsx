@@ -1,4 +1,4 @@
-import { serverImg } from "@assets/serverBlock";
+import serverImg from "@assets/serverBlock/serverImg1.png";
 import icon1 from "@assets/serverBlock/icon1.svg";
 import icon2 from "@assets/serverBlock/icon2.svg";
 import icon3 from "@assets/serverBlock/likeBlue.svg";
@@ -14,7 +14,7 @@ export default function ServerBlockMobile() {
     return (
         <NavLink to={"/server/1"} className={`p-3.5 flex flex-col gap-4 rounded-2xl bg-[#2B2D2C] duration-150 ${isPressed ? "scale-90": ""}`} onTouchStart={() => setIsPressed(true)} onTouchEnd={() => setIsPressed(false)}>
             <div className="w-full">
-                <img srс={serverImg} alt="serverImg" />
+                <img className="rounded-2xl" src={serverImg} alt="serverImg" />
             </div>
             <div>
                 <h1 className="text-center text-xl font-bold">MINELANDY</h1>

@@ -15,7 +15,7 @@ export default function Form({ children, isOpened }) {
                 className="fixed inset-0 w-full h-full bg-black-transparent flex justify-center items-center text-white z-20"
                 onClick={() => dispatch(editOpen(false))}
                 >
-                    <motion.form
+                    <motion.div
                     initial={{transform: "scale(0.8)", opacity: 0}}
                     animate={{transform: "scale(1)", opacity: 1}}
                     exit={{transform: "scale(0.8)", opacity: 0}}
@@ -23,7 +23,7 @@ export default function Form({ children, isOpened }) {
                     onClick={(e) => e.stopPropagation()}
                     >
                         {children}
-                    </motion.form>
+                    </motion.div>
                 </motion.div>
             }
         </AnimatePresence>
