@@ -18,6 +18,10 @@
 }
 
 @layer components {
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+
     html {
         scroll-behavior: smooth;
     }
