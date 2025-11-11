@@ -9,31 +9,17 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import { motion } from "motion/react";
 import "./Footer.css";
-import { useRef } from "react";
 
 gsap.registerPlugin(useGSAP);
 export default function Footer() {
-  const element1 = useRef(null);
-  const element2 = useRef(null);
-
-  useGSAP(() => {
-    gsap.from(element1.current, {
-      scrollTrigger: {
-        trigger: element1.current, // Элемент, который будет запускать анимацию
-        start: "top 80%", // Когда начнётся анимация (верх элемента в 80% от верха экрана)
-        end: "center 20%", // Когда закончится (центр элемента в 20% от верха экрана)
-        // markers: true,  // Включить маркеры для отладки (удалить в продакшене)
-      },
-      opacity: 0, // Начальное состояние (элемент невидим)
-      y: 100, // Начальное положение (элемент смещён на 100px вниз)
-      duration: 1, // Длительность анимации
-      ease: "power2.out", // Тип замедления анимации
-    });
-  }, []);
   return (
     <footer className="footer text-white py-10">
       <div className="py-4 container w-full mx-auto px-4 flex flex-col gap-10">
-        <div ref={element1} className="w-full flex flex-col md:flex-row md:justify-between text-center md:text-start">
+        <motion.div
+        initial={{opacity: 0, y: 20}}
+        whileInView={{opacity: 1, y: 0}}
+        transition={{duration: 1}}
+        className="w-full flex flex-col md:flex-row md:justify-between text-center md:text-start">
           <div>
             <div className="flex justify-center md:block">
               <img src={logo} alt="logo" />
@@ -70,7 +56,7 @@ export default function Footer() {
             <NavLink to={"#"}>Создать сервер</NavLink>
             <NavLink to={"#"}>Хостинг</NavLink>
           </div>
-        </div>
+        </motion.div>
         <div className="text-center border-t border-t-white-light">
           <p className="py-4">© 2015-2025 Все права защищены </p>
         </div>

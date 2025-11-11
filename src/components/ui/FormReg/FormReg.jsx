@@ -46,7 +46,7 @@ export default function FormReg() {
     else {
       reg(data)
       dispatch(editOpenReg(false))
-      dispatch(editOpenLog(false))
+      dispatch(editOpenLog(true))
     }
 
     // if (reg(data)) {
