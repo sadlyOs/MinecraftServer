@@ -252,7 +252,7 @@ export default function ServerPage() {
 
 
   return (
-    <main className="server__main overflow-hidden">
+    <main className="server__main overflow-hidden pt-10">
       <div className="server-hero py-20 container md:px-4 mx-auto text-white">
         <div className="w-full server__wrapper">
           <motion.div
@@ -382,12 +382,14 @@ export default function ServerPage() {
           initial="offscreen"
           whileInView="onscreen"
           variants={variants.bottom}
+          viewport={{ once: true }}
           className="server__content py-3 bg-gray-transparent backdrop-blur-2xl rounded-2xl h-fit flex flex-col gap-6">
             <div className="px-4">
               <motion.h2
               initial="offscreen"
               whileInView="onscreen"
               variants={variants.text}
+              viewport={{ once: true }}
               className="text-2xl pb-2 left">
                 FunParty - идеальное РПГ-выживание.
               </motion.h2>
@@ -395,6 +397,7 @@ export default function ServerPage() {
               initial="offscreen"
               whileInView="onscreen"
               variants={variants.text}
+              viewport={{ once: true }}
               className="left">
                 Наш сервер - это настоящая революция в мире майнкрафт-выживания,
                 здесь вы найдете множество интересных механик, проработанную до
@@ -407,6 +410,7 @@ export default function ServerPage() {
               initial="offscreen"
               whileInView="onscreen"
               variants={variants.text}
+              viewport={{ once: true }}
               >
                 <div className="left flex gap-2 text-gray-main opacity-70">
                   <img src={light} alt="light" />
@@ -441,6 +445,7 @@ export default function ServerPage() {
               initial="offscreen"
               whileInView="onscreen"
               variants={variants.text}
+              viewport={{ once: true }}
               >
                 {[
                   "1.21.4",
@@ -465,6 +470,7 @@ export default function ServerPage() {
                         initial="offscreen"
                         whileInView="onscreen"
                         variants={variants.text}
+                        viewport={{ once: true }}
                         className="text-xl mb-2 left">{key}</motion.h3>
                       </div>
                       <div className="flex flex-wrap gap-1">
@@ -474,6 +480,7 @@ export default function ServerPage() {
                           initial="offscreen"
                           whileInView="onscreen"
                           variants={variants.text}
+                          viewport={{ once: true }}
                           className="left py-1 px-2 bg-gray-transparent rounded-full">
                             {item}
                           </motion.div>
@@ -493,6 +500,7 @@ export default function ServerPage() {
                         initial="offscreen"
                         whileInView="onscreen"
                         variants={variants.text}
+                        viewport={{ once: true }}
                         className="left text-xl mb-2">{key}</motion.h3>
                       </div>
                       <div className="flex flex-wrap gap-1">
@@ -500,6 +508,7 @@ export default function ServerPage() {
                         initial="offscreen"
                         whileInView="onscreen"
                         variants={variants.text}
+                        viewport={{ once: true }}
                         className="text-gray-main">{value}</motion.p>
                       </div>
                     </div>
@@ -512,6 +521,7 @@ export default function ServerPage() {
                         initial="offscreen"
                         whileInView="onscreen"
                         variants={variants.text}
+                        viewport={{ once: true }}
                         className="left text-xl mb-2">{key}</motion.h3>
                       </div>
                       <div>
@@ -521,6 +531,7 @@ export default function ServerPage() {
                             initial="offscreen"
                             whileInView="onscreen"
                             variants={variants.text}
+                            viewport={{ once: true }}
                             className="text-gray-main">{item}</motion.p>
                           </div>
                         ))}
@@ -542,6 +553,7 @@ export default function ServerPage() {
                     whileInView="onscreen"
                     variants={variants.text}
                     transition={{delay: index * 0.5}}
+                    viewport={{ once: true }}
                     className="w-full first:ml-5 md:first:ml-0" src={img} alt="img" />
                   ))}
                 </div>

@@ -47,7 +47,7 @@ export default function FormLogin() {
         </div>
       </div>
       <div className="flex flex-col gap-10">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 relative">
           <Input value={loginName} setValue={setLoginName} placeholder="Логин" required={true}/>
           <Input
             type="password"
@@ -59,8 +59,8 @@ export default function FormLogin() {
           <a href="" className="pl-1 text-blue-600">
             Забыли пароль?
           </a>
+          {error && <p className="text-red-600 absolute -bottom-5 left-0 text-[0.8rem] pl-1">{error}</p>}
         </div>
-        {error && <p className="text-red-600">{error}</p>}
         <div className="flex flex-col gap-2">
           <Button
             type="submit"

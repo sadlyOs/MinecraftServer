@@ -52,7 +52,7 @@ export default function HeroSection() {
   // })
 
   return (
-    <section id="#home" className="relative w-full h-screen hero pt-20">
+    <section id="#home" className="relative w-full h-screen hero pt-30">
       <div className="container mx-auto px-4 h-full flex flex-col justify-center lg:block">
         <div className="flex flex-col lg:flex-row gap-8">
             <motion.div

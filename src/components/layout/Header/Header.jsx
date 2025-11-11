@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom"
 import { motion, AnimatePresence } from 'motion/react'
 import './Header.css'
 import { useEffect, useState } from "react"
-import { Link } from 'react-scroll';
 import facebook from "@assets/header/facebook.svg"
 import telegram from "@assets/header/telegram.svg"
 import vk from "@assets/header/vk.svg"
@@ -12,11 +11,17 @@ import youtube from "@assets/header/youtube.svg"
 import { useDispatch } from "react-redux"
 import { editOpenLog } from "@/store/openLogin"
 import "./Header.css"
+import { useAuth } from "@/context/AuthContext"
+import scoreYellow from "@assets/header/scoreYellow.svg"
+import profile from "@assets/header/profile.svg"
+import ModalUser from "@/components/ui/ModalUser/ModalUser"
 
 export default function Header() {
     const [burger, setBurger] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false);
     const dispatch = useDispatch()
+    const { isAuthenticated, user } = useAuth();
+    const [modalUser, setModalUser] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,10 +37,10 @@ export default function Header() {
     }, [])
 
     return (
-        <header className={`text-white fixed top-0 left-0 w-full h-[60px] z-10 ` + (isScrolled ? "bg-black-transparent" : "")}>
+        <header className={`text-white fixed top-0 left-0 w-full z-10 ` + (isScrolled ? "bg-black-transparent" : "")}>
             <div className="relative">
                 <div className="container mx-auto p-4">
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center relative">
                         <div className="relative z-10 cursor-pointer">
                             <NavLink to="/#home" spy={true} smooth={true} offset={-70} duration={100}>
                                 <img src={logo} alt="logo" />
@@ -51,9 +56,26 @@ export default function Header() {
                             </nav>
                         </div>
                         <div>
-                            <div onClick={() => dispatch(editOpenLog(true))} className="hidden md:block cursor-pointer header__login">
+                            {!isAuthenticated && <div onClick={() => dispatch(editOpenLog(true))} className="hidden md:block cursor-pointer header__login">
                                 <img src={icon} alt="log icon" />
-                            </div>
+                            </div>}
+
+                            {isAuthenticated && user &&
+                                <div onClick={() => setModalUser(true)} className="hidden md:flex gap-4 cursor-pointer rounded-xl px-6 duration-200 relative hover:bg-gray-main">
+                                    <div>
+                                        <img className="h-full" src={profile} alt="profile" />
+                                    </div>
+                                    <div>
+                                        <div className="pb-1 text-xl">
+                                            <p>{user.login}</p>
+                                        </div>
+                                        <div className="px-3 py-1 bg-yellow-transparent rounded-full flex gap-2">
+                                            <img src={scoreYellow} alt="scoreYellow" />
+                                            <p>{user.balance}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                             <div onClick={() => setBurger(!burger)} className={"md:hidden burger " + (burger ? "active": "")}>
                                 <span></span>
                                 <span></span>
@@ -62,6 +84,7 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
+                        <ModalUser isModal={modalUser} setIsModal={setModalUser}/>
             </div>
 
             <AnimatePresence>
