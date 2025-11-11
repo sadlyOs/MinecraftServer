@@ -94,10 +94,24 @@ export default function Header() {
                     animate={{x: 0, opacity: 1}}
                     exit={{x: 100, opacity: 0}}
                     transition={{duration: 0.4}}
-                    className="md:hidden fixed top-0 right-0 backdrop-blur-3xl min-h-screen">
+                    className="md:hidden fixed top-0 right-0 backdrop-blur-3xl min-h-screen w-[250px] z-100">
                         <div className="flex flex-col h-screen pb-10">
-                            <div className="pl-4 py-6.5">
-                                <img src={icon} alt="icon" />
+                            <div className={`pl-4 ${!isAuthenticated ? "pt-6 pb-4": "pt-4 pb-2"} flex justify-between items-center`}>
+                                {!isAuthenticated && <img src={icon} alt="icon" />}
+                                {isAuthenticated && user &&
+                                    <div className="flex gap-2 items-center">
+                                        <div>
+                                            <img className="h-full" src={profile} alt="profile" />
+                                        </div>
+                                        <div className="flex flex-col gap-1">
+                                            <p>{user.login}</p>
+                                            <div className="px-2 bg-yellow-transparent rounded-full flex gap-2 text-sm">
+                                                <img src={scoreYellow} alt="scoreYellow" />
+                                                <p>{user.balance}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                             <nav className="flex-1 py-5 w-full relative">
                                 <ul className="flex flex-col gap-3 text-sm font-semibold">

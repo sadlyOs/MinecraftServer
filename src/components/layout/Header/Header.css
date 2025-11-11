@@ -1,6 +1,6 @@
 .burger {
     position: relative;
-    z-index: 10;
+    z-index: 200;
 }
 
 .burger>span {
