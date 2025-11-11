@@ -8,7 +8,7 @@ export default function AccountPage() {
     const { user } = useAuth();
     return (
         <main className="bg-[#333] min-h-screen w-full text-white">
-            <div className="pt-30  mx-auto">
+            <div className="lg:pt-30 pb-30 pt-20 mx-auto">
                 <div>
                     <nav>
                         <div className="overflow-x-auto hide-scrollbar">
