@@ -97,7 +97,7 @@ export default function Header() {
                     className="md:hidden fixed top-0 right-0 backdrop-blur-3xl min-h-screen w-[250px] z-100">
                         <div className="flex flex-col h-screen pb-10">
                             <div className={`pl-4 ${!isAuthenticated ? "pt-6 pb-4": "pt-4 pb-2"} flex justify-between items-center`}>
-                                {!isAuthenticated && <img src={icon} alt="icon" />}
+                                {!isAuthenticated && <img onClick={() => dispatch(editOpenLog(true))} src={icon} alt="icon" />}
                                 {isAuthenticated && user &&
                                     <div className="flex gap-2 items-center">
                                         <div>
