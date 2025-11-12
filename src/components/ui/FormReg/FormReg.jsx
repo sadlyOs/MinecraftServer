@@ -29,7 +29,8 @@ export default function FormReg() {
         login: loginName,
         password: password,
         email: email,
-        balance: 0
+        balance: 0,
+        servers: []
     }
 
     const searchUserByLogin = users.find((user) => user.login == data.login)

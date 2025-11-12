@@ -12,7 +12,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useSt ate(null);
   const [loading, setLoading] = useState(true);
 
   // Проверяем наличие токена при загрузке приложения
@@ -53,8 +53,22 @@ export const AuthProvider = ({ children }) => {
   }
 
   const update = (newUserData) => {
+    const data = JSON.parse(localStorage.getItem("users"))
     localStorage.setItem("user", JSON.stringify(newUserData));
+    const updatedUsers = data.map((user) => {
+      if (user.login === newUserData.login) {
+        return newUserData;
+      }
+    })
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
     setUser(newUserData);
+  }
+
+  const deleteServer = (serverId) => {
+    if (!user) return;
+    const updatedServers = user.servers.filter((server) => server.address.id !== serverId);
+    const newUserData = { ...user, servers: updatedServers };
+    update(newUserData);
   }
 
   const logout = () => {
@@ -71,6 +85,7 @@ export const AuthProvider = ({ children }) => {
     logout,
     reg,
     update,
+    deleteServer,
     isAuthenticated: !!user,
   };
 

@@ -3,39 +3,49 @@ import Button from "@/components/ui/Button/Button";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import ModalMessage from "@/components/ui/ModalMessage/ModalMessage";
+import { useAuth } from "@/context/AuthContext";
 
 export default function AddServerPage() {
   const [serverAddress, setServerAddress] = useState("");
   const [error, setError] = useState("");
   const [modalMessage, setModalMessage] = useState("");
+  const { user, update } = useAuth();
+
+
+  function handleErr(err) {
+    setError(err);
+        setTimeout(() => {
+          setError(null);
+    }, 3000);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (serverAddress.length <= 0) {
-      setError("Адрес сервера не может быть пустым");
-      setTimeout(() => {
-        setError(null);
-      }, 3000);
+      handleErr("Пожалуйста, введите адрес сервера");
     } else {
       const info = serverAddress.split(":");
       console.log(info);
 
       if (!info[1]) {
-        setError("Пожалуйста, укажите порт сервера после двоеточия");
-        setTimeout(() => {
-          setError(null);
-        }, 3000);
+        handleErr("Пожалуйста, укажите порт сервера");
       }
 
       else if (isNaN(parseInt(info[1]))) {
-        setError("Порт сервера должен быть числом");
-        setTimeout(() => {
-          setError(null);
-        }, 3000);
+        handleErr("Порт сервера должен быть числом");
       }
 
       else {
           console.log("Сервер добавлен:", serverAddress);
+          const newData = { ...user };
+          newData.servers.push({
+            address: {
+                id: Date.now(),
+                serverAddress: serverAddress
+            }
+          });
+          update(newData);
+          console.log(newData);
           setServerAddress("");
           setModalMessage(
             "Вы добавили сервер. Для того чтобы контролировать свой сервер, посетите раздел “Мои сервера”"

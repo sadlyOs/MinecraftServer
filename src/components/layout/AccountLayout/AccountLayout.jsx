@@ -15,7 +15,7 @@ export default function AccountLayout() {
             <div className="overflow-x-auto hide-scrollbar">
               <ul className="flex justify-between lg:max-w-[1400px] max-w-full mx-auto overflow-x-scroll px-4 py-6 scrollbar-hide snap-x snap-mandatory">
                 {[
-                  ["Акаунт", "/account/"],
+                  ["Акаунт", "/account/cab/"],
                   ["Мои сервера", "/account/servers/"],
                   ["Добавить сервер", "/account/add/"],
                   ["Создать проект", "/account/create/"],

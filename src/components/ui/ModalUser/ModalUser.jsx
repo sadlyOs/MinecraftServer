@@ -46,7 +46,7 @@ export default function ModalUser({ isModal, setIsModal }) {
               <div>
                 <nav>
                     <ul className="flex flex-col"></ul>
-                        {[['Акаунт', '/account/'], ['Добавить сервер', '#'], ['Мои сервера', '#'], ['Пополнить баланс', '#']].map((item, index) => (
+                        {[['Акаунт', '/account/cab/'], ['Добавить сервер', '/account/add/'], ['Мои сервера', '/account/servers/'], ['Пополнить баланс', '#']].map((item, index) => (
                             <NavLink onClick={() => setIsModal(false)} key={index} to={item[1]} className=" text-center block px-6 py-3 duration-100 hover:bg-gray-main  not-last:border-b not-last:border-gray-main">{item[0]}</NavLink>
                         ))}
                 </nav>

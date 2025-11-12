@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         </ProtectedRoute>,
         children: [
           {
-            path: '/account/',
+            path: '/account/cab/',
             element: <AccountPage />
           },
 
