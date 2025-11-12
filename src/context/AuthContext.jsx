@@ -12,7 +12,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useSt ate(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // Проверяем наличие токена при загрузке приложения
