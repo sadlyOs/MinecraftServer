@@ -12,6 +12,9 @@ import Form from '@components/ui/Form/Form'
 import FormLogin from '@components/ui/FormLogin/FormLogin'
 import FormReg from '@components/ui/FormReg/FormReg'
 import AccountPage from '@components/pages/AccountPage/AccountPage'
+import AccountLayout from '@components/layout/AccountLayout/AccountLayout'
+import AddServerPage from '@components/pages/AddServerPage/AddServerPage'
+import MyServersPage from './components/pages/MyServersPage/MyServersPage'
 
 // Layout — общий для всех страниц
 function Layout() {
@@ -59,8 +62,24 @@ const router = createBrowserRouter([
       {
         path: '/account/',
         element: <ProtectedRoute>
-          <AccountPage />
-        </ProtectedRoute>
+          <AccountLayout />
+        </ProtectedRoute>,
+        children: [
+          {
+            path: '/account/',
+            element: <AccountPage />
+          },
+
+          {
+            path: '/account/servers/',
+            element: <MyServersPage />,
+          },
+
+          {
+            path: '/account/add/',
+            element: <AddServerPage />,
+          }
+        ]
       }
     ],
   },

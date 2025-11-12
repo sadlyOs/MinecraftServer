@@ -115,7 +115,7 @@ export default function Header() {
                             </div>
                             <nav className="flex-1 py-5 w-full relative">
                                 <ul className="flex flex-col gap-3 text-sm font-semibold">
-                                    {[['Акаунт', '/account/'], ['Добавить сервер', '#'], ['Мои сервера', '#'], ['Пополнить баланс', '#'], ['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
+                                    {[['Акаунт', '/account/'], ['Добавить сервер', '/account/add/'], ['Мои сервера', '/account/servers/'], ['Пополнить баланс', '#'], ['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
                                         <NavLink onClick={() => setBurger(false)} key={index} to={item[1]} className="link relative px-4 py-2 duration-100 hover:text-gray-400">{item[0]}</NavLink>
                                     ))}
                                 </ul>
