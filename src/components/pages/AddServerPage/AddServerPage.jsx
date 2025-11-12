@@ -4,12 +4,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import ModalMessage from "@/components/ui/ModalMessage/ModalMessage";
 import { useAuth } from "@/context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function AddServerPage() {
   const [serverAddress, setServerAddress] = useState("");
   const [error, setError] = useState("");
   const [modalMessage, setModalMessage] = useState("");
   const { user, update } = useAuth();
+  const navigate = useNavigate();
 
 
   function handleErr(err) {
@@ -41,7 +43,8 @@ export default function AddServerPage() {
           newData.servers.push({
             address: {
                 id: Date.now(),
-                serverAddress: serverAddress
+                serverAddress: serverAddress,
+                updated: null,
             }
           });
           update(newData);
@@ -53,6 +56,12 @@ export default function AddServerPage() {
       }
 
     }
+  }
+
+  function handleClick() {
+    setModalMessage("");
+    // Дополнительные действия при клике на кнопку в модальном окне
+    navigate(`/myServer/${user.servers[user.servers.length - 1].address.id}`);
   }
 
   return (
@@ -107,6 +116,7 @@ export default function AddServerPage() {
         title={"Поздравляем"}
         label={modalMessage}
         setModal={setModalMessage}
+        handleClick={handleClick}
       />
     </div>
   );

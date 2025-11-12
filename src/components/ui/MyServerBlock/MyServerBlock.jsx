@@ -11,11 +11,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import ModalDelete from "../ModalDelete/ModalDelete";
 import { useAuth } from "@/context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function MyServerBlock({ id }) {
     const [isPressed, setIsPressed] = useState(false)
     const [isDeletedModal, setIsDeletedModal] = useState(false)
     const { deleteServer } = useAuth();
+    const navigate = useNavigate();
 
     function copyToClipboard() {
         setIsPressed(true);
@@ -36,7 +38,8 @@ export default function MyServerBlock({ id }) {
         whileInView={{opacity: 1, y: 0}}
         transition={{duration: 0.5}}
         viewport={{ once: true }}
-        className="bg-gray-transparent py-3 px-4 rounded-2xl flex flex-col gap-4">
+        onClick={() => navigate(`/myServer/${id}`)}
+        className="bg-gray-transparent py-3 px-4 rounded-2xl flex flex-col gap-4 cursor-pointer">
             <div className="flex justify-between items-center">
                 <div>
                     <h3 className="text-xl font-semibold">MINELANDY</h3>
@@ -49,7 +52,7 @@ export default function MyServerBlock({ id }) {
             </div>
             <div className="flex flex-col lg:flex-row gap-7 mt-4">
                 <div className="">
-                    <img src={noImg} alt="noImg" />
+                    <img className="w-full lg:w-auto" src={noImg} alt="noImg" />
                 </div>
                 <div className="flex-1 grid grid-cols-2 md:grid-cols-4 justify-between gap-3">
                     <div className="flex-1 flex flex-col items-center py-2 border border-gray-transparent rounded-2xl">
@@ -82,7 +85,7 @@ export default function MyServerBlock({ id }) {
                     </div>
                 </div>
             </div>
-            <div onClick={() => copyToClipboard()} className="flex justify-center gap-2 py-3 bg-gray-transparent rounded-2xl cursor-pointer">
+            <div onClick={(e) => {e.stopPropagation(); copyToClipboard()}} className="flex justify-center gap-2 py-3 bg-gray-transparent rounded-2xl cursor-pointer">
                 <img src={clipboard} alt="clipboard" />
                 <p>82.100.12.1.1</p>
             </div>

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import Button from "../Button/Button";
 
-export default function ModalMessage({ isModal, title, label, setModal }) {
+export default function ModalMessage({ isModal, title, label, setModal, handleClick }) {
   return (
     <>
       <AnimatePresence>
@@ -25,7 +25,7 @@ export default function ModalMessage({ isModal, title, label, setModal }) {
               <h2 className="text-2xl font-bold pb-1">{title}</h2>
               <p className="pb-5 text-gray-main text-[1.2rem]">{label}</p>
               <Button
-                handleClick={() => setModal("")}
+                handleClick={handleClick}
                 label={"Перейти на сервер"}
                 style={"bg-green-transparent text-black w-full"}
               />
