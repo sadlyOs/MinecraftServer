@@ -18,10 +18,6 @@ export default function AddServerPage() {
       }, 3000);
     } else {
       const info = serverAddress.split(":");
-      // const serverData = {
-      //     address: info[0],
-      //     port: info[1] ? info[1] : "25565",
-      // };
       console.log(info);
 
       if (!info[1]) {

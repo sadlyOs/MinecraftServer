@@ -12,7 +12,7 @@ export default function ModalMessage({ isModal, title, label, setModal }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
             onClick={() => setModal("")}
-            className="fixed inset-0 bg-black-transparent flex justify-center items-center z-200"
+            className="fixed px-4 inset-0 bg-black-transparent flex justify-center items-center z-200"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
