@@ -1,6 +1,7 @@
 import FilterBlock from "@/components/FilterBlock/FilterBlock";
 import close from "@assets/hero/close.svg"
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react"; import * as m from "motion/react-m"
+
 
 export default function FilterModal({ isOpen, onClose, filters, selectedFilters, onToggle, onApply }) {
 
@@ -8,13 +9,13 @@ export default function FilterModal({ isOpen, onClose, filters, selectedFilters,
         <AnimatePresence>
             {!isOpen && null}
             {isOpen &&
-            <motion.div
+            <m.div
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             exit={{opacity: 0}}
             transition={{duration: 0.4}}
             className="fixed inset-0 bg-black-transparent z-50 flex items-center justify-center px-4">
-                <motion.div
+                <m.div
                 initial={{x: -100}}
                 animate={{x: 0}}
                 exit={{x: 100}}
@@ -44,8 +45,8 @@ export default function FilterModal({ isOpen, onClose, filters, selectedFilters,
                             Применить
                         </button>
                     </div>
-                </motion.div>
-            </motion.div>
+                </m.div>
+            </m.div>
             }
         </AnimatePresence>
     )

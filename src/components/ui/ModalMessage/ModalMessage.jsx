@@ -1,4 +1,5 @@
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react"; import * as m from "motion/react-m"
+
 import Button from "../Button/Button";
 
 export default function ModalMessage({ isModal, title, label, setModal, handleClick }) {
@@ -6,7 +7,7 @@ export default function ModalMessage({ isModal, title, label, setModal, handleCl
     <>
       <AnimatePresence>
         {isModal && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -14,7 +15,7 @@ export default function ModalMessage({ isModal, title, label, setModal, handleCl
             onClick={() => setModal("")}
             className="fixed px-4 inset-0 bg-black-transparent flex justify-center items-center z-200"
           >
-            <motion.div
+            <m.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -29,8 +30,8 @@ export default function ModalMessage({ isModal, title, label, setModal, handleCl
                 label={"Перейти на сервер"}
                 style={"bg-green-transparent text-black w-full"}
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

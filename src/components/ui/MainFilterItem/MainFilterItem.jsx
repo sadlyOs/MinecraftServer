@@ -1,6 +1,6 @@
 import { useState } from "react"
 import arrow from "@assets/mainFilter/arrow.svg"
-import { motion, AnimatePresence} from "motion/react"
+import { AnimatePresence} from "motion/react"
 export default function MainFilterItem({ value, defaultValue, setValue }) {
     const [isPressed, setIsPressed] = useState(false)
     const [click, setClick] = useState(false)
@@ -15,7 +15,7 @@ export default function MainFilterItem({ value, defaultValue, setValue }) {
 
             <AnimatePresence>
                 {click && (
-                <motion.div
+                <m.div
                 onClick={(e) => e.stopPropagation()} onMouseDown={(e) => e.stopPropagation()} onMouseUp={(e) => e.stopPropagation()}
                 initial={{y: -100, opacity: 0, width: 0 }}
                 animate={{y: 0, opacity: 1, width: "100%" }}
@@ -27,7 +27,7 @@ export default function MainFilterItem({ value, defaultValue, setValue }) {
                             <div className="hover:border-b hover:border-gray-400" onClick={() => {setValue(item); setClick(false)}}>{item}</div>
                         )) }
                     </div>
-                </motion.div>)}
+                </m.div>)}
             </AnimatePresence>
         </div>
     )

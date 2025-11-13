@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
+import { motion } from "motion/react"; import * as m from "motion/react-m"
+
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 import { useGSAP } from "@gsap/react";
@@ -55,7 +56,7 @@ export default function HeroSection() {
     <section id="#home" className="relative w-full h-screen hero pt-30">
       <div className="container mx-auto px-4 h-full flex flex-col justify-center lg:block">
         <div className="flex flex-col lg:flex-row gap-8">
-            <motion.div
+            <m.div
             initial={{x:-200, opacity: 0}}
             animate={{x:0, opacity: 1}}
             exit={{x:-200, opacity: 0}}
@@ -75,8 +76,8 @@ export default function HeroSection() {
                     дополнительную информацию. Наш мониторинг предоставляет огромные
                     возможности по привлечению новых игроков на сервера!
                 </p>
-            </motion.div>
-            <motion.div
+            </m.div>
+            <m.div
             initial={{x:200, opacity: 0}}
             animate={{x:0, opacity: 1}}
             exit={{x:200, opacity: 0}}
@@ -91,8 +92,8 @@ export default function HeroSection() {
                         onToggle={(value) => toggleFilter(section.key, value)}
                     />
                 ))}
-            </motion.div>
-            <motion.div
+            </m.div>
+            <m.div
             initial={{y:100, opacity: 0}}
             animate={{y:0, opacity: 1}}
             exit={{y:100, opacity: 0}}
@@ -102,7 +103,7 @@ export default function HeroSection() {
                     <img src={icon} alt="icon" />
                     <p>Фильтр</p>
                 </button>
-            </motion.div>
+            </m.div>
         </div>
       </div>
 

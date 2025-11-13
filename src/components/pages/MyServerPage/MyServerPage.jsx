@@ -20,7 +20,8 @@ import globalIc from "@assets/serverPage/global.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
-import { motion } from "motion/react";
+import { motion } from "motion/react"; import * as m from "motion/react-m"
+
 import { useRef } from "react";
 import img1 from "@assets/serverPage/img1.png";
 import img2 from "@assets/serverPage/img2.png";
@@ -265,7 +266,7 @@ export default function MyServerPage() {
     <main className="server__main overflow-hidden pt-10">
       <div className="server-hero py-20 container md:px-4 mx-auto text-white">
         <div className="w-full server__wrapper">
-          <motion.div
+          <m.div
             initial="offscreen"
             whileInView="onscreen"
             variants={variants.left}
@@ -315,8 +316,8 @@ export default function MyServerPage() {
                 </p>
               </div>
             </div>
-          </motion.div>
-          <motion.div
+          </m.div>
+          <m.div
             initial="offscreen"
             whileInView="onscreen"
             variants={variants.right}
@@ -399,8 +400,8 @@ export default function MyServerPage() {
                 </div>
               )}
             </div>
-          </motion.div>
-          <motion.div
+          </m.div>
+          <m.div
             initial="offscreen"
             whileInView="onscreen"
             variants={variants.bottom}
@@ -410,7 +411,7 @@ export default function MyServerPage() {
             {server.address.updated && (
               <div>
                 <div className="px-4">
-                  <motion.h2
+                  <m.h2
                     initial="offscreen"
                     whileInView="onscreen"
                     variants={variants.text}
@@ -418,8 +419,8 @@ export default function MyServerPage() {
                     className="text-2xl pb-2 left"
                   >
                     FunParty - идеальное РПГ-выживание.
-                  </motion.h2>
-                  <motion.p
+                  </m.h2>
+                  <m.p
                     initial="offscreen"
                     whileInView="onscreen"
                     variants={variants.text}
@@ -431,10 +432,10 @@ export default function MyServerPage() {
                     механик, проработанную до мелочей экономику, по-настоящему
                     честное PvP, большое и дружелюбное комьюнити и многое
                     другое.
-                  </motion.p>
+                  </m.p>
                 </div>
                 <div className="flex px-4 gap-6">
-                  <motion.div
+                  <m.div
                     initial="offscreen"
                     whileInView="onscreen"
                     variants={variants.text}
@@ -468,8 +469,8 @@ export default function MyServerPage() {
                       <img className="h-4" src={discord} alt="discord" />
                       <p>Версия:</p>
                     </div>
-                  </motion.div>
-                  <motion.div
+                  </m.div>
+                  <m.div
                     initial="offscreen"
                     whileInView="onscreen"
                     variants={variants.text}
@@ -486,7 +487,7 @@ export default function MyServerPage() {
                     ].map((item) => (
                       <p className="left">{item}</p>
                     ))}
-                  </motion.div>
+                  </m.div>
                 </div>
                 <div className="px-4 flex flex-col gap-6">
                   {Object.entries(testData.other).map(([key, value]) => (
@@ -496,7 +497,7 @@ export default function MyServerPage() {
                       key == "Моды" ? (
                         <div key={key}>
                           <div>
-                            <motion.h3
+                            <m.h3
                               initial="offscreen"
                               whileInView="onscreen"
                               variants={variants.text}
@@ -504,11 +505,11 @@ export default function MyServerPage() {
                               className="text-xl mb-2 left"
                             >
                               {key}
-                            </motion.h3>
+                            </m.h3>
                           </div>
                           <div className="flex flex-wrap gap-1">
                             {value.map((item, index) => (
-                              <motion.div
+                              <m.div
                                 key={index}
                                 initial="offscreen"
                                 whileInView="onscreen"
@@ -517,7 +518,7 @@ export default function MyServerPage() {
                                 className="left py-1 px-2 bg-gray-transparent rounded-full"
                               >
                                 {item}
-                              </motion.div>
+                              </m.div>
                             ))}
                           </div>
                         </div>
@@ -530,7 +531,7 @@ export default function MyServerPage() {
                       key == "Экономика" ? (
                         <div key={key}>
                           <div>
-                            <motion.h3
+                            <m.h3
                               initial="offscreen"
                               whileInView="onscreen"
                               variants={variants.text}
@@ -538,10 +539,10 @@ export default function MyServerPage() {
                               className="left text-xl mb-2"
                             >
                               {key}
-                            </motion.h3>
+                            </m.h3>
                           </div>
                           <div className="flex flex-wrap gap-1">
-                            <motion.p
+                            <m.p
                               initial="offscreen"
                               whileInView="onscreen"
                               variants={variants.text}
@@ -549,7 +550,7 @@ export default function MyServerPage() {
                               className="text-gray-main"
                             >
                               {value}
-                            </motion.p>
+                            </m.p>
                           </div>
                         </div>
                       ) : null}
@@ -557,7 +558,7 @@ export default function MyServerPage() {
                       {key == "Другое" && (
                         <div>
                           <div>
-                            <motion.h3
+                            <m.h3
                               initial="offscreen"
                               whileInView="onscreen"
                               variants={variants.text}
@@ -565,12 +566,12 @@ export default function MyServerPage() {
                               className="left text-xl mb-2"
                             >
                               {key}
-                            </motion.h3>
+                            </m.h3>
                           </div>
                           <div>
                             {value.map((item) => (
                               <div className="flex flex-wrap gap-1">
-                                <motion.p
+                                <m.p
                                   initial="offscreen"
                                   whileInView="onscreen"
                                   variants={variants.text}
@@ -578,7 +579,7 @@ export default function MyServerPage() {
                                   className="text-gray-main"
                                 >
                                   {item}
-                                </motion.p>
+                                </m.p>
                               </div>
                             ))}
                           </div>
@@ -597,7 +598,7 @@ export default function MyServerPage() {
                   <div className="w-full">
                     <div className="flex md:grid md:grid-cols-4 gap-5 overflow-x-scroll md:overflow-hidden">
                       {[img1, img2, img3, img4].map((img, index) => (
-                        <motion.img
+                        <m.img
                           initial="offscreen"
                           whileInView="onscreen"
                           variants={variants.text}
@@ -635,7 +636,7 @@ export default function MyServerPage() {
                 />
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
       {/* <ScrollRestoration /> */}

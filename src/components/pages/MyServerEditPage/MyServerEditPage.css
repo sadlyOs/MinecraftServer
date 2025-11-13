@@ -1,0 +1,32 @@
+.my-server-checkbox {
+    appearance: none;
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background: var(--color-gray-transparent);
+    border-radius: 20px;
+    transition: background .3s;
+    outline: none;
+    cursor: pointer;
+}
+
+.my-server-checkbox::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 1.45rem;
+    height: 1.45rem;
+    background: #FFFFFF;
+    border-radius: 50%;
+    transition: left .3s;
+}
+
+.my-server-checkbox:checked {
+    background: var(--color-blue-600);
+}
+
+.my-server-checkbox:checked::after {
+    left: 70%;
+}

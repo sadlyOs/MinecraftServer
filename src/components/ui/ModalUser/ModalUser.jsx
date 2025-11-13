@@ -1,5 +1,6 @@
 import { useAuth } from "@/context/AuthContext";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react"; import * as m from "motion/react-m"
+
 import profile2 from "@assets/header/profile2.svg";
 import scoreYellow from "@assets/header/scoreYellow.svg"
 import { NavLink } from "react-router-dom";
@@ -10,7 +11,7 @@ export default function ModalUser({ isModal, setIsModal }) {
   return (
     <AnimatePresence>
       {isModal && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -21,7 +22,7 @@ export default function ModalUser({ isModal, setIsModal }) {
             onClick={() => setIsModal(false)}
             className="relative w-full h-full"
           >
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -51,9 +52,9 @@ export default function ModalUser({ isModal, setIsModal }) {
                         ))}
                 </nav>
               </div>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

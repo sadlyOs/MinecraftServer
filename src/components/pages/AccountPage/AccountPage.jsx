@@ -4,7 +4,8 @@ import Input from "@/components/ui/Input/Input";
 import Button from "@/components/ui/Button/Button";
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react"; import * as m from "motion/react-m"
+
 
 export default function AccountPage() {
   const { user, update } = useAuth();
@@ -41,7 +42,7 @@ export default function AccountPage() {
 
   return (
     <>
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -86,11 +87,11 @@ export default function AccountPage() {
             />
           </div>
         </form>
-      </motion.div>
+      </m.div>
 
       <AnimatePresence>
         {success && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -98,7 +99,7 @@ export default function AccountPage() {
             className="fixed z-100 bottom-5 left-1/2 -translate-x-1/2 bg-green-600 text-white md:px-4 px-2 py-3 rounded-2xl md:text-[1rem] text-[0.7rem]"
           >
             {success}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

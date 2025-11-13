@@ -7,7 +7,8 @@ import { NavLink } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
-import { motion } from "motion/react";
+import { motion } from "motion/react"; import * as m from "motion/react-m"
+
 import "./Footer.css";
 
 gsap.registerPlugin(useGSAP);
@@ -15,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="footer text-white py-10">
       <div className="py-4 container w-full mx-auto px-4 flex flex-col gap-10">
-        <motion.div
+        <m.div
         initial={{opacity: 0, y: 20}}
         whileInView={{opacity: 1, y: 0}}
         transition={{duration: 1}}
@@ -56,7 +57,7 @@ export default function Footer() {
             <NavLink to={"#"}>Создать сервер</NavLink>
             <NavLink to={"#"}>Хостинг</NavLink>
           </div>
-        </motion.div>
+        </m.div>
         <div className="text-center border-t border-t-white-light">
           <p className="py-4">© 2015-2025 Все права защищены </p>
         </div>

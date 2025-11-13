@@ -1,7 +1,8 @@
 import icon from "@assets/header/icon.png"
 import logo from "@assets/header/logo.png"
 import { NavLink } from "react-router-dom"
-import { motion, AnimatePresence } from 'motion/react'
+import { AnimatePresence } from 'motion/react'
+import * as m from "motion/react-m"
 import './Header.css'
 import { useEffect, useState } from "react"
 import facebook from "@assets/header/facebook.svg"
@@ -89,7 +90,7 @@ export default function Header() {
 
             <AnimatePresence>
                 {burger && (
-                    <motion.div
+                    <m.div
                     initial={{x: 100, opacity: 0}}
                     animate={{x: 0, opacity: 1}}
                     exit={{x: 100, opacity: 0}}
@@ -127,7 +128,7 @@ export default function Header() {
                                 <a href="https://google.com"><img src={telegram} alt="telegram" /></a>
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </header>

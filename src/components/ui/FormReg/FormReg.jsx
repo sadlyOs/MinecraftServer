@@ -1,4 +1,5 @@
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react"; import * as m from "motion/react-m"
+
 import Button from "@/components/ui/Button/Button";
 import Input from "@/components/ui/Input/Input";
 import cancel from "@assets/modal/cancel.svg";

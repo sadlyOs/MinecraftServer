@@ -8,7 +8,8 @@ import likeBlue from "@assets/serverBlock/likeBlue.svg";
 import score from "@assets/serverBlock/score.svg";
 import clipboard from "@assets/serverBlock/clipboardBlue.svg";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react"; import * as m from "motion/react-m"
+
 import ModalDelete from "../ModalDelete/ModalDelete";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +35,7 @@ export default function MyServerBlock({ id }) {
     }
 
     return (
-        <motion.div
+        <m.div
         initial={{opacity: 0, y: 100}}
         whileInView={{opacity: 1, y: 0}}
         transition={{duration: 0.5}}
@@ -93,7 +94,7 @@ export default function MyServerBlock({ id }) {
             </div>
             <AnimatePresence>
                 {isPressed && (
-                    <motion.div
+                    <m.div
                     initial={{x: 100, opacity: 0}}
                     animate={{x: 0, opacity: 1}}
                     exit={{x: 100, opacity: 0}}
@@ -101,7 +102,7 @@ export default function MyServerBlock({ id }) {
                     className="fixed bottom-5 left-1/2 -translate-x-1/2 text-center bg-blue-600 backdrop-blur-3xl z-100 md:px-4 px-2 py-3 rounded-2xl md:text-[1rem] text-[0.7rem]"
                     >
                         <p>Успешно скопировано</p>
-                    </motion.div>
+                    </m.div>
                 )}
 
                 <ModalDelete
@@ -113,6 +114,6 @@ export default function MyServerBlock({ id }) {
                 >
                 </ModalDelete>
             </AnimatePresence>
-        </motion.div>
+        </m.div>
     )
 }

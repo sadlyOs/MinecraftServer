@@ -1,7 +1,8 @@
 import Input from "@/components/ui/Input/Input";
 import Button from "@/components/ui/Button/Button";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react"; import * as m from "motion/react-m"
+
 import ModalMessage from "@/components/ui/ModalMessage/ModalMessage";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -66,7 +67,7 @@ export default function AddServerPage() {
 
   return (
     <div className="flex justify-center px-4">
-      <motion.form
+      <m.form
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -96,11 +97,11 @@ export default function AddServerPage() {
             style="bg-green-transparent text-black w-full hover:bg-green-transparent-dark mt-4"
           />
         </div>
-      </motion.form>
+      </m.form>
 
       <AnimatePresence>
         {error && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -108,7 +109,7 @@ export default function AddServerPage() {
             className="fixed z-100 bottom-5 left-1/2 -translate-x-1/2 bg-red-600 text-white md:px-4 px-2 py-3 rounded-2xl md:text-[1rem] text-[0.7rem]"
           >
             {error}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
       <ModalMessage

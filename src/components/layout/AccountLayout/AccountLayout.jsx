@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
-import { motion } from "motion/react";
+import { motion } from "motion/react"; import * as m from "motion/react-m"
+
 import { NavLink } from "react-router-dom";
 
 export default function AccountLayout() {
   return (
     <main className="bg-[#333] min-h-screen w-full text-white">
       <div className="lg:pt-30 pb-30 pt-20 mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -40,7 +41,7 @@ export default function AccountLayout() {
               </ul>
             </div>
           </nav>
-        </motion.div>
+        </m.div>
 
         <Outlet />
       </div>
