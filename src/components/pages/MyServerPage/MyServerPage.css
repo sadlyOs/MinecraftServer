@@ -1,0 +1,95 @@
+.server__main {
+    background:
+        linear-gradient(to bottom,
+            transparent 0%,
+            transparent 0%,
+            /* Image visible until here */
+            rgba(31, 33, 32, 0.98) 10%,
+            /* Gradient transition starts */
+            rgba(31, 33, 32, 1) 100%
+            /* Solid color at bottom */
+        ),
+        url("@assets/serverPage/serverBg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+}
+
+
+.server__head {
+    grid-area: hd;
+}
+
+.server__side {
+    grid-area: sd;
+}
+
+.server__content {
+    grid-area: main;
+}
+
+.server__wrapper {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(9, 1fr);
+    /* grid-template-rows: repeat(0, 220px); */
+    /* grid-auto-rows: minmax(100px, fit-content); */
+    grid-template-areas:
+        "hd hd hd hd hd hd hd sd sd"
+        "main main main main main main main sd sd"
+}
+
+.drag-scroll {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE */
+}
+
+.drag-scroll::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Edge */
+}
+
+/* САМАЯ ВАЖНАЯ ЧАСТЬ — делаем перетаскивание как нативное */
+.drag-scroll {
+    -webkit-overflow-scrolling: touch;
+    /* плавность на iOS */
+    overscroll-behavior-x: cover;
+}
+
+/* Делаем курсор "хватай" и плавнее перетаскивание */
+.drag-scroll:active {
+    cursor: grabbing;
+}
+
+@media (max-width: 1024px) {
+
+    .server__main {
+        background:
+            linear-gradient(to bottom,
+                transparent 0%,
+                transparent 0%,
+                /* Image visible until here */
+                rgba(31, 33, 32, 0.96) 0%,
+                /* Gradient transition starts */
+                rgba(31, 33, 32, 1) 100%
+                /* Solid color at bottom */
+            ),
+            url("@assets/serverPage/serverBg.png");
+        background-repeat: no-repeat;
+        background-size: fill;
+        background-position: center top;
+    }
+
+    .server__wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "hd"
+            "sd"
+            "main"
+    }
+}

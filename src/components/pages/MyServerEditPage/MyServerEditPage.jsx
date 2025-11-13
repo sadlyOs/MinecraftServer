@@ -2,8 +2,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import cancel from '@assets/modal/cancel.svg';
 import { AnimatePresence} from "motion/react";
 import * as m from "motion/react-m"
-import noImg2 from '@assets/myServerBlock/noImg.svg';
-import noImg from '@assets/myServerBlock/noImg.png';
+import noImg2 from '@assets/myServerblock/noImg.svg';
+import noImg from '@assets/myServerblock/noImg.png';
 import Input from "@components/ui/Input/Input";
 import TextArea from "@components/ui/TextArea/TextArea";
 import Button from "@/components/ui/Button/Button";

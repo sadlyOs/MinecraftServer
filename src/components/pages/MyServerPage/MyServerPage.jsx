@@ -263,7 +263,7 @@ export default function MyServerPage() {
   };
 
   return (
-    <main className="server__main overflow-hidden pt-10">
+    <main className="server__main min-h-screen overflow-hidden pt-10">
       <div className="server-hero py-20 container md:px-4 mx-auto text-white">
         <div className="w-full server__wrapper">
           <m.div
