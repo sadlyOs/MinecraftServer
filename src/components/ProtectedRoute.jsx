@@ -4,9 +4,12 @@ import { useDispatch } from 'react-redux';
 import { editOpenLog } from '@/store/openLogin';
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useAuth();
+  const { user, loading } = useAuth();
   const location = useLocation();
   const dispatch = useDispatch()
+
+  console.log(user, " protected router");
+
 
   if (loading) {
     return (
@@ -16,7 +19,7 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  if (!isAuthenticated) {
+  if (!user) {
     // Перенаправляем на страницу логина, сохраняя текущий путь
         dispatch(editOpenLog(true))
         return <Navigate to="/" />

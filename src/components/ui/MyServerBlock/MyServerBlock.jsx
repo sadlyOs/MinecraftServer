@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 export default function MyServerBlock({ id }) {
     const [isPressed, setIsPressed] = useState(false)
     const [isDeletedModal, setIsDeletedModal] = useState(false)
+    const [isPressedBlock, setIsPressedBlock] = useState(false)
     const { deleteServer } = useAuth();
     const navigate = useNavigate();
 
@@ -38,6 +39,7 @@ export default function MyServerBlock({ id }) {
         whileInView={{opacity: 1, y: 0}}
         transition={{duration: 0.5}}
         viewport={{ once: true }}
+        onMouseDown={() => setIsPressedBlock(true)}
         onClick={() => navigate(`/myServer/${id}`)}
         className="bg-gray-transparent py-3 px-4 rounded-2xl flex flex-col gap-4 cursor-pointer">
             <div className="flex justify-between items-center">
@@ -47,7 +49,7 @@ export default function MyServerBlock({ id }) {
                 <div className="flex gap-5">
                     <img className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={chartUp} alt="chartUp" />
                     <img className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={pencil} alt="pencil" />
-                    <img onClick={() => setIsDeletedModal(true)} className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={trash} alt="trash" />
+                    <img onClick={(e) => {e.stopPropagation();setIsDeletedModal(true)}} className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={trash} alt="trash" />
                 </div>
             </div>
             <div className="flex flex-col lg:flex-row gap-7 mt-4">
@@ -89,7 +91,6 @@ export default function MyServerBlock({ id }) {
                 <img src={clipboard} alt="clipboard" />
                 <p>82.100.12.1.1</p>
             </div>
-
             <AnimatePresence>
                 {isPressed && (
                     <motion.div

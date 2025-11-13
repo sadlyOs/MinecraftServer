@@ -11,7 +11,7 @@ export default function ModalDelete({ isModal, title, label, setModal, functionD
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            onClick={() => setModal("")}
+            onClick={(e) => {e.stopPropagation(); setModal("")}}
             className="fixed px-4 inset-0 bg-black-transparent flex justify-center items-center z-200"
           >
             <motion.div

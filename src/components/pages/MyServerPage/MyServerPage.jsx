@@ -1,4 +1,4 @@
-import { data, useParams } from "react-router-dom";
+import { data, useNavigate, useParams } from "react-router-dom";
 import serverImg from "@assets/serverBlock/serverImg1.png";
 import likeGreen from "@assets/serverPage/likeGreen.svg";
 import likeBlue from "@assets/serverBlock/likeBlue.svg";
@@ -43,7 +43,12 @@ gsap.registerPlugin(useGSAP);
 export default function MyServerPage() {
   const searchParams = useParams();
   console.log(searchParams.id);
+  const navigate = useNavigate();
   const { user } = useAuth();
+
+  console.log(user);
+
+
   const server = user.servers.find(
     (srv) => srv.address.id.toString() === searchParams.id
   );
@@ -324,7 +329,7 @@ export default function MyServerPage() {
                   <img src={chartUp} alt="chartUp" />
                   <p>Раскрутить</p>
                 </button>
-                <button className="w-full bg-[#0059FF40] md:rounded-full flex justify-center gap-3 py-3 cursor-pointer">
+                <button onClick={() => navigate(`/myServer/${searchParams.id}/edit/`)} className="w-full bg-[#0059FF40] md:rounded-full flex justify-center gap-3 py-3 cursor-pointer">
                   <img src={pencil} alt="pencil" />
                   <p>Редактировать</p>
                 </button>

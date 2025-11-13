@@ -56,11 +56,11 @@ export default function Header() {
                             </nav>
                         </div>
                         <div>
-                            {!isAuthenticated && <div onClick={() => dispatch(editOpenLog(true))} className="hidden md:block cursor-pointer header__login">
+                            {!user && <div onClick={() => dispatch(editOpenLog(true))} className="hidden md:block cursor-pointer header__login">
                                 <img src={icon} alt="log icon" />
                             </div>}
 
-                            {isAuthenticated && user &&
+                            {user && user &&
                                 <div onClick={() => setModalUser(true)} className="hidden md:flex gap-4 cursor-pointer rounded-xl px-6 duration-200 relative hover:bg-gray-main">
                                     <div>
                                         <img className="h-full" src={profile} alt="profile" />
@@ -96,9 +96,9 @@ export default function Header() {
                     transition={{duration: 0.4}}
                     className="md:hidden fixed top-0 right-0 backdrop-blur-3xl min-h-screen w-[250px] z-100">
                         <div className="flex flex-col h-screen pb-10">
-                            <div className={`pl-4 ${!isAuthenticated ? "pt-6 pb-4": "pt-4 pb-2"} flex justify-between items-center`}>
-                                {!isAuthenticated && <img onClick={() => dispatch(editOpenLog(true))} src={icon} alt="icon" />}
-                                {isAuthenticated && user &&
+                            <div className={`pl-4 ${!user ? "pt-6 pb-4": "pt-4 pb-2"} flex justify-between items-center`}>
+                                {!user && <img onClick={() => dispatch(editOpenLog(true))} src={icon} alt="icon" />}
+                                {user && user &&
                                     <div className="flex gap-2 items-center">
                                         <div>
                                             <img className="h-full" src={profile} alt="profile" />

@@ -2,7 +2,6 @@ import { useState } from "react"
 
 export default function FilterButton({ tag, selected, onToggle }) {
     const [isPressed, setIsPressed] = useState(false)
-    console.log(selected);
 
     return (
         <button

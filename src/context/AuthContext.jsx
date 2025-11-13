@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
     if (userData) {
       try {
-        setUser(JSON.parse(userData));
+        setUser(userData);
       } catch (error) {
         console.error("Error parsing user data:", error);
         logout();
@@ -83,10 +83,10 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     logout,
+    loading,
     reg,
     update,
     deleteServer,
-    isAuthenticated: !!user,
   };
 
   return (
