@@ -1,5 +1,5 @@
-import noImg2 from '@assets/myServerBlock/noImg.svg';
-import noImg from '@assets/myServerBlock/noImg.png';
+import noImg2 from '@assets/myServerblock/noImg.svg';
+import noImg from '@assets/myServerblock/noImg.png';
 import { useNavigate } from 'react-router-dom';
 import * as m from "motion/react-m"
 import cancel from '@assets/modal/cancel.svg';
