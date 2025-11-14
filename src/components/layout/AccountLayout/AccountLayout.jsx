@@ -19,7 +19,7 @@ export default function AccountLayout() {
                   ["Акаунт", "/account/cab/"],
                   ["Мои сервера", "/account/servers/"],
                   ["Добавить сервер", "/account/add/"],
-                  ["Создать проект", "/account/create/"],
+                  ["Создать проект", "/account/create-project/"],
                   ["Мои проекты", "/account/myprojects/"],
                   ["Пополнить баланс", "/account/balance/"],
                   ["Мои платежи", "/account/mypayments"],

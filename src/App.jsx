@@ -17,6 +17,8 @@ import AddServerPage from '@components/pages/AddServerPage/AddServerPage'
 import MyServersPage from './components/pages/MyServersPage/MyServersPage'
 import MyServerPage from './components/pages/MyServerPage/MyServerPage'
 import MyServerEditPage from '@components/pages/MyServerEditPage/MyServerEditPage'
+import CreateProjectPage from '@components/pages/CreateProjectPage/CreateProjectPage'
+import MyProjectsPage from './components/pages/MyProjectsPage/MyProjectsPage'
 
 // Layout — общий для всех страниц
 function Layout() {
@@ -80,6 +82,14 @@ const router = createBrowserRouter([
           {
             path: '/account/add/',
             element: <AddServerPage />,
+          },
+          {
+            path: '/account/create-project/',
+            element: <CreateProjectPage />
+          },
+          {
+            path: '/account/myprojects/',
+            element: <MyProjectsPage />
           }
         ]
       },

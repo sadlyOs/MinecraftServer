@@ -1,0 +1,33 @@
+.create-checkbox {
+    appearance: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid white;
+    /* синий фон сразу */
+    position: relative;
+    cursor: pointer;
+}
+
+.create-checkbox:checked {
+    background-color: #4F46E5;
+    border: none;
+}
+
+.create-checkbox:checked::after {
+    transform: rotate(45deg) scale(1) translate(50%, -60%);
+}
+
+.create-checkbox::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg) scale(0);
+    transition: 0.2s;
+}
