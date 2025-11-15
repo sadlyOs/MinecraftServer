@@ -48,7 +48,7 @@ export default function MyServerBlock({ id }) {
                     <h3 className="text-xl font-semibold">MINELANDY</h3>
                 </div>
                 <div className="flex gap-5">
-                    <img className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={chartUp} alt="chartUp" />
+                    <img onClick={(e) => {e.stopPropagation(); navigate(`/serverPromotion/`)}}  className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={chartUp} alt="chartUp" />
                     <img onClick={(e) => {e.stopPropagation(); navigate(`/myServer/${id}/edit/`)}} className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={pencil} alt="pencil" />
                     <img onClick={(e) => {e.stopPropagation();setIsDeletedModal(true)}} className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={trash} alt="trash" />
                 </div>

@@ -324,7 +324,7 @@ export default function MyServerPage() {
           >
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-3">
-                <button className="w-full bg-[#00D0FF40] md:rounded-full flex justify-center gap-3 py-3 cursor-pointer">
+                <button onClick={() => navigate("/serverPromotion/")} className="w-full bg-[#00D0FF40] md:rounded-full flex justify-center gap-3 py-3 cursor-pointer">
                   <img src={chartUp} alt="chartUp" />
                   <p>Раскрутить</p>
                 </button>

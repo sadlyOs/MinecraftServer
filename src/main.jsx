@@ -7,11 +7,9 @@ import { Provider } from 'react-redux'
 import { LazyMotion, domAnimation } from "motion/react"
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Provider store={store}>
-      <LazyMotion strict features={domAnimation}>
-        <App />
-      </LazyMotion>
-    </Provider>
-  </StrictMode>,
+  <Provider store={store}>
+    <LazyMotion strict features={domAnimation}>
+      <App />
+    </LazyMotion>
+  </Provider>
 )
