@@ -48,8 +48,8 @@ export default function MyProjectBlock({ id }) {
                     <h3 className="text-xl font-semibold">MINELANDY</h3>
                 </div>
                 <div className="flex gap-5">
-                    <img className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={pencil} alt="pencil" />
-                    <img onClick={(e) => {e.stopPropagation();setIsDeletedModal(true)}} className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={trash} alt="trash" />
+                    <img onClick={(e) => {e.stopPropagation()}} className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={pencil} alt="pencil" />
+                    <img onClick={(e) => {e.stopPropagation()}} className="w-4 h-4 duration-100 cursor-pointer hover:scale-115" src={trash} alt="trash" />
                 </div>
             </div>
             <div className="flex flex-col lg:flex-row gap-7 mt-4">
