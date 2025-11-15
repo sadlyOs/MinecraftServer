@@ -2,6 +2,7 @@ import { AnimatePresence } from "motion/react"
 import { useDispatch } from "react-redux"
 import { editOpenLog } from "@/store/openLogin"
 import { editOpenReg } from "@/store/openReg"
+import { m } from "motion/react";
 
 export default function Form({ children, isOpenedLog, isOpenedReg }) {
     const dispatch = useDispatch()

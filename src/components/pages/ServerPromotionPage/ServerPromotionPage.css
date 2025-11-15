@@ -1,0 +1,7 @@
+.promotion {
+    background: linear-gradient(rgba(0, 0, 0, 0.8) 10%, rgba(255, 255, 255, 0.05) 100%), url("@assets/promotion.png") center center / cover no-repeat;
+    background-blend-mode: multiply;
+    border-radius: var(--radius-2xl);
+    padding: 20px;
+
+}

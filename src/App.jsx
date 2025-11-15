@@ -19,6 +19,8 @@ import MyServerPage from './components/pages/MyServerPage/MyServerPage'
 import MyServerEditPage from '@components/pages/MyServerEditPage/MyServerEditPage'
 import CreateProjectPage from '@components/pages/CreateProjectPage/CreateProjectPage'
 import MyProjectsPage from './components/pages/MyProjectsPage/MyProjectsPage'
+import ServerPromotionPage from '@components/pages/ServerPromotionPage/ServerPromotionPage'
+
 
 // Layout — общий для всех страниц
 function Layout() {
@@ -64,6 +66,10 @@ const router = createBrowserRouter([
         element: <ServerPage />,
       },
       {
+        path: '/serverPromotion/',
+        element: <ServerPromotionPage />
+      },
+      {
         path: '/account/',
         element: <ProtectedRoute>
           <AccountLayout />
@@ -90,7 +96,7 @@ const router = createBrowserRouter([
           {
             path: '/account/myprojects/',
             element: <MyProjectsPage />
-          }
+          },
         ]
       },
       {
