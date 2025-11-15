@@ -11,6 +11,7 @@ import { useState } from "react";
 import discord from "@assets/serverPage/discord.svg";
 import vk from "@assets/header/vk.svg";
 import youtube from "@assets/header/youtube.svg";
+import ModalMessage from "@/components/ui/ModalMessage/ModalMessage";
 import "./MyServerEditPage.css";
 
 export default function MyServerEditPage() {
@@ -21,6 +22,9 @@ export default function MyServerEditPage() {
     const [modes, setModes] = useState([]);
     const [miniGames, setMiniGames] = useState([]);
     const [options, setOptions] = useState([]);
+    const [modalMessage, setModalMessage] = useState(false)
+    const [key, setKey] = useState("")
+
     console.log(id);
 
     const handleAddMode = (e, type) => {
@@ -45,15 +49,16 @@ export default function MyServerEditPage() {
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
-        // Логика сохранения изменений сервера
-        navigate(`/myServer/${id}`);
+        console.log(key);
+        navigate(`/myServer/${id}`)
+
     }
 
     return (
         <main className="min-h-screen bg-[#333]">
             <div className="flex justify-center px-4 py-30 text-white">
                 <m.form
+                    onKeyDown={(e) => e.code == "Enter" && e.preventDefault()}
                     onSubmit={(e) => handleSubmit(e)}
                     initial={{ opacity: 0, y: 100 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -70,7 +75,7 @@ export default function MyServerEditPage() {
                         </div>
                         <div>
                             <label className="block text-gray-main pb-2">Банер</label>
-                            <img src={noImg} alt="noImg" />
+                            <img className="w-full" src={noImg} alt="noImg" />
                         </div>
                         <Input labelText={"Название сервера"} placeholder={"MINELANDY"} type={"text"} />
                         <TextArea labelText={"Короткое описание"} placeholder={""} type={"text"} style={"text-xl"} />

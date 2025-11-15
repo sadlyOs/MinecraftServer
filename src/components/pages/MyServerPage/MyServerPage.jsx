@@ -267,10 +267,9 @@ export default function MyServerPage() {
       <div className="server-hero py-20 container md:px-4 mx-auto text-white">
         <div className="w-full server__wrapper">
           <m.div
-            initial="offscreen"
-            whileInView="onscreen"
-            variants={variants.left}
-            viewport={{ once: true }}
+            initial={{x: -300}}
+            animate={{x: 0}}
+            transition={{type: "spring", duration: 2}}
             className="server__head h-fit px-4 py-3 md:bg-gray-transparent md:backdrop-blur-2xl rounded-2xl"
           >
             <div className="relative w-full pb-2">
@@ -318,10 +317,9 @@ export default function MyServerPage() {
             </div>
           </m.div>
           <m.div
-            initial="offscreen"
-            whileInView="onscreen"
-            variants={variants.right}
-            viewport={{ once: true }}
+            initial={{x: 300}}
+            animate={{x: 0}}
+            transition={{type: "spring", duration: 2}}
             className="server__side"
           >
             <div className="flex flex-col gap-4">
@@ -402,10 +400,9 @@ export default function MyServerPage() {
             </div>
           </m.div>
           <m.div
-            initial="offscreen"
-            whileInView="onscreen"
-            variants={variants.bottom}
-            viewport={{ once: true }}
+            initial={{y: 300}}
+            animate={{y: 0}}
+            transition={{type: "spring", duration: 2}}
             className="server__content py-3 bg-gray-transparent backdrop-blur-2xl rounded-2xl h-fit flex flex-col gap-6"
           >
             {server.address.updated && (
