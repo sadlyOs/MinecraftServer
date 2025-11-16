@@ -11,11 +11,13 @@ import setting from "@assets/promotion/setting.svg"
 import reload from "@assets/promotion/reload.svg"
 import five from "@assets/promotion/5.svg"
 import ModalPromo from "@/components/ui/ModalPromo/ModalPromo";
+import ModalColor from "@/components/ui/ModalColor/ModalColor";
 import "./ServerPromotionPage.css"
 import { useState } from "react";
 
 export default function ServerPromotionPage() {
     const [isPromo, setIsPromo] = useState(false)
+    const [isColor, setIsColor] = useState(false)
     return (
         <>
             <div className="min-h-screen bg-[#333]">
@@ -67,7 +69,7 @@ export default function ServerPromotionPage() {
                                             <li>Возможность покупки от 2 баллов</li>
                                         </ul>
                                     </div>
-                                    <Button label={"Выделить цветом"} style={"w-full py-4 bg-gray-transparent md:text-xl hover:scale-105"} />
+                                    <Button handleClick={() => setIsColor(true)} label={"Выделить цветом"} style={"w-full py-4 bg-gray-transparent md:text-xl hover:scale-105"} />
                                 </div>
                             </div>
                         </m.div>
@@ -121,6 +123,7 @@ export default function ServerPromotionPage() {
             </div>
 
             <ModalPromo isOpen={isPromo} onClose={() => setIsPromo(false)}/>
+            <ModalColor isOpen={isColor} onClose={() => setIsColor(false)}/>
         </>
     )
 }
