@@ -64,7 +64,7 @@ export default function ModalBalance({ isOpen, onClose, initialType = "fiat" }) 
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute inset-0 w-full h-full flex justify-center items-center bg-black-transparent px-4 z-500"
+                    className="fixed inset-0 w-full h-full flex justify-center items-center bg-black-transparent px-4 z-500"
                 >
                     {success.length == 0 && (
                         <m.form
