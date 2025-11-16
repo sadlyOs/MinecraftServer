@@ -55,6 +55,8 @@ export const AuthProvider = ({ children }) => {
   const update = (newUserData) => {
     const data = JSON.parse(localStorage.getItem("users"))
     localStorage.setItem("user", JSON.stringify(newUserData));
+    console.log(user);
+
     const updatedUsers = data.map((user) => {
       if (user.login === newUserData.login) {
         return newUserData;

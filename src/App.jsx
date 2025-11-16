@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         element: <ServerPage />,
       },
       {
-        path: '/serverPromotion/',
+        path: '/serverPromotion/:id',
         element: <ServerPromotionPage />
       },
       {
