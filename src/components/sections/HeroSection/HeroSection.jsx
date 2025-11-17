@@ -4,11 +4,11 @@ import { motion } from "motion/react"; import * as m from "motion/react-m"
 import gsap from "gsap";
 import TextPlugin from "gsap/TextPlugin";
 import { useGSAP } from "@gsap/react";
-import "./HeroSection.css";
 import { versionTags, miniGameTags, modeTags, optionTags, pluginTags } from "@/data/filters";
 import FilterBlock from "@/components/FilterBlock/FilterBlock";
 import FilterModal from "@/components/ui/FilterModal/FilterModal";
 import icon from '@assets/hero/icon.svg'
+import "./HeroSection.css";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(TextPlugin);
@@ -53,15 +53,15 @@ export default function HeroSection() {
   // })
 
   return (
-    <section id="#home" className="relative w-full h-screen hero pt-30">
+    <section id="#home" className="relative w-full hero pt-30 pb-10">
       <div className="container mx-auto px-4 h-full flex flex-col justify-center lg:block">
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="hero__content">
             <m.div
             initial={{x:-200, opacity: 0}}
             animate={{x:0, opacity: 1}}
             exit={{x:-200, opacity: 0}}
             transition={{duration: 1.5}}
-            className="text-white flex-1 text-center md:text-start">
+            className="text-white flex-1 text-center md:text-start pb-8 lg:pb-0">
                 <h1 className="text-2xl md:text-4xl pb-3 font-bold">Лучшие сервера Minecraft</h1>
                 <p className="text-sm md:text-[1rem] text-white-light-text font-normal">
                     Добро пожаловать на лучший рейтинг и мониторинг серверов Майнкрафт

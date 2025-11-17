@@ -16,9 +16,32 @@ export default function ModalPromo({ isOpen, onClose }) {
     const [selectedVersion, setSelectedVersion] = useState("1.19.3")
     const [isArrayVersionOpen, setIsArrayVersionOpen] = useState(false);
     const [amount, setAmount] = useState(0)
+    const [selectedIndex, setSelectedIndex] = useState(null)
+    const [errorTop, setErrorTop] = useState('')
+    const [errorInput, setErrorInput] = useState('')
+    const colors = [
+        { name: 'Топ 1', default: 'rgba(255, 255, 255, 0.05)', selected: ['rgba(255, 195, 0, 0.1)', 'rgba(255, 195, 0, 0.73)'], img: sale35 },
+        { name: 'Топ 2', default: 'rgba(255, 255, 255, 0.05)', selected: ['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 0.73)'], img: sale25 },
+        { name: 'Топ 3', default: 'rgba(255, 255, 255, 0.05)', selected: ['rgba(255, 98, 0, 0.1)', 'rgba(255, 98, 0, 0.73)'], img: sale15 },
+        { name: 'Топ 4', default: 'rgba(255, 255, 255, 0.05)', selected: ['rgba(255, 255, 255, 0.05)', 'rgba(0, 255, 212, 1)'] },
+        { name: 'Топ 5', default: 'rgba(255, 255, 255, 0.05)', selected: ['rgba(255, 255, 255, 0.05)', 'rgba(0, 255, 212, 1)'] },
+    ];
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!selectedIndex) {
+            setErrorTop("Выберите топ")
+            return
+        }
+
+        if (isNaN(parseInt(amount))) {
+            setErrorInput("Кол-во должно быть числом")
+            return
+        } else if (amount <= 0) {
+            setErrorInput("Кол-во должно быть больше 0")
+            return
+        }
+
         onClose()
     }
 
@@ -48,7 +71,7 @@ export default function ModalPromo({ isOpen, onClose }) {
                                 <img onClick={() => { onClose() }} className="cursor-pointer duration-100 hover:scale-130" src={cancel} alt="cancel" />
                             </div>
                         </div>
-                        <div className="px-5 pb-5 lg:pb-0 lg:px-0">
+                        <div className="px-5 pb-5 lg:pb-0 lg:px-0 flex flex-col gap-3">
                             <div className="relative">
                                 <div>
                                     <Input handleClick={() => setIsArrayVersionOpen(!isArrayVersionOpen)} labelText={"Выберите или добавьте сервер для раскрутки"} style={"cursor-pointer"} placeholder={selectedVersion} readOnly={true}/>
@@ -71,14 +94,37 @@ export default function ModalPromo({ isOpen, onClose }) {
                                     )}
                                 </AnimatePresence>
                             </div>
-                            <div className="flex flex-col py-5 gap-3">
-                                {[["Топ 1", ["#FFC300", "#FFC30054"], sale35], ["Топ 2", ["#E1E2E1", "#FFFFFF1A"], sale25], ["Топ 3", ["#FF6200", "#FF62001A"], sale15], ["Топ 4", ["#00FFD4", "#1F201F"]], ["Топ 5", ["#00FFD4", "#1F201F"]]].map((item, index) => (
-                                    <PromoButton key={index} style={item[1]} title={item[0]} sale={item[2]}/>
-                                ))}
-                            </div>
+                            <div className="relative">
+                                    <div className="flex flex-col gap-3 p-4">
+                                        {colors.map((color, index) => {
+                                            const isSelected = selectedIndex === index;
+
+                                            return (
+                                                <button
+                                                    key={index}
+                                                    type="button"
+                                                    onClick={() => {setSelectedIndex(index); setErrorTop("")}}
+                                                    className={`
+                    relative w-full py-3 px-6 text-center text-white
+                    rounded-4xl border transition-all duration-200 border-transparent cursor-pointer`}
+                                                    style={{
+                                                        background: isSelected ? color.selected[0] : color.default,
+                                                        // Если хочется ещё и бордер такого же цвета как фон (как у тебя на скрине)
+                                                        borderColor: isSelected ? color.selected[1] : color.default,
+                                                    }}
+                                                >
+                                                    {color.name}
+                                                    {color.img && <img src={color.img} className="absolute -top-3 -right-4"/>}
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                    {errorTop && <p className="absolute text-sm -bottom-2 left-5 text-red-600">{errorTop}</p>}
+                                </div>
                             <div className="relative">
                                 <img src={scoreYellow} alt="scoreYellow" className="absolute top-13 left-4 z-300 w-4 h-4" />
-                                <Input value={1234} labelText={"Количество промо баллов:"} placeholder="0" style={"px-9"} readOnly={true}/>
+                                <Input err={setErrorInput} value={amount} setValue={setAmount} labelText={"Количество промо баллов:"} placeholder="0" style={"px-9"}/>
+                                {errorInput && <p className="absolute text-sm -bottom-7 left-0 text-red-600">{errorInput}</p>}
                             </div>
                             <div className="flex justify-center py-8">
                                 <p className="flex items-center gap-1"><span>Итог к оплате:</span><span className="pl-2"><img src={scoreYellow} alt="scoreYellow" className="w-4 h-4"/></span>1 020 <span className="text-sm line-through text-gray-main">1 244</span></p>

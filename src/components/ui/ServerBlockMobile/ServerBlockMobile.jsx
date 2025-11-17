@@ -5,16 +5,17 @@ import icon3 from "@assets/serverBlock/likeBlue.svg";
 import icon4 from "@assets/serverBlock/score.svg";
 import clipboard from "@assets/serverBlock/clipboardBlue.svg";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-export default function ServerBlockMobile() {
-    const [isPressed, setIsPressed] = useState(false)
+export default function ServerBlockMobile({isPressed, setIsPressed}) {
+    const navigate = useNavigate()
+    const [isTouched, setIsTouched] = useState(false)
     console.log(serverImg);
 
     return (
-        <NavLink to={"/server/1"} className={`p-3.5 flex flex-col gap-4 rounded-2xl bg-[#2B2D2C] duration-150 ${isPressed ? "scale-90": ""}`} onTouchStart={() => setIsPressed(true)} onTouchEnd={() => setIsPressed(false)}>
+        <button onClick={() => navigate("/server/1")} className={`w-full p-3.5 flex flex-col gap-4 rounded-2xl bg-[#2B2D2C] duration-150 ${isTouched ? "scale-90": ""}`} onTouchStart={() => setIsTouched(true)} onTouchEnd={() => setIsTouched(false)}>
             <div className="w-full">
-                <img className="rounded-2xl" src={serverImg} alt="serverImg" />
+                <img className="rounded-2xl w-full" src={serverImg} alt="serverImg" />
             </div>
             <div>
                 <h1 className="text-center text-xl font-bold">MINELANDY</h1>
@@ -58,10 +59,10 @@ export default function ServerBlockMobile() {
                     </div>
                 </div>
             </div>
-            <div className="w-full py-3 bg-[#3F403F] flex justify-center gap-3 rounded-2xl">
+            <div onClick={(e) => {e.stopPropagation(); setIsPressed(true)}} onTouchStart={(e) => e.stopPropagation()} onTouchEnd={(e) => e.stopPropagation()}  onMouseDown={(e) => e.stopPropagation()} onMouseUp={(e) => e.stopPropagation()} className="w-full py-3 bg-[#3F403F] flex justify-center gap-3 rounded-2xl">
                 <img src={clipboard} alt="clipboard" />
                 <p>82.100.12.1.1</p>
             </div>
-        </NavLink>
+        </button>
     )
 }

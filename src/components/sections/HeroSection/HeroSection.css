@@ -1,7 +1,18 @@
-.hero {
-    background: linear-gradient(to bottom,
-            rgba(31, 33, 32, 0.9) 80%,
-            rgba(31, 33, 32, 0.9) 90%,
-            #1F2120D1 100%),
-        url("@assets/hero/hero.png") center/cover no-repeat
+@media screen and (max-width: 768px) {
+    .hero {
+        background: linear-gradient(to bottom,
+                rgba(31, 33, 32, 0.9) 80%,
+                rgba(31, 33, 32, 1) 100%,
+                #1F2120D1 100%),
+            url("@assets/hero/hero.png") center/cover no-repeat
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .hero__content {
+        display: grid;
+        grid-template-columns: 600px 1fr;
+        gap: 60px;
+    }
 }

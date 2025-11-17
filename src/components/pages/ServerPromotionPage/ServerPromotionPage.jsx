@@ -121,9 +121,9 @@ export default function ServerPromotionPage() {
                     </div>
                 </div>
             </div>
-
             <ModalPromo isOpen={isPromo} onClose={() => setIsPromo(false)}/>
             <ModalColor isOpen={isColor} onClose={() => setIsColor(false)}/>
+
         </>
     )
 }

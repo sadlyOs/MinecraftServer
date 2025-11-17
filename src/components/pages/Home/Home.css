@@ -1,0 +1,15 @@
+@media screen and (min-width: 28rem) {
+    .home {
+        background:
+            linear-gradient(to bottom,
+                transparent 0%,
+                transparent 0%,
+                rgba(31, 33, 32, 0.8) 0%,
+                rgba(31, 33, 32, 1) 40%),
+            url("@assets/hero/hero.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 20% top;
+    }
+
+}
