@@ -15,14 +15,14 @@ export default function ServerBlock({ setIsPressed }) {
 
   return (
     <>
-      <button onClick={() => navigate("/server/1")} onMouseDown={() => setIsPressedMouse(true)} onMouseUp={() => setIsPressedMouse(false)} onMouseLeave={() => setIsPressedMouse(false)}  className={`cursor-pointer w-full py-3 px-3.5 bg-[#2A2C2B] rounded-2xl flex flex-col gap-3.5 duration-150 ${isPressedMouse ? "scale-90": ""}`}>
+      <button onClick={() => navigate("/server/1")} onMouseDown={() => setIsPressedMouse(true)} onMouseUp={() => setIsPressedMouse(false)} onMouseLeave={() => setIsPressedMouse(false)} className={`cursor-pointer w-full py-3 px-3.5 bg-[#2A2C2B] rounded-2xl flex flex-col gap-3.5 duration-150 ${isPressedMouse ? "scale-90" : ""}`}>
         <div className="flex justify-between items-center">
           <div className="text-start">
             <h3 className="text-2xl font-bold">MINELANDY</h3>
             <p className="text-gray-main">К созданию боссов мы подошли особенно тщательно, на нашем сервере их целых 14 штук, каждый и... </p>
           </div>
           <div>
-            <div onClick={(e) => {e.stopPropagation(); setIsPressed(true)}} onMouseDown={(e) => e.stopPropagation()} onMouseUp={(e) => e.stopPropagation()} className="flex gap-2 justify-center bg-[#3E4040] px-10 py-3 rounded-2xl">
+            <div onClick={(e) => { e.stopPropagation(); setIsPressed(true) }} onMouseDown={(e) => e.stopPropagation()} onMouseUp={(e) => e.stopPropagation()} className="flex gap-2 justify-center bg-[#3E4040] px-10 py-3 rounded-2xl">
               <img src={clipboard} alt="clipboard" />
               <p>82.100.12.1.1</p>
             </div>

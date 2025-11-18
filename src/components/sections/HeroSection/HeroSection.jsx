@@ -60,7 +60,7 @@ export default function HeroSection() {
             initial={{x:-200, opacity: 0}}
             animate={{x:0, opacity: 1}}
             exit={{x:-200, opacity: 0}}
-            transition={{duration: 1.5}}
+            transition={{duration: 1}}
             className="text-white flex-1 text-center md:text-start pb-8 lg:pb-0">
                 <h1 className="text-2xl md:text-4xl pb-3 font-bold">Лучшие сервера Minecraft</h1>
                 <p className="text-sm md:text-[1rem] text-white-light-text font-normal">
@@ -81,7 +81,7 @@ export default function HeroSection() {
             initial={{x:200, opacity: 0}}
             animate={{x:0, opacity: 1}}
             exit={{x:200, opacity: 0}}
-            transition={{duration: 1.5}}
+            transition={{duration: 1}}
             className="hidden lg:flex flex-col flex-1 gap-4">
                 {SECTIONS.map((section) => (
                     <FilterBlock

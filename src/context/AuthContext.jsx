@@ -57,12 +57,18 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(newUserData));
     console.log(user);
 
-    const updatedUsers = data.map((user) => {
-      if (user.login === newUserData.login) {
-        return newUserData;
+    const index = data.findIndex((userSec) => {
+      if (userSec.login === user.login) {
+        return user
       }
     })
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    console.log(index);
+
+    data[index] = newUserData
+    console.log(data);
+
+
+    localStorage.setItem("users", JSON.stringify(data));
     setUser(newUserData);
   }
 

@@ -13,6 +13,8 @@ import cancel from "@assets/modal/cancel.svg"
 import { useState } from "react"
 
 export default function ModalBalance({ isOpen, onClose, initialType = "fiat" }) {
+    console.log(initialType);
+
     const paymentMethods = [
         { id: 'frikassa', title: 'Фрикасса', icon: frikassa, type: 'fiat' },
         { id: 'yokassa', title: 'ЮKassa', icon: jukassa, type: 'fiat' },
@@ -28,12 +30,13 @@ export default function ModalBalance({ isOpen, onClose, initialType = "fiat" }) 
     const [amount, setAmount] = useState(0);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('')
+    const [selected, setSelected] = useState(null)
 
     const methodsToShow = paymentMethods.filter(m => m.type == activeTab)
 
-    const changeTab = (title) => {
+    const changeTab = (title, index) => {
+        setSelected(index)
         console.log('handleClick');
-
         if (title == "Крипта") {
             setActiveTab("crypto")
         }
@@ -88,12 +91,15 @@ export default function ModalBalance({ isOpen, onClose, initialType = "fiat" }) 
                                     {error.length > 0 && <p className="absolute bottom-2 left-1 text-red-600 text-sm">{error}</p>}
                                 </div>
                                 <div className="flex flex-col gap-4 pb-8">
-                                    {methodsToShow.map((method) => (
-                                        <button type="button" onClick={() => changeTab(method.title)} key={method.id} className="w-full py-4 cursor-pointer flex justify-center gap-2 bg-gray-transparent rounded-3xl duration-150 hover:bg-gray-transparent-dark">
-                                            <img src={method.icon} alt={method.title} />
-                                            <p>{method.title}</p>
-                                        </button>
-                                    ))}
+                                    {methodsToShow.map((method, index) => {
+                                        const isSelected = selected === index
+                                        return (
+                                            <button type="button" onClick={() => changeTab(method.title, index)} key={method.id} className={`w-full py-4 cursor-pointer flex justify-center gap-2 bg-gray-transparent rounded-3xl duration-150 border border-gray-transparent ${isSelected && 'border-green-transparent'} hover:bg-gray-transparent-dark`}>
+                                                <img src={method.icon} alt={method.title} />
+                                                <p>{method.title}</p>
+                                            </button>
+                                        )
+                                    })}
                                 </div>
                                 <Button type="submit" label={"Пополнить баланс"} style={"w-full bg-green-transparent text-black hover:bg-green-transparent-dark"} />
                             </div>

@@ -16,6 +16,7 @@ import { useAuth } from "@/context/AuthContext"
 import scoreYellow from "@assets/header/scoreYellow.svg"
 import profile from "@assets/header/profile.svg"
 import ModalUser from "@/components/ui/ModalUser/ModalUser"
+import ModalBalance from "@/components/ui/ModalBalance/ModalBalance"
 
 export default function Header() {
     const [burger, setBurger] = useState(false)
@@ -23,6 +24,7 @@ export default function Header() {
     const dispatch = useDispatch()
     const { isAuthenticated, user } = useAuth();
     const [modalUser, setModalUser] = useState(false);
+    const [isBalanceModal, setIsBalanceModal] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,7 +42,7 @@ export default function Header() {
     return (
         <header className={`text-white fixed top-0 left-0 w-full z-10 ` + (isScrolled ? "bg-black-transparent" : "")}>
             <div className="relative">
-                <div className="container mx-auto p-4">
+                <div className="container-response ">
                     <div className="flex justify-between items-center relative">
                         <div className="relative z-10 cursor-pointer">
                             <NavLink to="/#home" spy={true} smooth={true} offset={-70} duration={100}>
@@ -62,22 +64,23 @@ export default function Header() {
                             </div>}
 
                             {user && user &&
-                                <div onClick={() => setModalUser(true)} className="hidden md:flex gap-4 cursor-pointer rounded-xl px-6 duration-200 relative hover:bg-gray-main">
+                                <div onMouseEnter={() => setModalUser(true)} className="hidden h-10 md:flex gap-4 items-center cursor-pointer rounded-xl px-6 duration-200 relative">
                                     <div>
-                                        <img className="h-full" src={profile} alt="profile" />
+                                        <img className="h-10" src={profile} alt="profile" />
                                     </div>
                                     <div>
-                                        <div className="pb-1 text-xl">
+                                        <div>
                                             <p>{user.login}</p>
                                         </div>
-                                        <div className="px-3 py-1 bg-yellow-transparent rounded-full flex gap-2">
-                                            <img src={scoreYellow} alt="scoreYellow" />
-                                            <p>{user.balance}</p>
+                                        <div onClick={() => setIsBalanceModal(true)} className="px-2.5 max-w-12 bg-yellow-transparent rounded-full flex items-center gap-1 box-border">
+                                            <img className="h-[13px]" src={scoreYellow} alt="scoreYellow" />
+                                            <p className="text-sm">{user.balance}</p>
                                         </div>
                                     </div>
+                                    <ModalUser isModal={modalUser} setIsModal={setModalUser} mouseLeave={setModalUser} setIsOpenBalance={setIsBalanceModal} />
                                 </div>
                             }
-                            <div onClick={() => setBurger(!burger)} className={"md:hidden burger " + (burger ? "active": "")}>
+                            <div onClick={() => setBurger(!burger)} className={"md:hidden burger " + (burger ? "active" : "")}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -85,19 +88,18 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
-                        <ModalUser isModal={modalUser} setIsModal={setModalUser}/>
             </div>
 
             <AnimatePresence>
                 {burger && (
                     <m.div
-                    initial={{x: 100, opacity: 0}}
-                    animate={{x: 0, opacity: 1}}
-                    exit={{x: 100, opacity: 0}}
-                    transition={{duration: 0.4}}
-                    className="md:hidden fixed top-0 right-0 backdrop-blur-3xl min-h-screen w-[250px] z-100">
+                        initial={{ x: 100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: 100, opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="md:hidden fixed top-0 right-0 backdrop-blur-3xl min-h-screen w-[250px] z-100">
                         <div className="flex flex-col h-screen pb-10">
-                            <div className={`pl-4 ${!user ? "pt-6 pb-4": "pt-4 pb-2"} flex justify-between items-center`}>
+                            <div className={`pl-4 ${!user ? "pt-6 pb-4" : "pt-4 pb-2"} flex justify-between items-center`}>
                                 {!user && <img onClick={() => dispatch(editOpenLog(true))} src={icon} alt="icon" />}
                                 {user && user &&
                                     <div className="flex gap-2 items-center">
@@ -116,7 +118,7 @@ export default function Header() {
                             </div>
                             <nav className="flex-1 py-5 w-full relative">
                                 <ul className="flex flex-col gap-3 text-sm font-semibold">
-                                    {[['Акаунт', '/account/cab/'], ['Добавить сервер', '/account/add/'], ['Мои сервера', '/account/servers/'], ['Пополнить баланс', '#'], ['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
+                                    {[['Аккаунт', '/account/cab/'], ['Добавить сервер', '/account/add/'], ['Мои сервера', '/account/servers/'], ['Пополнить баланс', '#'], ['Скачать Minecraft', '#'], ['Создать сервер', '#'], ['Хостинг', '#'], ['Моды', '#']].map((item, index) => (
                                         <NavLink onClick={() => setBurger(false)} key={index} to={item[1]} className="link relative px-4 py-2 duration-100 hover:text-gray-400">{item[0]}</NavLink>
                                     ))}
                                 </ul>
@@ -131,6 +133,7 @@ export default function Header() {
                     </m.div>
                 )}
             </AnimatePresence>
+            <ModalBalance isOpen={isBalanceModal} onClose={() => setIsBalanceModal(false)} initialType="crypto"/>
         </header>
     )
 }

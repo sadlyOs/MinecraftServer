@@ -1,0 +1,12 @@
+.main-not {
+    background:
+        linear-gradient(to bottom,
+            transparent 0%,
+            transparent 0%,
+            rgba(31, 33, 32, 0.8) 0%,
+            rgba(31, 33, 32, 1) 60%),
+        url("@assets/hero/hero.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 20% top;
+}

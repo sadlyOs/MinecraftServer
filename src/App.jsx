@@ -20,7 +20,7 @@ import MyServerEditPage from '@components/pages/MyServerEditPage/MyServerEditPag
 import CreateProjectPage from '@components/pages/CreateProjectPage/CreateProjectPage'
 import MyProjectsPage from './components/pages/MyProjectsPage/MyProjectsPage'
 import ServerPromotionPage from '@components/pages/ServerPromotionPage/ServerPromotionPage'
-
+import Page404 from './components/pages/Page404/Page404'
 
 // Layout — общий для всех страниц
 function Layout() {
@@ -35,8 +35,8 @@ function Layout() {
   return (
     <Wrapper>
       <Header />
-      <Outlet />         {/* Здесь будут дочерние страницы */}
-      <ScrollRestoration />  {/* Теперь работает! */}
+      <Outlet />
+      <ScrollRestoration />
       <Footer />
       <Form isOpenedLog={isOpenLog} isOpenedReg={isOpenReg}>
         {isOpenLog &&
@@ -60,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/*',
+        element: <Page404 />,
       },
       {
         path: '/server/:id',

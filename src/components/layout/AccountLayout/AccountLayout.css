@@ -1,0 +1,11 @@
+.tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (min-width: 1124px) {
+    .tab {
+        justify-content: center;
+    }
+}

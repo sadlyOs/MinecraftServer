@@ -41,7 +41,6 @@ export default function MyProjectBlock({ id }) {
         transition={{duration: 0.5}}
         viewport={{ once: true }}
         onMouseDown={() => setIsPressedBlock(true)}
-        onClick={() => navigate(`/myServer/${id}`)}
         className="bg-gray-transparent py-3 px-4 rounded-2xl flex flex-col gap-4 cursor-pointer">
             <div className="flex justify-between items-center">
                 <div>
