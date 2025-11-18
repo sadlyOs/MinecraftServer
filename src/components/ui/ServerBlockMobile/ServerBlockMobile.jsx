@@ -23,7 +23,7 @@ export default function ServerBlockMobile({isPressed, setIsPressed}) {
             </div>
             <div className="grid grid-cols-2 gap-3">
                 <div className="flex flex-col border-2 py-2 px-3 border-white-light rounded-3xl">
-                    <div className="text-center text-[#747575] font-semibold">
+                    <div className="text-center text-gray-main font-semibold">
                         <p>Версия</p>
                     </div>
                     <div className="flex gap-1 justify-center">
@@ -32,7 +32,7 @@ export default function ServerBlockMobile({isPressed, setIsPressed}) {
                     </div>
                 </div>
                 <div className="flex flex-col border-2 py-2 px-3 border-white-light rounded-3xl">
-                    <div className="text-center text-[#747575] font-semibold">
+                    <div className="text-center text-gray-main font-semibold">
                         <p>Общий онлайн</p>
                     </div>
                     <div className="flex gap-1 justify-center">
@@ -41,7 +41,7 @@ export default function ServerBlockMobile({isPressed, setIsPressed}) {
                     </div>
                 </div>
                 <div className="flex flex-col gap-1 border-2 py-2 px-3 border-white-light rounded-3xl">
-                    <div className="text-center text-[#747575] font-semibold">
+                    <div className="text-center text-gray-main font-semibold">
                         <p>Голосов</p>
                     </div>
                     <div className="flex gap-3 justify-center">
@@ -50,7 +50,7 @@ export default function ServerBlockMobile({isPressed, setIsPressed}) {
                     </div>
                 </div>
                 <div className="flex flex-col gap-1 border-2 py-2 px-3 border-white-light rounded-3xl">
-                    <div className="text-center text-[#747575] font-semibold">
+                    <div className="text-center text-gray-main font-semibold">
                         <p>Баллов</p>
                     </div>
                     <div className="flex gap-3 justify-center">

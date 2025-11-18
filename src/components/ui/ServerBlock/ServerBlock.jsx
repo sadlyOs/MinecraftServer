@@ -34,7 +34,7 @@ export default function ServerBlock({ setIsPressed }) {
           </div>
           <div className="flex-1 flex gap-2.5">
             <div className="flex-1 text-center py-2 border-2 border-white-light rounded-3xl">
-              <div className="text-white-light">
+              <div className="text-gray-main">
                 <p>Версия</p>
               </div>
               <div className="flex gap-3 justify-center">
@@ -43,7 +43,7 @@ export default function ServerBlock({ setIsPressed }) {
               </div>
             </div>
             <div className="flex-1 text-center py-2 border-2 border-white-light rounded-3xl">
-              <div className="text-white-light">
+              <div className="text-gray-main">
                 <p>Общий онлайн</p>
               </div>
               <div className="flex gap-3 justify-center">
@@ -52,7 +52,7 @@ export default function ServerBlock({ setIsPressed }) {
               </div>
             </div>
             <div className="flex-1 text-center py-2 border-2 border-white-light rounded-3xl">
-              <div className="text-white-light">
+              <div className="text-gray-main">
                 <p>Голосов</p>
               </div>
               <div className="flex gap-3 justify-center">
@@ -61,7 +61,7 @@ export default function ServerBlock({ setIsPressed }) {
               </div>
             </div>
             <div className="flex-1 text-center py-2 border-2 border-white-light rounded-3xl">
-              <div className="text-white-light">
+              <div className="text-gray-main">
                 <p>Баллов</p>
               </div>
               <div className="flex gap-3 justify-center">
