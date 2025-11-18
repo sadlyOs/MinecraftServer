@@ -54,7 +54,7 @@ export default function HeroSection() {
 
   return (
     <section id="#home" className="relative w-full hero pt-30 pb-10">
-      <div className="container mx-auto px-4 h-full flex flex-col justify-center lg:block">
+      <div className="container-response mx-auto px-4 h-full flex flex-col justify-center lg:block">
         <div className="hero__content">
             <m.div
             initial={{x:-200, opacity: 0}}

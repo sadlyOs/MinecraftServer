@@ -52,8 +52,8 @@ export default function ServerSection() {
 
     return (
         <>
-            <section className="container mx-auto px-4 pb-8 relative z-1 text-white">
-                <div><h3 className="text-xl font-bold py-4">Сервера</h3></div>
+            <section className="container-response mx-auto px-4 pb-8 relative z-1 text-white">
+                <div><h3 className="text-3xl font-bold py-4">Сервера</h3></div>
                 <div className="flex flex-col items-center gap-10">
                     {/* <div className="rounded-2xl max-w-[610px] shadow-md">
                         <div className="w-full h-[60px] relative">
