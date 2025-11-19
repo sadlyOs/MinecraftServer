@@ -24,7 +24,7 @@ export default function ModalUser({ isModal, setIsModal, mouseLeave, setIsOpenBa
         >
           <div className="flex flex-col juscetify-center items-center py-3 bg-black-transparent rounded-2xl">
             <img className="h-[5vh]" src={profile2} alt="profile"/>
-            <div className="gap-2 mb-6">
+            <div className="gap-2">
               <div>
                 <div className="pb-1 text-xl text-center">
                   <p>{user.login}</p>
@@ -36,7 +36,7 @@ export default function ModalUser({ isModal, setIsModal, mouseLeave, setIsOpenBa
               </div>
             </div>
           </div>
-          <div>
+          <div className="pt-2">
             <nav>
                 <ul className="flex flex-col"></ul>
                     {links.map((item, index) => (
