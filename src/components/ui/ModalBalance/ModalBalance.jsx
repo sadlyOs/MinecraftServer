@@ -11,6 +11,7 @@ import robokassa from "@assets/paymentIcons/robokassa.svg"
 import base from "@assets/paymentIcons/base.svg"
 import cancel from "@assets/modal/cancel.svg"
 import { useState } from "react"
+import selector from "@assets/myServerblock/selector.svg"
 
 export default function ModalBalance({ isOpen, onClose, initialType = "fiat" }) {
     console.log(initialType);
@@ -80,6 +81,7 @@ export default function ModalBalance({ isOpen, onClose, initialType = "fiat" }) 
                             className="w-[375px] bg-modal-bg text-white relative p-5 box-border rounded-2xl backdrop-blur-2xl"
                         >
                             <div className="relative pb-4">
+                                {activeTab == "crypto" && <img src={selector} className="absolute top-1/3 rotate-90 scale-105 -translate-1/2 left-0 cursor-pointer duration-100 hover:scale-130" onClick={() => setActiveTab("fiat")}/>}
                                 <h3 className="text-center font-semibold">Пополнение баланса</h3>
                                 <div className="absolute right-0 top-1/2 -translate-y-full">
                                     <img onClick={() => { onClose(); setError(""); setActiveTab('fiat') }} className="cursor-pointer duration-100 hover:scale-130" src={cancel} alt="cancel" />
