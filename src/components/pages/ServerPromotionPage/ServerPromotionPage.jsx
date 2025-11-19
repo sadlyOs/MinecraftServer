@@ -49,16 +49,6 @@ export default function ServerPromotionPage() {
                                 </div>
                                 <div className="bg-gray-transparent flex-1 md:shrink-0 p-5 rounded-2xl flex flex-col backdrop-blur-2xl">
                                     <div className="flex md:text-xl items-center gap-3 font-semibold">
-                                        <img src={stop} className="w-6 h-6" alt="scoreYellow" />
-                                        <p>Мультиплеер MisterLauncher</p>
-                                    </div>
-                                    <div className="flex-1 pb-7">
-                                        <p className="text-gray-main mt-4">Всего 5 статичных мест. Успейте занять свое место и увеличить посещаемость сервера</p>
-                                    </div>
-                                    <Button label={"Разместить сервер"} style={"w-full py-4 bg-gray-transparent md:text-xl hover:scale-105"} />
-                                </div>
-                                <div className="bg-gray-transparent flex-1 md:shrink-0 p-5 rounded-2xl flex flex-col backdrop-blur-2xl">
-                                    <div className="flex md:text-xl items-center gap-3 font-semibold">
                                         <img src={pipette} className="w-6 h-6" alt="scoreYellow" />
                                         <p>Выделить сервер цветом</p>
                                     </div>
