@@ -16,7 +16,7 @@ export default function CreateProjectPage() {
         navigate(`/account/cab/`);
     }
     return (
-        <main className="min-h-screen bg-[#333]">
+        <main className="min-h-screen bg-color-bg">
             <div className="flex justify-center px-4 text-white">
                 <m.form
                     onSubmit={(e) => handleSubmit(e)}

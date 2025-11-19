@@ -15,6 +15,7 @@
     --color-green-transparent: rgba(145, 255, 169, 0.75);
     --color-green-transparent-dark: rgba(36, 115, 57, 0.75);
     --color-yellow-transparent: rgba(255, 234, 0, 0.1);
+    --color-color-bg: rgba(31, 33, 32, 1);
 }
 
 @layer components {

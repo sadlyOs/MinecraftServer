@@ -14,7 +14,7 @@ import "./Footer.css";
 gsap.registerPlugin(useGSAP);
 export default function Footer() {
   return (
-    <footer className="footer text-white py-10">
+    <footer className="footer text-white py-10 flex-1">
       <div className="py-4 container w-full mx-auto px-4 flex flex-col gap-10">
         <m.div
         initial={{opacity: 0, y: 20}}

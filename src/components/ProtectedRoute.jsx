@@ -26,7 +26,7 @@ const ProtectedRoute = ({ children }) => {
   }
 
   return (
-    <div className='flex-1 min-h-screen'>
+    <div className=''>
       {children}
     </div>
   );

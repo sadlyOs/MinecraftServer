@@ -55,7 +55,7 @@ export default function MyServerEditPage() {
     }
 
     return (
-        <main className="min-h-screen bg-[#333]">
+        <main className="min-h-screen bg-color-bg">
             <div className="flex justify-center px-4 py-30 text-white">
                 <m.form
                     onKeyDown={(e) => e.code == "Enter" && e.preventDefault()}

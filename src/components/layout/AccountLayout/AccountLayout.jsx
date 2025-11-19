@@ -11,7 +11,7 @@ export default function AccountLayout() {
   return (
     <>
 
-      <main className="bg-[#333] min-h-screen w-full text-white">
+      <main className="bg-color-bg text-white">
         <div className="lg:pt-30 pb-30 pt-20 mx-auto">
           <m.div
             initial={{ opacity: 0, y: -20 }}
