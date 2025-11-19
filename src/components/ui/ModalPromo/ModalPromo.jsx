@@ -29,7 +29,7 @@ export default function ModalPromo({ isOpen, onClose }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!selectedIndex) {
+        if (selectedIndex == null) {
             setErrorTop("Выберите топ")
             return
         }
