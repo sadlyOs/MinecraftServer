@@ -20,7 +20,7 @@ export default function FilterModal({ isOpen, onClose, filters, selectedFilters,
                 animate={{x: 0}}
                 exit={{x: 100}}
                 transition={{duration: 0.2}}
-                className="backdrop-blur-2xl w-full max-w-lg rounded-t-2xl max-h-[60vh]">
+                className="backdrop-blur-2xl w-full max-w-lg rounded-t-2xl">
                     <div className="bg-modal flex justify-between rounded-t-2xl items-center px-3.5 py-3">
                         <div className="w-2"></div>
                         <h2 className="text-xl text-white">Фильтр</h2>
@@ -28,7 +28,7 @@ export default function FilterModal({ isOpen, onClose, filters, selectedFilters,
                             <img src={close} alt="close" />
                         </button>
                     </div>
-                    <div className="px-3.5 py-3 max-h-[40vh] overflow-y-scroll">
+                    <div className="px-3.5 py-3 max-h-[70vh] overflow-y-scroll">
                         {filters.map((section) => (
                             <FilterBlock
                                 key={section.title}
