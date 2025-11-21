@@ -9,10 +9,19 @@
 
 }
 
+
 @media screen and (min-width: 1024px) {
     .hero__content {
         display: grid;
         grid-template-columns: 600px 1fr;
+        gap: 60px;
+    }
+}
+
+@media screen and (min-width: 1275px) {
+    .hero__content {
+        display: grid;
+        grid-template-columns: 800px 1fr;
         gap: 60px;
     }
 }
