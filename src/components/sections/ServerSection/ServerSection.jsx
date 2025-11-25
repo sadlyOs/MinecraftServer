@@ -7,16 +7,8 @@ import ScrollTrigger from "gsap/src/ScrollTrigger";
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m"
 
-gsap.registerPlugin(useGSAP)
-gsap.registerPlugin(ScrollTrigger)
 
 export default function ServerSection() {
-    const listItems = useRef([])
-    const addRef = (el) => {
-        if (el && !listItems.current.includes(el)) {
-            listItems.current.push(el);
-        }
-    }
     const [isPressed, setIsPressed] = useState(false)
 
     function copyToClipboard() {
@@ -32,23 +24,6 @@ export default function ServerSection() {
             copyToClipboard()
         }
     }, [isPressed])
-
-    useGSAP(() => {
-        listItems.current.forEach(item => {
-            gsap.from(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top 80%", // Начинаем анимацию, когда верх элемента находится на 80% высоты экрана
-                    end: "top 50%", // Заканчиваем анимацию, когда верх элемента находится на 50% высоты экрана
-                    toggleActions: "play none none none", // Запускаем анимацию только при прокрутке вниз
-                    duration: 2, // Продолжительность анимации
-                },
-                y: 50, // Движение вверх
-                opacity: 0,
-                ease: "power2.out",
-            });
-        });
-    }, [])
 
     return (
         <>
@@ -111,13 +86,14 @@ export default function ServerSection() {
                         </div>
                     </div> */}
                     {[1, 2, 3, 4, 5, 6].map((item, index) => (
-                        <div className="w-full" key={index} ref={addRef}>
-                            <div className="hidden lg:block duration-150 hover:scale-102">
-                                <ServerBlock setIsPressed={setIsPressed}/>
-                            </div>
-                            <div className="lg:hidden">
-                                <ServerBlockMobile isPressed={isPressed} setIsPressed={setIsPressed}/>
-                            </div>
+                        <div className="w-full" key={index}>
+
+                                <div className="hidden lg:block duration-150 hover:scale-102">
+                                    <ServerBlock setIsPressed={setIsPressed}/>
+                                </div>
+                                <div className="lg:hidden">
+                                    <ServerBlockMobile isPressed={isPressed} setIsPressed={setIsPressed}/>
+                                </div>
                         </div>
                     ))
                     }
