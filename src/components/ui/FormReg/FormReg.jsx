@@ -8,11 +8,10 @@ import { editOpenReg } from "@/store/openReg";
 import { editOpenLog } from "@/store/openLogin";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { createRequest } from "@/api/api";
 
 export default function FormReg() {
   const dispatch = useDispatch();
-
-  const { reg } = useAuth();
 
   const [loginName, setLoginName] = useState("")
   const [password, setPassword] = useState("")
@@ -20,44 +19,35 @@ export default function FormReg() {
 
   const [errorLogin, setErrorLogin] = useState("")
   const [errorEmail, setErrorEmail] = useState("")
+  const [errorPassword, setErrorPassword] = useState("")
+  const [error, setError] = useState(null);
 
   function handleSubmit (e) {
     e.preventDefault();
 
-    const users = JSON.parse(localStorage.getItem("users"))
-
-    const data = {
-        login: loginName,
-        password: password,
-        email: email,
-        balance: 0,
-        servers: []
+    if (loginName.length <= 0) {
+      setErrorLogin("Введите логин")
     }
-
-    const searchUserByLogin = users.find((user) => user.login == data.login)
-    const searchUserByEmail = users.find((user) => user.email == data.email)
-
-    if (searchUserByLogin) {
-      setErrorLogin("Такой уже логин существует")
+    else if (password.length <= 8) {
+      setErrorPassword("Пароль должен быть от 8 символов")
     }
-
-    else if (searchUserByEmail) {
-      setErrorEmail("Такая почта уже существует")
+    else if (email.length <= 0) {
+      setErrorEmail("Введите почту")
+    } else {
+      const data = {
+          username: loginName,
+          password: password,
+          email: email,
+      }
+      createRequest(data).then((res) => {
+        console.log(res);
+        dispatch(editOpenReg(false))
+        dispatch(editOpenLog(true))
+      }).catch(err => {
+        console.log("error: ", err.message);
+        setError(err.message);
+      })
     }
-
-    else {
-      reg(data)
-      dispatch(editOpenReg(false))
-      dispatch(editOpenLog(true))
-    }
-
-    // if (reg(data)) {
-    //   dispatch(editOpenReg(false))
-    //   dispatch(editOpenLog(false))
-    // }
-    // else {
-    //   alert("Такой пользователь существует")
-    // }
   }
 
   return (
@@ -82,14 +72,18 @@ export default function FormReg() {
             err={setErrorLogin}
             required={true}
           />
-          {errorLogin && <p className="text-red-600">{errorLogin}</p>}
-          <Input
-            labelText="Придумайте пароль"
-            placeholder="Пароль"
-            type="password"
-            required={true}
-            setValue={setPassword}
-          />
+          {errorLogin.length > 0 && <p className="text-red-600">{errorLogin}</p>}
+          <div className="relative">
+            <Input
+              labelText="Придумайте пароль"
+              placeholder="Пароль"
+              type="password"
+              required={true}
+              setValue={setPassword}
+              err={setErrorPassword}
+            />
+            {errorPassword.length > 0 && <p className="text-red-600 text-[0.7rem] absolute -bottom-5">{errorPassword}</p>}
+          </div>
           <p className="pb-3 text-blue-600">Забыли пароль?</p>
           <Input
             labelText="Ваш Email"
@@ -99,8 +93,9 @@ export default function FormReg() {
             err={setErrorEmail}
             setValue={setEmail}
           />
-          {errorEmail && <p className="text-red-600">{errorEmail}</p>}
+          {errorEmail.length > 0 && <p className="text-red-600">{errorEmail}</p>}
         </div>
+        {error && <p className="text-red-600">{error}</p>}
         <div className="flex flex-col gap-2">
           <Button
             type="submit"

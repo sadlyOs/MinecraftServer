@@ -46,12 +46,6 @@ export const AuthProvider = ({ children }) => {
     return false
   };
 
-  const reg = (userData) => {
-    const data = JSON.parse(localStorage.getItem("users"))
-    data.push(userData)
-    localStorage.setItem("users", JSON.stringify(data))
-  }
-
   const update = (newUserData) => {
     const data = JSON.parse(localStorage.getItem("users"))
     localStorage.setItem("user", JSON.stringify(newUserData));
@@ -92,7 +86,6 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     loading,
-    reg,
     update,
     deleteServer,
   };
