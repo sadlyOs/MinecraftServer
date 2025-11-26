@@ -70,11 +70,11 @@ export default function Header() {
                                     </div>
                                     <div>
                                         <div>
-                                            <p>{user.login}</p>
+                                            <p>{user.username}</p>
                                         </div>
                                         <div onClick={() => setIsBalanceModal(true)} className="px-2.5 max-w-12 bg-yellow-transparent rounded-full flex items-center gap-1 box-border">
                                             <img className="h-[13px]" src={scoreYellow} alt="scoreYellow" />
-                                            <p className="text-sm">{user.balance}</p>
+                                            <p className="text-sm">0</p>
                                         </div>
                                     </div>
                                     <ModalUser isModal={modalUser} setIsModal={setModalUser} mouseLeave={setModalUser} setIsOpenBalance={setIsBalanceModal} />
@@ -107,10 +107,10 @@ export default function Header() {
                                             <img className="h-full" src={profile} alt="profile" />
                                         </div>
                                         <div className="flex flex-col gap-1">
-                                            <p>{user.login}</p>
+                                            <p>{user.username}</p>
                                             <div className="px-2 bg-yellow-transparent rounded-full flex gap-2 text-sm">
                                                 <img src={scoreYellow} alt="scoreYellow" />
-                                                <p>{user.balance}</p>
+                                                <p>0</p>
                                             </div>
                                         </div>
                                     </div>

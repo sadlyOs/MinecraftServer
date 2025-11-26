@@ -27,11 +27,11 @@ export default function ModalUser({ isModal, setIsModal, mouseLeave, setIsOpenBa
             <div className="gap-2">
               <div>
                 <div className="pb-1 text-xl text-center">
-                  <p>{user.login}</p>
+                  <p>{user.username}</p>
                 </div>
                 <div onClick={() => setIsOpenBalance(true)} className="px-3 py-1 bg-yellow-transparent rounded-full flex gap-2 cursor-pointer">
                   <img className="" src={scoreYellow} alt="scoreYellow" />
-                  <p>{user.balance}</p>
+                  <p>0</p>
                 </div>
               </div>
             </div>

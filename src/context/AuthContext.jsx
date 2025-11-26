@@ -1,6 +1,8 @@
 // contexts/AuthContext.js
 import React, { createContext, useState, useContext, useEffect, use } from "react";
 
+import { getCurrentUser, loginRequest } from "@/api/api";
+
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -18,32 +20,73 @@ export const AuthProvider = ({ children }) => {
   // Проверяем наличие токена при загрузке приложения
   useEffect(() => {
     // const token = localStorage.getItem('token');
-    const userData = JSON.parse(localStorage.getItem("user"));
-    console.log(userData);
+    // const userData = JSON.parse(localStorage.getItem("user"));
+    // console.log(userData);
 
 
-    if (userData) {
-      try {
-        setUser(userData);
-      } catch (error) {
-        console.error("Error parsing user data:", error);
-        logout();
+    // if (userData) {
+    //   try {
+    //     setUser(userData);
+    //   } catch (error) {
+    //     console.error("Error parsing user data:", error);
+    //     logout();
+    //   }
+    // }
+    // setLoading(false);
+
+    getCurrentUser().then(res => {
+      console.log(res.data);
+
+      if (res.status === 200) {
+        setUser(res.data)
       }
-    }
-    setLoading(false);
+      else if (res.status === 401) {
+        console.log('get refresh token');
+      }
+      else {
+        setUser(null)
+      }
+    }).catch(err => {
+      console.log(err);
+      setUser(null)
+    }).finally(() => {
+      setLoading(false)
+    })
   }, []);
 
-  const login = (userData) => {
-    console.log(userData);
-    const data = JSON.parse(localStorage.getItem("users"))
-    const searchUser = data.find((user) => user.login == userData.login && user.password == userData.password)
-    // localStorage.setItem("token", token);
-    if (searchUser) {
-      localStorage.setItem("user", JSON.stringify(searchUser));
-      setUser(searchUser);
-      return true
+  const login = (data) => {
+    loginRequest(data).then((res) => {
+      console.log(res.status);
+      if (res.status === 200) {
+      const data = res.data;
+      localStorage.setItem('access_token', data.access_token);
+      // const me = await fetch('http://localhost:8080/api/v1/user/me', {
+      //   credentials: 'include',
+      //   headers: { 'Authorization': `Bearer ${data.access_token}` }
+      // });
+
+      getCurrentUser().then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          setUser(res.data)
+          console.log(true);
+        };
+      })
+    } else {
+      console.log(res);
+      setUser(null)
     }
-    return false
+    })
+    // console.log(userData);
+    // const data = JSON.parse(localStorage.getItem("users"))
+    // const searchUser = data.find((user) => user.login == userData.login && user.password == userData.password)
+    // // localStorage.setItem("token", token);
+    // if (searchUser) {
+    //   localStorage.setItem("user", JSON.stringify(searchUser));
+    //   setUser(searchUser);
+    //   return true
+    // }
+    // return false
   };
 
   const update = (newUserData) => {

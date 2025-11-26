@@ -6,32 +6,50 @@ import cancel from "@assets/modal/cancel.svg";
 import { useDispatch } from "react-redux";
 import { editOpenLog } from "@/store/openLogin";
 import { editOpenReg } from "@/store/openReg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 
 export default function FormLogin() {
-    const { login } = useAuth();
+  const { user, login } = useAuth();
 
   const dispatch = useDispatch();
   const [loginName, setLoginName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  useEffect(() => {
+
+    if (user) {
+      console.log("LOGIN!!!");
+
+      dispatch(editOpenLog(false))
+      dispatch(editOpenReg(false))
+      setError("")
+    }
+  }, [user])
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      login: loginName,
+      username: loginName,
       password: password,
     }
+    login(data)
+    console.log(user);
+    if (!user) {
+      setError("Неверный логин или пароль")
+    }
 
-    if (!login(data)) {
-      setError("Логин или пароль не верны")
-    }
-    else {
-      setError("")
-      dispatch(editOpenLog(false))
-      dispatch(editOpenReg(false))
-    }
+
+
+    // if (!login(data)) {
+    //   setError("Логин или пароль не верны")
+    // }
+    // else {
+    //   setError("")
+    //   dispatch(editOpenLog(false))
+    //   dispatch(editOpenReg(false))
+    // }
   }
 
   return (
