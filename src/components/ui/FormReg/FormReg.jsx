@@ -11,6 +11,7 @@ import { useAuth } from "@/context/AuthContext";
 import { createRequest } from "@/api/api";
 
 export default function FormReg() {
+  const { reg, loading  } = useAuth()
   const dispatch = useDispatch();
 
   const [loginName, setLoginName] = useState("")
@@ -20,9 +21,9 @@ export default function FormReg() {
   const [errorLogin, setErrorLogin] = useState("")
   const [errorEmail, setErrorEmail] = useState("")
   const [errorPassword, setErrorPassword] = useState("")
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
-  function handleSubmit (e) {
+  async function handleSubmit (e) {
     e.preventDefault();
 
     if (loginName.length <= 0) {
@@ -39,14 +40,15 @@ export default function FormReg() {
           password: password,
           email: email,
       }
-      createRequest(data).then((res) => {
-        console.log(res);
+      try {
+        await reg(data)
         dispatch(editOpenReg(false))
         dispatch(editOpenLog(true))
-      }).catch(err => {
-        console.log("error: ", err.message);
-        setError(err.message);
-      })
+      } catch (error) {
+        console.log(error);
+
+        setError(error.message)
+      }
     }
   }
 
@@ -95,18 +97,18 @@ export default function FormReg() {
           />
           {errorEmail.length > 0 && <p className="text-red-600">{errorEmail}</p>}
         </div>
-        {error && <p className="text-red-600">{error}</p>}
+        {error && <p className="text-red-600  text-center">{error}</p>}
         <div className="flex flex-col gap-2">
           <Button
             type="submit"
-            label={"Зарегестрироваться"}
             style={
               "bg-green-transparent text-black hover:bg-green-transparent-dark"
             }
-          />
+          >
+            <p>{loading ? "Загрузка..." : "Зарегестрироваться"}</p>
+          </Button>
 
           <Button
-            label={"Отменить"}
             style={
               "bg-gray-transparent text-white hover:bg-gray-transparent-dark"
             }
@@ -114,7 +116,9 @@ export default function FormReg() {
               dispatch(editOpenLog(false));
               dispatch(editOpenReg(false));
             }}
-          />
+          >
+            <p>Отменить</p>
+          </Button>
         </div>
       </div>
     </form>

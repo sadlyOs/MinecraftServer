@@ -1,7 +1,10 @@
 // contexts/AuthContext.js
 import React, { createContext, useState, useContext, useEffect, use } from "react";
 
-import { getCurrentUser, loginRequest } from "@/api/api";
+import { createRequest, getCurrentUser, loginRequest } from "@/api/api";
+import { useDispatch } from "react-redux";
+import { editOpenReg } from "@/store/openReg";
+import { editOpenLog } from "@/store/openLogin";
 
 const AuthContext = createContext();
 
@@ -15,7 +18,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Проверяем наличие токена при загрузке приложения
   useEffect(() => {
@@ -89,6 +92,19 @@ export const AuthProvider = ({ children }) => {
     // return false
   };
 
+  const reg = async (data) => {
+    setLoading(true)
+    try {
+      const res = await createRequest(data)
+      console.log(res);
+    } catch(err) {
+        console.log("error: ", err.message);
+        throw err
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const update = (newUserData) => {
     const data = JSON.parse(localStorage.getItem("users"))
     localStorage.setItem("user", JSON.stringify(newUserData));
@@ -122,8 +138,6 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-
-
   const value = {
     user,
     login,
@@ -131,6 +145,7 @@ export const AuthProvider = ({ children }) => {
     loading,
     update,
     deleteServer,
+    reg
   };
 
   return (

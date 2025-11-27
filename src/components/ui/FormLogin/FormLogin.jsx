@@ -83,18 +83,20 @@ export default function FormLogin() {
         <div className="flex flex-col gap-2">
           <Button
             type="submit"
-            label={"Войти"}
             style={
               "bg-green-transparent text-black hover:bg-green-transparent-dark"
             }
-          />
+          >
+            <p>Войти</p>
+          </Button>
           <Button
-            label={"Регистрация"}
             style={
               "bg-gray-transparent text-white hover:bg-gray-transparent-dark"
             }
             handleClick={() => {dispatch(editOpenLog(false)); dispatch(editOpenReg(true))}}
-          />
+          >
+            <p>Регистрация</p>
+          </Button>
         </div>
       </div>
     </form>
