@@ -15,6 +15,11 @@ export default defineConfig({
     }
   },
   server: {
-    allowedHosts: ["uncravatted-semiepically-charolette.ngrok-free.dev"]
-  }
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8081',
+        changeOrigin: true,
+      },
+    },
+  },
 })
