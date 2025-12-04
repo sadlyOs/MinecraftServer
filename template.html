@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{.Title}}</title>
+    <meta name="description" content="{{.Description}}">
+    <meta name="keywords" content="{{.Keywords}}">
+    <meta property="og:title" content="{{.Title}}">
+    <meta property="og:description" content="{{.Description}}">
+    <meta property="og:url" content="{{.CurrentURL}}">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="{{.CurrentURL}}">
+    {{.StructuredData}}
+</head>
+<body>
+    <div id="root">
+        <header>
+            <h1>{{.H1}}</h1>
+            <nav>
+                <a href="/">Главная</a>
+                <a href="/servers">Серверы</a>
+                <a href="/about">О нас</a>
+            </nav>
+        </header>
+
+        <main>
+            <article>
+                <h2>{{.H2}}</h2>
+                <p>{{.Description}}</p>
+                {{.Content}}
+            </article>
+
+            <section>
+                <h3>Наши серверы</h3>
+                <div>
+                    <article>
+                        <h4>Survival сервер</h4>
+                        <p>Классический выживание с экономикой и системой кланов</p>
+                    </article>
+                    <article>
+                        <h4>Creative режим</h4>
+                        <p>Неограниченные возможности для творческого строительства</p>
+                    </article>
+                    <article>
+                        <h4>Minigames</h4>
+                        <p>Разнообразные мини-игры и соревнования</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Minecraft Server. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script type="module" src="/assets/{{.JSFile}}"></script>
+    <link rel="stylesheet" href="/assets/{{.CSSFile}}">
+</body>
+</html>
